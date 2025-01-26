@@ -2,8 +2,9 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.dao.custom.AddPatientsDAO;
 import lk.ijse.healthcare.dto.AddPatientFormDto;
-import lk.ijse.healthcare.model.AddPatientsFormModel;
+import lk.ijse.healthcare.dao.custom.impl.AddPatientsDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import lk.ijse.healthcare.util.CheckRegex;
 import javafx.collections.FXCollections;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddPatientsFormController implements Initializable {
-    private final AddPatientsFormModel ADDPATIENTMODEL = new AddPatientsFormModel();
+    private final AddPatientsDAO ADDPATIENTMODEL = new AddPatientsDAOImpl();
 
     private Boolean isEmailValid = false;
     private Boolean isNameValid = false;
