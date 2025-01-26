@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface CrudDAO<T> {
-    public ArrayList<T> getAllPatients() throws SQLException;
-    public ArrayList<T> searchPatients(String name) throws SQLException;
+    public ArrayList<T> getAll() throws SQLException;
+    public ArrayList<T> search(String name) throws SQLException;
     public T findById(String selectedContact) throws SQLException;
-    public ArrayList<String> getAllPatientMobile() throws SQLException;
-    public boolean deletePatient(String patientName) throws SQLException;
-    public boolean updatePatient(T patientsTM) throws SQLException;
+    public ArrayList<String> getAllMobile() throws SQLException;
+    public boolean delete(String patientName) throws SQLException;
+    public boolean update(T patientsTM) throws SQLException;
 }

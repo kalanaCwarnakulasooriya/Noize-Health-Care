@@ -1,6 +1,8 @@
 package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
+import lk.ijse.healthcare.bo.PatientsBOImpl;
+import lk.ijse.healthcare.bo.custom.PatientsBO;
 import lk.ijse.healthcare.dao.custom.PatientsDAO;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
@@ -32,7 +34,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class PatientsFormController implements Initializable {
-    PatientsDAO patientsDAOImpl = new PatientsDAOImpl();
+    PatientsBO patientsBO = new PatientsBOImpl();
 
     @FXML
     private TableColumn<PatientsTM, String> addressCol;
@@ -89,7 +91,7 @@ public class PatientsFormController implements Initializable {
     @FXML
     void refreshTable() throws SQLException {
         tblPatient.getItems().clear();
-        ArrayList<PatientsTM> allStaff = patientsDAOImpl.getAllPatients();
+        ArrayList<PatientsTM> allStaff = patientsBO.getAllPatients();
         ObservableList<PatientsTM> patientsDtos = FXCollections.observableArrayList();
         for (PatientsTM patientsDto : allStaff) {
             patientsDtos.add(patientsDto);
@@ -99,7 +101,7 @@ public class PatientsFormController implements Initializable {
 
     @FXML
     void searchPatients(KeyEvent event) throws SQLException {
-        ArrayList<PatientsTM> patients = patientsDAOImpl.searchPatients(lblSearch.getText());
+        ArrayList<PatientsTM> patients = patientsBO.searchPatients(lblSearch.getText());
         ObservableList<PatientsTM> patientTMS = FXCollections.observableArrayList();
         for (PatientsTM patientsDto : patients) {
             System.out.println(patientsDto.toString());
@@ -164,7 +166,7 @@ public class PatientsFormController implements Initializable {
         Optional<ButtonType> buttonType = alert.showAndWait();
 
         if (buttonType.get() == ButtonType.YES) {
-            boolean isDeleted = patientsDAOImpl.deletePatient(PatientName);
+            boolean isDeleted = patientsBO.deletePatient(PatientName);
             if (isDeleted) {
                 new AlertNotification(
                         "Success Message",

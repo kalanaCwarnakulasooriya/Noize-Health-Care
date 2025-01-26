@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PatientsDAOImpl implements PatientsDAO {
     @Override
-    public ArrayList<PatientsTM> getAllPatients() throws SQLException {
+    public ArrayList<PatientsTM> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM patient");
 
         ArrayList<PatientsTM> patients = new ArrayList<>();
@@ -30,7 +30,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public ArrayList<PatientsTM> searchPatients(String name) throws SQLException {
+    public ArrayList<PatientsTM> search(String name) throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from patient where Name like ?", name+"%");
         ArrayList<PatientsTM> patient = new ArrayList<>();
         while (rst.next()) {
@@ -67,7 +67,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public ArrayList<String> getAllPatientMobile() throws SQLException {
+    public ArrayList<String> getAllMobile() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT PatientId FROM patient");
         ArrayList<String> patientMobile = new ArrayList<>();
         while (rst.next()) {
@@ -77,12 +77,12 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean deletePatient(String patientName) throws SQLException {
+    public boolean delete(String patientName) throws SQLException {
         return SQLUtil.execute("DELETE FROM patient WHERE Name = ?", patientName);
     }
 
     @Override
-    public boolean updatePatient(PatientsTM patientsTM) throws SQLException {
+    public boolean update(PatientsTM patientsTM) throws SQLException {
         return SQLUtil.execute(
                 "UPDATE patient SET Address = ?, ContactNumber = ?, Email = ?, DOB = ?, Gender = ?, RegistrationDate = ? WHERE Name = ?",
                 patientsTM.getPatientsAddress(),
