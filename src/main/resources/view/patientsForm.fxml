@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.healthcare.controller.PatientsFormController">
+   <children>
+      <JFXButton layoutX="971.0" layoutY="119.0" onAction="#addPatientClick" prefHeight="55.0" prefWidth="240.0" style="-fx-background-radius: 20; -fx-background-color: #18181b; -fx-border-color: #f1f1f3;" text="  Add Patient" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/icon/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
+      <AnchorPane layoutX="28.38260963713968" layoutY="185.0" prefHeight="485.0" prefWidth="1204.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="185.0">
+         <children>
+            <TableView fx:id="tblPatient" layoutX="9.0" layoutY="9.0" onMouseClicked="#onClicked" prefHeight="464.0" prefWidth="1187.0" stylesheets="@../asset/style/table.css" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0">
+               <columns>
+                  <TableColumn fx:id="namCol" prefWidth="200.3478683233261" text="Name" />
+                  <TableColumn fx:id="emailCol" prefWidth="200.34783935546875" text="Email" />
+                  <TableColumn fx:id="coNumCol" minWidth="0.0" prefWidth="170.29559326171875" text="Contact Number" />
+                  <TableColumn fx:id="addressCol" prefWidth="200.23480224609375" text="Address" />
+                  <TableColumn fx:id="dobCol" prefWidth="150.7130126953125" text="Date of Birth" />
+                  <TableColumn fx:id="genderCol" prefWidth="100.2349853515625" text="Gender" />
+                  <TableColumn fx:id="registerCol" prefWidth="148.08696995178116" text="Registration Date" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="1164.0" layoutY="685.0" onAction="#refreshTable" prefHeight="41.0" prefWidth="52.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../asset/icon/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="993.0" layoutY="691.0" onAction="#btnUpdateOnAction" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #e67e22; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="lblSearch" layoutX="81.0" layoutY="99.0" onKeyReleased="#searchPatients" prefHeight="34.0" prefWidth="260.0" promptText="  Search Here" style="-fx-background-radius: 30;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="44.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/icon/search.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnReport" layoutX="628.0" layoutY="692.0" onAction="#reportOnAction" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #7f8c8d; -fx-background-radius: 10;" text="Report" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Button fx:id="btnDelete" layoutX="811.0" layoutY="692.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #c0392b; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Label alignment="CENTER" layoutX="465.0" layoutY="28.0" prefHeight="79.0" prefWidth="333.0" text="Patients" textFill="#009432">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

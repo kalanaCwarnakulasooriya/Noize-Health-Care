@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="kalana warnakulasooriya &lt;kalana.warnakulasooriya@gmail.com&gt;" />
+        <option value="kalanaCwarnakulasooriya" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kalanaCwarnakulasooriya&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/kalanaCwarnakulasooriya/Noize-Medical-Center.git&quot;,
+    &quot;accountId&quot;: &quot;89b58500-47cb-4121-8c95-29b53f4b3faa&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2mvE6NkxOaGxtMGH5xrhKVCEre8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Launcher.executor": "Run",
+    "Application.lk.ijse.healthcare.Launcher.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.com.noize.medicalcenter.model in medicalCenter.executor": "Coverage",
+    "Maven.medicalCenter [compile].executor": "Run",
+    "Maven.medicalCenter [install].executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Vcs Important Messages": "VCS important messages",
+    "Notification.DoNotAsk-Vcs Important Messages": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Intellij Prroject/Health-Care",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "com.codeium.AppSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Intellij Prroject\Noize-Medical-Center-master\Noize-Medical-Center-master\src\main\resources\reports" />
+      <recent name="D:\Intellij Prroject\Noize-Medical-Center-master\Noize-Medical-Center-master\src\main\resources\asset\icon" />
+      <recent name="D:\Intellij Prroject\Noize-Medical-Center-master\Noize-Medical-Center-master\src\main\resources\asset\style" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Intellij Prroject\Noize-Medical-Center-master\Noize-Medical-Center-master\src\main\resources\asset\sounds" />
+      <recent name="D:\Intellij Prroject\Noize-Medical-Center-master\Noize-Medical-Center-master\src\main\resources\view" />
+      <recent name="D:\Intellij Prroject\medicalCenter\src\main\resources\asset\sounds" />
+      <recent name="D:\Intellij Prroject\medicalCenter\src\main\resources\asset\sounds\alertSound" />
+      <recent name="D:\Intellij Prroject\medicalCenter\src\main\resources\asset\icon" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn compile" />
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.noize.medicalcenter.Launcher" />
+      <module name="medicalCenter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.noize.medicalcenter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Launcher" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="" />
+      <created>1727948475606</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727948475606</updated>
+      <workItem from="1727948476778" duration="1724000" />
+      <workItem from="1727961238865" duration="5270000" />
+      <workItem from="1727971471806" duration="83000" />
+      <workItem from="1727971900089" duration="968000" />
+      <workItem from="1727976802396" duration="1290000" />
+      <workItem from="1728022394703" duration="1562000" />
+      <workItem from="1728030776839" duration="7000" />
+      <workItem from="1728047256679" duration="11996000" />
+      <workItem from="1728293245403" duration="68000" />
+      <workItem from="1728311471628" duration="9685000" />
+      <workItem from="1728398705876" duration="2761000" />
+      <workItem from="1728407979173" duration="1454000" />
+      <workItem from="1728443859040" duration="118000" />
+      <workItem from="1728530263067" duration="1016000" />
+      <workItem from="1728554993199" duration="226000" />
+      <workItem from="1729235085042" duration="745000" />
+      <workItem from="1729580273700" duration="8273000" />
+      <workItem from="1729601694317" duration="6541000" />
+      <workItem from="1729622361709" duration="975000" />
+      <workItem from="1729623699130" duration="381000" />
+      <workItem from="1729653592198" duration="8184000" />
+      <workItem from="1729691034393" duration="6620000" />
+      <workItem from="1729736962506" duration="14458000" />
+      <workItem from="1729775826043" duration="12682000" />
+      <workItem from="1729794485118" duration="2866000" />
+      <workItem from="1729829146899" duration="3560000" />
+      <workItem from="1729842310746" duration="57000" />
+      <workItem from="1729842418102" duration="6846000" />
+      <workItem from="1729950690402" duration="7577000" />
+      <workItem from="1730005151445" duration="9803000" />
+      <workItem from="1730033598923" duration="17983000" />
+      <workItem from="1730093337828" duration="14326000" />
+      <workItem from="1730120025065" duration="5593000" />
+      <workItem from="1730127676795" duration="11133000" />
+      <workItem from="1730168378713" duration="11679000" />
+      <workItem from="1730183650069" duration="326000" />
+      <workItem from="1730183987286" duration="336000" />
+      <workItem from="1730184338262" duration="3601000" />
+      <workItem from="1730188681412" duration="1171000" />
+      <workItem from="1730212303279" duration="133000" />
+      <workItem from="1730212575798" duration="3210000" />
+      <workItem from="1730224004819" duration="1016000" />
+      <workItem from="1730272208823" duration="37000" />
+      <workItem from="1730815849467" duration="181000" />
+      <workItem from="1730907120319" duration="65000" />
+      <workItem from="1730907196785" duration="4212000" />
+      <workItem from="1730916354112" duration="866000" />
+      <workItem from="1730952070338" duration="14300000" />
+      <workItem from="1730987217466" duration="14789000" />
+      <workItem from="1731007732115" duration="1093000" />
+      <workItem from="1731045540577" duration="4330000" />
+      <workItem from="1731051461833" duration="928000" />
+      <workItem from="1731072640709" duration="8308000" />
+      <workItem from="1731093663743" duration="1000" />
+      <workItem from="1731156655003" duration="10723000" />
+      <workItem from="1731212189204" duration="26584000" />
+      <workItem from="1731269644463" duration="20000" />
+      <workItem from="1731269748124" duration="210000" />
+      <workItem from="1731293108787" duration="17875000" />
+      <workItem from="1731328585467" duration="20031000" />
+      <workItem from="1731353738032" duration="6000" />
+      <workItem from="1731383417864" duration="793000" />
+      <workItem from="1731426930703" duration="7079000" />
+      <workItem from="1731442624059" duration="15000" />
+      <workItem from="1731490263598" duration="5956000" />
+      <workItem from="1731522798308" duration="10894000" />
+      <workItem from="1731576039394" duration="8072000" />
+      <workItem from="1731598508515" duration="1245000" />
+      <workItem from="1731679813994" duration="19941000" />
+      <workItem from="1731735425598" duration="20472000" />
+      <workItem from="1731806478885" duration="659000" />
+      <workItem from="1731848068978" duration="19211000" />
+      <workItem from="1731900314568" duration="9214000" />
+      <workItem from="1731928518488" duration="103000" />
+      <workItem from="1731936882004" duration="11401000" />
+      <workItem from="1731997773066" duration="7112000" />
+      <workItem from="1732029681754" duration="12265000" />
+      <workItem from="1732078393576" duration="15097000" />
+      <workItem from="1732113549495" duration="15370000" />
+      <workItem from="1732133225428" duration="1000" />
+      <workItem from="1732133236812" duration="93000" />
+      <workItem from="1732160038064" duration="39658000" />
+      <workItem from="1732209413538" duration="7142000" />
+      <workItem from="1732219155438" duration="28000" />
+      <workItem from="1732219265137" duration="32000" />
+      <workItem from="1732219327412" duration="1000" />
+      <workItem from="1732219363985" duration="6000" />
+      <workItem from="1732248165689" duration="13085000" />
+      <workItem from="1732280213896" duration="2002000" />
+      <workItem from="1732282241201" duration="101000" />
+      <workItem from="1732282353735" duration="1253000" />
+      <workItem from="1732283649531" duration="415000" />
+      <workItem from="1732294083202" duration="253000" />
+      <workItem from="1732300010969" duration="1259000" />
+      <workItem from="1732329897090" duration="3482000" />
+      <workItem from="1732337049141" duration="4779000" />
+      <workItem from="1732544993658" duration="4777000" />
+      <workItem from="1732589378447" duration="47000" />
+      <workItem from="1732589589673" duration="1593000" />
+      <workItem from="1737907750704" duration="5675000" />
+      <workItem from="1737913696337" duration="356000" />
+      <workItem from="1737914091382" duration="785000" />
+    </task>
+    <task id="LOCAL-00001" summary="login and signup page view">
+      <option name="closed" value="true" />
+      <created>1729789837807</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729789837807</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Create a login and signup page view in the project.">
+      <option name="closed" value="true" />
+      <created>1729790573193</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729790573193</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Forget password view page">
+      <option name="closed" value="true" />
+      <created>1729797703213</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729797703213</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Crud Util">
+      <option name="closed" value="true" />
+      <created>1729844830017</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729844830017</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Create project file and connect DBConnection">
+      <option name="closed" value="true" />
+      <created>1729953213139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729953213139</updated>
+    </task>
+    <task id="LOCAL-00006" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1730182956009</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730182956009</updated>
+    </task>
+    <task id="LOCAL-00007" summary="forget password eka hduwa">
+      <option name="closed" value="true" />
+      <created>1731008716517</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731008716519</updated>
+    </task>
+    <task id="LOCAL-00008" summary="patient page ek hduwa">
+      <option name="closed" value="true" />
+      <created>1731269853268</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731269853268</updated>
+    </task>
+    <task id="LOCAL-00009" summary="transaction hry">
+      <option name="closed" value="true" />
+      <created>1732034207669</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732034207669</updated>
+    </task>
+    <task id="LOCAL-00010" summary="transaction hry">
+      <option name="closed" value="true" />
+      <created>1732034529219</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732034529219</updated>
+    </task>
+    <task id="LOCAL-00011" summary="appointmentUI ekai PrescriptionUI ekai">
+      <option name="closed" value="true" />
+      <created>1732044593109</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1732044593109</updated>
+    </task>
+    <task id="LOCAL-00012" summary="validation part eka kara">
+      <option name="closed" value="true" />
+      <created>1732047085120</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1732047085120</updated>
+    </task>
+    <task id="LOCAL-00013" summary="payment">
+      <option name="closed" value="true" />
+      <created>1732100597870</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1732100597870</updated>
+    </task>
+    <task id="LOCAL-00014" summary="order report file">
+      <option name="closed" value="true" />
+      <created>1732100768579</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1732100768579</updated>
+    </task>
+    <task id="LOCAL-00015" summary="order report eka iwarai">
+      <option name="closed" value="true" />
+      <created>1732127940677</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1732127940677</updated>
+    </task>
+    <task id="LOCAL-00016" summary="podi podi wada tikak kara mataka ne dn">
+      <option name="closed" value="true" />
+      <created>1732133282169</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1732133282169</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Appointment ekath hry">
+      <option name="closed" value="true" />
+      <created>1732175618815</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1732175618815</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Podi changes tikak kara">
+      <option name="closed" value="true" />
+      <created>1732176499687</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1732176499687</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Prescription ekath hry">
+      <option name="closed" value="true" />
+      <created>1732193217314</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1732193217314</updated>
+    </task>
+    <task id="LOCAL-00020" summary="changes tikak kara">
+      <option name="closed" value="true" />
+      <created>1732194440903</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1732194440903</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Qr code ek mail ekt yanna hduwa">
+      <option name="closed" value="true" />
+      <created>1732195670982</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1732195670983</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Qr code eken log wenna puluwn dn">
+      <option name="closed" value="true" />
+      <created>1732203087468</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1732203087468</updated>
+    </task>
+    <task id="LOCAL-00023" summary="dash board eke podi update wgyk kara">
+      <option name="closed" value="true" />
+      <created>1732206240414</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1732206240414</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Appointment ekt report ekk hduwa">
+      <option name="closed" value="true" />
+      <created>1732208896747</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1732208896748</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Item ekt report ekk hduwa">
+      <option name="closed" value="true" />
+      <created>1732215252846</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1732215252846</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Item ekt report ekk hduwa">
+      <option name="closed" value="true" />
+      <created>1732215691228</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1732215691230</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Item ekt report ekk hduwa">
+      <option name="closed" value="true" />
+      <created>1732215720763</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1732215720763</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Doctor report ekath hry">
+      <option name="closed" value="true" />
+      <created>1732217461595</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1732217461595</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Prescription report ekath hry">
+      <option name="closed" value="true" />
+      <created>1732217852341</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1732217852342</updated>
+    </task>
+    <task id="LOCAL-00030" summary="changes tikak kara">
+      <option name="closed" value="true" />
+      <created>1732219029137</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1732219029138</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Report tika poddk change kara">
+      <option name="closed" value="true" />
+      <created>1732260256072</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1732260256072</updated>
+    </task>
+    <task id="LOCAL-00032" summary=":fire: final commit">
+      <option name="closed" value="true" />
+      <created>1732264933061</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1732264933061</updated>
+    </task>
+    <task id="LOCAL-00033" summary=":fire: oops">
+      <option name="closed" value="true" />
+      <created>1732282301445</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1732282301445</updated>
+    </task>
+    <task id="LOCAL-00034" summary=":fire: 2nd oops">
+      <option name="closed" value="true" />
+      <created>1732283571346</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1732283571346</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Appointment update">
+      <option name="closed" value="true" />
+      <created>1732284043025</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1732284043025</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Logout update kara">
+      <option name="closed" value="true" />
+      <created>1732338225299</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1732338225299</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="transaction hry" />
+    <MESSAGE value="appointmentUI ekai PrescriptionUI ekai" />
+    <MESSAGE value="validation part eka kara" />
+    <MESSAGE value="payment" />
+    <MESSAGE value="order report file" />
+    <MESSAGE value="order report eka iwarai" />
+    <MESSAGE value="podi podi wada tikak kara mataka ne dn" />
+    <MESSAGE value="Appointment ekath hry" />
+    <MESSAGE value="Podi changes tikak kara" />
+    <MESSAGE value="Prescription ekath hry" />
+    <MESSAGE value="Qr code ek mail ekt yanna hduwa" />
+    <MESSAGE value="Qr code eken log wenna puluwn dn" />
+    <MESSAGE value="dash board eke podi update wgyk kara" />
+    <MESSAGE value="Appointment ekt report ekk hduwa" />
+    <MESSAGE value="Patient ekt report ekk hduwa" />
+    <MESSAGE value="Item ekt report ekk hduwa" />
+    <MESSAGE value="Doctor report ekath hry" />
+    <MESSAGE value="Prescription report ekath hry" />
+    <MESSAGE value="changes tikak kara" />
+    <MESSAGE value="Report tika poddk change kara" />
+    <MESSAGE value=":fire: final commit" />
+    <MESSAGE value=":fire: oops" />
+    <MESSAGE value=":fire: 2nd oops" />
+    <MESSAGE value="Appointment update" />
+    <MESSAGE value="Logout update kara" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logout update kara" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/medicalCenter$com_noize_medicalcenter_model_in_medicalCenter.ic" NAME="com.noize.medicalcenter.model in medicalCenter Coverage Results" MODIFIED="1730172707169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.noize.medicalcenter.model.*</FILTER>
+    </SUITE>
+  </component>
+</project>
