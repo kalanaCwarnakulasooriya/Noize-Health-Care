@@ -20,7 +20,7 @@ public class AddPatientsBOImpl implements AddPatientsBO {
 
     @Override
     public ArrayList<String> getAllGenders() throws SQLException {
-        return addPatientsDAO.getAllGenders();
+        return addPatientsDAO.getAllS();
     }
 
     @Override

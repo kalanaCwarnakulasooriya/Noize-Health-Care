@@ -56,7 +56,7 @@ public class PatientsBOImpl implements PatientsBO {
 
     @Override
     public ArrayList<String> getAllPatientMobile() throws SQLException {
-        return patientsDAO.getAllMobile();
+        return patientsDAO.getAllS();
     }
 
     @Override
