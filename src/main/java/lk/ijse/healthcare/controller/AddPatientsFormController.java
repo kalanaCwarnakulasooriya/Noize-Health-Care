@@ -2,6 +2,8 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.custom.AddPatientsBO;
+import lk.ijse.healthcare.bo.custom.impl.AddPatientsBOImpl;
 import lk.ijse.healthcare.dao.custom.AddPatientsDAO;
 import lk.ijse.healthcare.dto.AddPatientFormDto;
 import lk.ijse.healthcare.dao.custom.impl.AddPatientsDAOImpl;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddPatientsFormController implements Initializable {
-    private final AddPatientsDAO ADDPATIENTMODEL = new AddPatientsDAOImpl();
+    private final AddPatientsBO ADDPATIENTSBO = new AddPatientsBOImpl();
 
     private Boolean isEmailValid = false;
     private Boolean isNameValid = false;
@@ -69,11 +71,11 @@ public class AddPatientsFormController implements Initializable {
         isRegDateValid = regDatePicker.getValue() != null;
 
         if (isEmailValid && isNameValid && isAddressValid && isDobValid && isCoNumValid && isRegDateValid) {
-            int genderId = ADDPATIENTMODEL.getGenderIdByDescription(comboGender.getValue());
+            int genderId = ADDPATIENTSBO.getGenderIdByDescription(comboGender.getValue());
             LocalDate dob = dobDatePicker.getValue();
             LocalDate regDate = regDatePicker.getValue();
 
-            Boolean isAddedPatient = ADDPATIENTMODEL.savePatient(
+            Boolean isAddedPatient = ADDPATIENTSBO.savePatient(
                     new AddPatientFormDto(
                             0,
                             txtName.getText(),
@@ -162,7 +164,7 @@ public class AddPatientsFormController implements Initializable {
     private void loadGender() throws SQLException {
         comboGender.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         comboGender.getItems().clear();
-        ArrayList<String> genders = ADDPATIENTMODEL.getAllGenders();
+        ArrayList<String> genders = ADDPATIENTSBO.getAllGenders();
         ObservableList<String> obl = FXCollections.observableArrayList(genders);
         comboGender.setItems(obl);
     }
