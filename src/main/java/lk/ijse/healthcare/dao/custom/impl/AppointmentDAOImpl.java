@@ -1,5 +1,6 @@
-package lk.ijse.healthcare.model;
+package lk.ijse.healthcare.dao.custom.impl;
 
+import lk.ijse.healthcare.dao.custom.AppointmentDAO;
 import lk.ijse.healthcare.dto.AppointmentFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dao.SQLUtil;
@@ -8,13 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AppointmentFormModel {
-    public ArrayList<AppointmentTM> getAllAppointments() throws SQLException {
-        String sql = "SELECT * FROM appointment";
+public class AppointmentDAOImpl implements AppointmentDAO {
+    @Override
+    public ArrayList<AppointmentTM> getAll() throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT * FROM appointment");
         ArrayList<AppointmentTM> appointments = new ArrayList<>();
-        try {
-            ResultSet rst = SQLUtil.execute(sql);
-            while (rst.next()) {
+        while (rst.next()) {
                 AppointmentTM appointment = new AppointmentTM(
                         rst.getString("Age"),
                         rst.getString("Status"),
@@ -24,16 +24,13 @@ public class AppointmentFormModel {
                         rst.getString("UserId")
                 );
                 appointments.add(appointment);
-            }
-            return appointments;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
+        return appointments;
     }
 
-    public Boolean isUpdateAppointment(AppointmentFormDto appointmentFormDto) throws SQLException {
-        return SQLUtil.execute(
-                "UPDATE appointment SET Status = ?, Description = ?, Date = ? WHERE Age = ?",
+    @Override
+    public boolean update(AppointmentTM appointmentFormDto) throws SQLException {
+        return SQLUtil.execute("UPDATE appointment SET Status = ?, Description = ?, Date = ? WHERE Age = ?",
                 appointmentFormDto.getStatus(),
                 appointmentFormDto.getDescription(),
                 appointmentFormDto.getDate(),
@@ -41,34 +38,31 @@ public class AppointmentFormModel {
                 );
     }
 
-    public Boolean isAddAppointment(String age, String status, String description, String date, String doctorId) throws SQLException {
-        String sql = "INSERT INTO appointment(Age,Status,Description,Date,DoctorId,UserId) VALUES (?,?,?,?,?,?)";
-        try {
-            return SQLUtil.execute(
-                    sql,
-                    age,
-                    status,
-                    description,
-                    date,
-                    doctorId,
+    @Override
+    public int getIdByDescription(String description) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public boolean save(AppointmentTM appointment) throws SQLException {
+            return SQLUtil.execute("INSERT INTO appointment(Age,Status,Description,Date,DoctorId,UserId) VALUES (?,?,?,?,?,?)",
+                    appointment.getAge(),
+                    appointment.getStatus(),
+                    appointment.getDescription(),
+                    appointment.getDate(),
+                    appointment.getDoctorId(),
                     1
             );
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
-    public boolean isDeleteAppointment(String age) throws SQLException {
-        return SQLUtil.execute(
-                "DELETE FROM appointment WHERE Age = ?",
-                age
-        );
+    @Override
+    public boolean delete(String age) throws SQLException {
+        return SQLUtil.execute("DELETE FROM appointment WHERE Age = ?", age);
     }
 
-    public ArrayList<AppointmentTM> searchAppointments(String age) throws SQLException {
-        String sql = "select * from appointment where Age like ?;";
-        ResultSet rst = SQLUtil.execute(sql, age + "%");
+    @Override
+    public ArrayList<AppointmentTM> search(String age) throws SQLException {
+        ResultSet rst = SQLUtil.execute("select * from appointment where Age like ?;", age + "%");
         ArrayList<AppointmentTM> appointments = new ArrayList<>();
         while (rst.next()) {
             AppointmentTM newAppointments = new AppointmentTM(
@@ -84,11 +78,9 @@ public class AppointmentFormModel {
         return appointments;
     }
 
+    @Override
     public AppointmentTM findById(String selectName) throws SQLException {
-        ResultSet rst = SQLUtil.execute(
-                "SELECT * FROM appointment WHERE AppointmentId = ?",
-                selectName
-        );
+        ResultSet rst = SQLUtil.execute("SELECT * FROM appointment WHERE AppointmentId = ?", selectName);
 
         if (rst.next()) {
             return new AppointmentTM(
@@ -103,7 +95,8 @@ public class AppointmentFormModel {
         return null;
     }
 
-    public ArrayList<String> getAppointments() throws SQLException {
+    @Override
+    public ArrayList<String> getAllS() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT AppointmentId FROM appointment");
         ArrayList<String> appointments = new ArrayList<>();
         while (rst.next()) {

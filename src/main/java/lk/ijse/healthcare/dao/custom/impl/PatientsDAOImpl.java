@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.dao.custom.impl;
 
 import lk.ijse.healthcare.dao.custom.PatientsDAO;
+import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
 import lk.ijse.healthcare.dao.SQLUtil;
 
@@ -67,7 +68,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public ArrayList<String> getAllMobile() throws SQLException {
+    public ArrayList<String> getAllS() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT PatientId FROM patient");
         ArrayList<String> patientMobile = new ArrayList<>();
         while (rst.next()) {
@@ -93,5 +94,15 @@ public class PatientsDAOImpl implements PatientsDAO {
                 patientsTM.getPatientsRegDate(),
                 patientsTM.getPatientsName()
                 );
+    }
+
+    @Override
+    public int getIdByDescription(String description) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public boolean save(PatientsTM patientDTO) throws SQLException {
+        return false;
     }
 }

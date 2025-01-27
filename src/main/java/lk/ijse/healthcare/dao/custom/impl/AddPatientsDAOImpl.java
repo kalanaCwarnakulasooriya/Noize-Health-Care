@@ -3,6 +3,7 @@ package lk.ijse.healthcare.dao.custom.impl;
 import lk.ijse.healthcare.dao.custom.AddPatientsDAO;
 import lk.ijse.healthcare.dto.AddPatientFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
+import lk.ijse.healthcare.dto.tm.AppointmentTM;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,11 +22,6 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
 
     @Override
     public AddPatientFormDto findById(String selectedContact) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public ArrayList<String> getAllMobile() throws SQLException {
         return null;
     }
 
@@ -49,12 +45,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public int getGenderIdByDescription(String description) throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public ArrayList<String> getAllGenders() throws SQLException {
+    public ArrayList<String> getAllS() throws SQLException {
         ResultSet rstGender = SQLUtil.execute("SELECT Description FROM gender");
 
         ArrayList<String> gender = new ArrayList<>();
@@ -62,11 +53,6 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
             gender.add(rstGender.getString("Description"));
         }
         return gender;
-    }
-
-    @Override
-    public boolean savePatient(AddPatientFormDto patientDTO) throws SQLException {
-        return false;
     }
 
     @Override

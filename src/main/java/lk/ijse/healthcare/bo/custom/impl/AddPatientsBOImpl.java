@@ -13,16 +13,17 @@ import java.util.ArrayList;
 public class AddPatientsBOImpl implements AddPatientsBO {
     AddPatientsDAO addPatientsDAO = new AddPatientsDAOImpl();
 
+    @Override
     public int getGenderIdByDescription(String description) throws SQLException {
         return addPatientsDAO.getIdByDescription(description);
     }
 
-
+    @Override
     public ArrayList<String> getAllGenders() throws SQLException {
         return addPatientsDAO.getAllGenders();
     }
 
-
+    @Override
     public boolean savePatient(AddPatientFormDto patientDTO) throws SQLException {
         return addPatientsDAO.save(patientDTO);
     }

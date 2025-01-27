@@ -8,7 +8,7 @@ import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
 import lk.ijse.healthcare.dto.tm.PrescriptionTM;
-import lk.ijse.healthcare.model.AppointmentFormModel;
+import lk.ijse.healthcare.dao.custom.impl.AppointmentDAOImpl;
 import lk.ijse.healthcare.model.DoctorFormModel;
 import lk.ijse.healthcare.dao.custom.impl.PatientsDAOImpl;
 import lk.ijse.healthcare.model.PrescriptionFormModel;
@@ -35,7 +35,7 @@ import java.util.*;
 public class PrescriptionFormController implements Initializable {
     PrescriptionFormModel prescriptionFormModel = new PrescriptionFormModel();
     PatientsDAOImpl patientsDAOImpl = new PatientsDAOImpl();
-    AppointmentFormModel appointmentFormModel = new AppointmentFormModel();
+    AppointmentDAOImpl appointmentDAOImpl = new AppointmentDAOImpl();
     DoctorFormModel doctorFormModel = new DoctorFormModel();
 
     boolean isDosageValid = false;
@@ -326,7 +326,7 @@ public class PrescriptionFormController implements Initializable {
     }
 
     private void loadAppointmentsId() throws SQLException {
-        ArrayList<String> appointmentsId  = appointmentFormModel.getAppointments();
+        ArrayList<String> appointmentsId  = appointmentDAOImpl.getAppointments();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(appointmentsId);
         comboAppoID.setItems(observableList);
@@ -368,7 +368,7 @@ public class PrescriptionFormController implements Initializable {
     public void comboAppointmentOnAction(ActionEvent event) throws SQLException {
         comboAppoID.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedAppointment = comboAppoID.getSelectionModel().getSelectedItem();
-        AppointmentTM appointmentTM = appointmentFormModel.findById(selectedAppointment);
+        AppointmentTM appointmentTM = appointmentDAOImpl.findById(selectedAppointment);
 
         if (appointmentTM != null) {
             lblAge.setText(appointmentTM.getAge());
