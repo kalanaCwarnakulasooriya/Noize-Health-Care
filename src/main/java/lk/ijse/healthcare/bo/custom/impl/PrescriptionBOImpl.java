@@ -18,6 +18,7 @@ public class PrescriptionBOImpl implements PrescriptionBO {
         ArrayList<PrescriptionTM> prescriptionTMS = new ArrayList<>();
         for (PrescriptionTM prescription : prescriptions) {
             PrescriptionTM prescriptionTM = new PrescriptionTM(
+                    prescription.getId(),
                     prescription.getDate(),
                     prescription.getMediDetails(),
                     prescription.getDosage(),
@@ -46,13 +47,27 @@ public class PrescriptionBOImpl implements PrescriptionBO {
 
     @Override
     public boolean savePrescription(PrescriptionTM dto) throws SQLException {
-        PrescriptionTM prescription = new PrescriptionTM(dto.getDate(), dto.getMediDetails(), dto.getDosage(), dto.getUserId(), dto.getDoctorId());
+        PrescriptionTM prescription = new PrescriptionTM(
+                dto.getId(),
+                dto.getDate(),
+                dto.getMediDetails(),
+                dto.getDosage(),
+                dto.getUserId(),
+                dto.getDoctorId()
+        );
         return prescriptionDAO.save(prescription);
     }
 
     @Override
     public boolean updatePrescription(PrescriptionTM prescriptionTM) throws SQLException {
-        PrescriptionTM prescription = new PrescriptionTM(prescriptionTM.getDate(), prescriptionTM.getMediDetails(), prescriptionTM.getDosage(), prescriptionTM.getUserId(), prescriptionTM.getDoctorId());
+        PrescriptionTM prescription = new PrescriptionTM(
+                prescriptionTM.getId(),
+                prescriptionTM.getDate(),
+                prescriptionTM.getMediDetails(),
+                prescriptionTM.getDosage(),
+                prescriptionTM.getUserId(),
+                prescriptionTM.getDoctorId()
+        );
         return prescriptionDAO.update(prescription);
     }
 

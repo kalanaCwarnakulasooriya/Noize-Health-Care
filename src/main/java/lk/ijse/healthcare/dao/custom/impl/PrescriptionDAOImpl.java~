@@ -16,11 +16,10 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
         ArrayList<PrescriptionTM> prescription = new ArrayList<>();
         while (rst.next()) {
             PrescriptionTM prescriptionTM = new PrescriptionTM(
-                    rst.getInt("PrescriptionId"),
-                    rst.getString("PrescriptionDate"),
                     rst.getString("MedicineDetails"),
                     rst.getString("Dosage"),
-                    rst.getInt("UserId"),
+                    rst.getString("PrescriptionDate"),
+                    rst.getString("UserId"),
                     rst.getString("DoctorId")
             );
             prescription.add(prescriptionTM);
