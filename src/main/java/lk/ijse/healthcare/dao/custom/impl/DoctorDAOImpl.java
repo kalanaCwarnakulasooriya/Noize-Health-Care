@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DoctorDAOImpl implements DoctorDAO {
+    @Override
     public ArrayList<String> getAllS() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT DoctorId FROM doctor");
         ArrayList<String> docId = new ArrayList<>();
@@ -19,56 +20,61 @@ public class DoctorDAOImpl implements DoctorDAO {
         return docId;
     }
 
+    @Override
     public ArrayList<DoctorTM> getAll() throws SQLException {
         ArrayList<DoctorTM> doctorTMS = new ArrayList<>();
         ResultSet rst = SQLUtil.execute("select * from doctor");
         while (rst.next()){
             DoctorTM newDoctors = new DoctorTM(
+                    rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
                     rst.getString("ContactNumber"),
-                    rst.getString("Address")
+                    rst.getString("Address"),
+                    rst.getInt("UserId")
             );
             doctorTMS.add(newDoctors);
         }
         return doctorTMS;
     }
 
+    @Override
     public ArrayList<DoctorTM> search(String name) throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from doctor where Name like ?", name+"%");
         ArrayList<DoctorTM> doctorTMS = new ArrayList<>();
         while (rst.next()) {
             DoctorTM newDoctors = new DoctorTM(
+                    rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
                     rst.getString("ContactNumber"),
-                    rst.getString("Address")
+                    rst.getString("Address"),
+                    rst.getInt("UserId")
             );
             doctorTMS.add(newDoctors);
         }
         return doctorTMS;
     }
 
+    @Override
     public DoctorTM findById(String selectedName) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM doctor WHERE DoctorId = ?", selectedName);
         if (rst.next()) {
             return new DoctorTM(
+                    rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
                     rst.getString("ContactNumber"),
-                    rst.getString("Address")
+                    rst.getString("Address"),
+                    rst.getInt("UserId")
             );
         }
         return null;
     }
 
+    @Override
     public boolean delete(String name) throws SQLException {
         return SQLUtil.execute("DELETE FROM doctor WHERE Name = ?", name);
-    }
-
-    @Override
-    public boolean update(DoctorTM dto) throws SQLException {
-        return false;
     }
 
     @Override
@@ -77,11 +83,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean save(DoctorTM dto) throws SQLException {
-        return false;
-    }
-
-    public boolean update(DoctorFormDto doctorFormDto) throws SQLException {
+    public boolean update(DoctorTM doctorFormDto) throws SQLException {
         return SQLUtil.execute("UPDATE doctor SET Name = ?, Email = ?, ContactNumber = ?, Address = ? WHERE DoctorId = ?",
                 doctorFormDto.getName(),
                 doctorFormDto.getEmail(),
@@ -90,7 +92,8 @@ public class DoctorDAOImpl implements DoctorDAO {
                 doctorFormDto.getId());
     }
 
-    public boolean save(DoctorFormDto doctorFormDto) throws SQLException {
+    @Override
+    public boolean save(DoctorTM doctorFormDto) throws SQLException {
         return SQLUtil.execute("INSERT INTO doctor VALUES (?,?,?,?,?,?)",
                 doctorFormDto.getId(),
                 doctorFormDto.getName(),

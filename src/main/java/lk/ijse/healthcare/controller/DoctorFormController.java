@@ -2,6 +2,8 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.custom.DoctorBO;
+import lk.ijse.healthcare.bo.custom.impl.DoctorBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.DoctorFormDto;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
@@ -34,7 +36,7 @@ public class DoctorFormController implements Initializable {
     private boolean isEmailValid = false;
     private boolean isAddressValid = false;
 
-    DoctorDAOImpl doctorModel = new DoctorDAOImpl();
+    DoctorBO doctorBO = new DoctorBOImpl();
 
     @FXML
     private AnchorPane addPane;
@@ -117,7 +119,7 @@ public class DoctorFormController implements Initializable {
         if (buttonType.get() == ButtonType.YES) {
             clearFields();
             refreshTable();
-            boolean isDeleted = doctorModel.deleteDoctor(DocName);
+            boolean isDeleted = doctorBO.deleteDoctor(DocName);
             if (isDeleted) {
                 new AlertNotification(
                         "Success Message",
@@ -164,8 +166,8 @@ public class DoctorFormController implements Initializable {
     @FXML
     void btnSaveItemOnAction(ActionEvent event) throws SQLException {
         if (isNameValid && isCoNumValid && isEmailValid && isAddressValid) {
-            Boolean isAddedDoctor = doctorModel.isSaveDoctor(
-                    new DoctorFormDto(
+            Boolean isAddedDoctor = doctorBO.saveDoctor(
+                    new DoctorTM(
                             0,
                             txtDocName.getText(),
                             txtEmail.getText(),
@@ -209,7 +211,7 @@ public class DoctorFormController implements Initializable {
         String mobile = txtMobile.getText();
         String address = txtAddress.getText();
 
-        DoctorFormDto doctorFormDto = new DoctorFormDto(
+        DoctorTM doctorTM = new DoctorTM(
                 0,
                 name,
                 email,
@@ -217,7 +219,7 @@ public class DoctorFormController implements Initializable {
                 address,
                 1
         );
-        boolean isUpdate = doctorModel.isUpdateDoctor(doctorFormDto);
+        boolean isUpdate = doctorBO.updateDoctor(doctorTM);
 
         if (isUpdate){
             refreshTable();
@@ -273,7 +275,7 @@ public class DoctorFormController implements Initializable {
 
     @FXML
     void searchPatients(KeyEvent event) throws SQLException {
-        ArrayList<DoctorTM> doctors = doctorModel.searchDoctors(lblSearch.getText());
+        ArrayList<DoctorTM> doctors = doctorBO.searchDoctor(lblSearch.getText());
         ObservableList<DoctorTM> doctorList = FXCollections.observableArrayList();
         for (DoctorTM doctor : doctors) {
             doctorList.add(doctor);
@@ -304,13 +306,13 @@ public class DoctorFormController implements Initializable {
 
     private void refreshTable() throws SQLException {
         tblDoctor.getItems().clear();
-        ArrayList<DoctorTM> allDoctors = doctorModel.getAllDoctors();
+        ArrayList<DoctorTM> allDoctors = doctorBO.getAllDoctor();
         ObservableList<DoctorTM> doctorList = FXCollections.observableArrayList(allDoctors);
         tblDoctor.setItems(doctorList);
     }
 
     public void getDoctor() throws SQLException {
-        ArrayList<DoctorTM> doctorDtos = doctorModel.getAllDoctors();
+        ArrayList<DoctorTM> doctorDtos = doctorBO.getAllDoctor();
         tblDoctor.getItems().clear();
         tblDoctor.getItems().addAll(doctorDtos);
     }

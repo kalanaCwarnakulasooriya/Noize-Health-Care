@@ -3,7 +3,9 @@ package lk.ijse.healthcare.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import lk.ijse.healthcare.bo.custom.AppointmentBo;
+import lk.ijse.healthcare.bo.custom.DoctorBO;
 import lk.ijse.healthcare.bo.custom.impl.AppointmentBOImpl;
+import lk.ijse.healthcare.bo.custom.impl.DoctorBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
@@ -30,7 +32,7 @@ import java.util.*;
 
 public class AppointmentFormController implements Initializable {
     AppointmentBo appointment = new AppointmentBOImpl();
-    DoctorDAOImpl doctorModel = new DoctorDAOImpl();
+    DoctorBO doctorBO = new DoctorBOImpl();
 
     boolean isNameValid = false;
     boolean isAgeValid = false;
@@ -347,7 +349,7 @@ public class AppointmentFormController implements Initializable {
     }
 
     private void loadDoctorsId() throws SQLException {
-        ArrayList<String> DoctorsId  = doctorModel.getAllDocId();
+        ArrayList<String> DoctorsId  = doctorBO.getAllSDoctor();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(DoctorsId);
         comboDoctor.setItems(observableList);
@@ -356,7 +358,7 @@ public class AppointmentFormController implements Initializable {
     public void comboDoctorOnAction(ActionEvent event) throws SQLException {
         comboDoctor.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedDoctor = (String) comboDoctor.getSelectionModel().getSelectedItem();
-        DoctorTM doctorTM = doctorModel.findById(selectedDoctor);
+        DoctorTM doctorTM = doctorBO.findByDoctorId(selectedDoctor);
 
         if (doctorTM != null) {
             lblName.setText(doctorTM.getName());
