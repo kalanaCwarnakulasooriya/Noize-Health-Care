@@ -9,10 +9,11 @@ import lombok.*;
 @ToString
 
 public class PrescriptionTM {
+    private int id;
     private String mediDetails;
     private String dosage;
     private String date;
-    private String userId;
+    private int userId;
     private String doctorId;
 //    private String appoId;
 //    private String patientId;

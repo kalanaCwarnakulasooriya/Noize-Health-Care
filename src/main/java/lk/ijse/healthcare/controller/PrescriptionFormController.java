@@ -2,6 +2,14 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.PatientsBOImpl;
+import lk.ijse.healthcare.bo.custom.AppointmentBo;
+import lk.ijse.healthcare.bo.custom.DoctorBO;
+import lk.ijse.healthcare.bo.custom.PatientsBO;
+import lk.ijse.healthcare.bo.custom.PrescriptionBO;
+import lk.ijse.healthcare.bo.custom.impl.AppointmentBOImpl;
+import lk.ijse.healthcare.bo.custom.impl.DoctorBOImpl;
+import lk.ijse.healthcare.bo.custom.impl.PrescriptionBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.PrescriptionFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
@@ -33,10 +41,10 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class PrescriptionFormController implements Initializable {
-    PrescriptionDAOImpl prescriptionDAOImpl = new PrescriptionDAOImpl();
-    PatientsDAOImpl patientsDAOImpl = new PatientsDAOImpl();
-    AppointmentDAOImpl appointmentDAOImpl = new AppointmentDAOImpl();
-    DoctorDAOImpl doctorDAOImpl = new DoctorDAOImpl();
+    PrescriptionBO prescriptionBO = new PrescriptionBOImpl();
+    PatientsBO patientsBO = new PatientsBOImpl();
+    AppointmentBo appointmentBo = new AppointmentBOImpl();
+    DoctorBO doctorBO = new DoctorBOImpl();
 
     boolean isDosageValid = false;
     boolean isMediDetailsValid = false;
@@ -118,7 +126,7 @@ public class PrescriptionFormController implements Initializable {
         if (buttonType.get() == ButtonType.YES) {
             clearFields();
             refreshTable();
-            boolean isDeleted = prescriptionDAOImpl.isDeletePrescription(prescriptionDate);
+            boolean isDeleted = prescriptionBO.deletePrescription(prescriptionDate);
             if (isDeleted) {
                 btnSaveItem.setDisable(false);
                 btnUpdateItem.setDisable(true);
@@ -184,7 +192,7 @@ public class PrescriptionFormController implements Initializable {
         }
         LocalDate date = datePicker.getValue();
 
-        if (prescriptionDAOImpl.isAddPrescription((String.valueOf(date)), txtMediDetails.getText(), txtDosage.getText(), "1", comboDocName.getValue())) {
+        if (prescriptionBO.savePrescription((new PrescriptionTM(0,String.valueOf(date), txtMediDetails.getText(), txtDosage.getText(), 1, comboDocName.getValue())))) {
             getPrescription();
             new AlertNotification(
                     "Success Message",
@@ -213,15 +221,15 @@ public class PrescriptionFormController implements Initializable {
         String dosage = txtDosage.getText();
         String doctorId = comboDocName.getValue();
 
-        PrescriptionFormDto prescriptionFormDto = new PrescriptionFormDto(
-                0,
+        PrescriptionTM prescriptionTM = new PrescriptionTM(
+                tblPrescription.getSelectionModel().getSelectedItem().getId(),
                 String.valueOf(datePicker.getValue()),
                 mediDetails,
                 dosage,
                 1,
                 doctorId
         );
-        boolean isUpdate = prescriptionDAOImpl.isUpdatePrescription(prescriptionFormDto);
+        boolean isUpdate = prescriptionBO.updatePrescription(prescriptionTM);
 
         if (isUpdate){
             refreshTable();
@@ -295,7 +303,7 @@ public class PrescriptionFormController implements Initializable {
     @FXML
     void refreshTable() throws SQLException {
         tblPrescription.getItems().clear();
-        ArrayList<PrescriptionTM> allPrescription = prescriptionDAOImpl.getAllPrescription();
+        ArrayList<PrescriptionTM> allPrescription = prescriptionBO.getAllPrescription();
         ObservableList<PrescriptionTM> appointmentList = FXCollections.observableArrayList(allPrescription);
         tblPrescription.setItems(appointmentList);
     }
@@ -313,27 +321,27 @@ public class PrescriptionFormController implements Initializable {
     }
 
     public void getPrescription() throws SQLException {
-        ArrayList<PrescriptionTM> prescriptionTMS = prescriptionDAOImpl.getAllPrescription();
+        ArrayList<PrescriptionTM> prescriptionTMS = prescriptionBO.getAllPrescription();
         tblPrescription.getItems().clear();
         tblPrescription.getItems().addAll(prescriptionTMS);
     }
 
     private void loadPatientsId() throws SQLException {
-        ArrayList<String> patientsId  = patientsDAOImpl.getAllPatientMobile();
+        ArrayList<String> patientsId  = patientsBO.getAllPatientMobile();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(patientsId);
         comboPID.setItems(observableList);
     }
 
     private void loadAppointmentsId() throws SQLException {
-        ArrayList<String> appointmentsId  = appointmentDAOImpl.getAppointments();
+        ArrayList<String> appointmentsId  = appointmentBo.getAllSAppointment();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(appointmentsId);
         comboAppoID.setItems(observableList);
     }
 
     private void loadDoctorsId() throws SQLException {
-        ArrayList<String> DoctorsId  = doctorDAOImpl.getAllDocId();
+        ArrayList<String> DoctorsId  = doctorBO.getAllSDoctor();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(DoctorsId);
         comboDocName.setItems(observableList);
@@ -358,7 +366,7 @@ public class PrescriptionFormController implements Initializable {
     public void comboPatientOnAction(ActionEvent event) throws SQLException {
         comboPID.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedDoctor = comboPID.getSelectionModel().getSelectedItem();
-        PatientsTM patientTM = patientsDAOImpl.findById(selectedDoctor);
+        PatientsTM patientTM = patientsBO.findPatientsById(selectedDoctor);
 
         if (patientTM != null) {
             lblPName.setText(patientTM.getPatientsName());
@@ -368,7 +376,7 @@ public class PrescriptionFormController implements Initializable {
     public void comboAppointmentOnAction(ActionEvent event) throws SQLException {
         comboAppoID.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedAppointment = comboAppoID.getSelectionModel().getSelectedItem();
-        AppointmentTM appointmentTM = appointmentDAOImpl.findById(selectedAppointment);
+        AppointmentTM appointmentTM = appointmentBo.findByAppointmentId(selectedAppointment);
 
         if (appointmentTM != null) {
             lblAge.setText(appointmentTM.getAge());
@@ -378,7 +386,7 @@ public class PrescriptionFormController implements Initializable {
     public void comboDocNameOnAction(ActionEvent event) throws SQLException {
         comboDocName.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedDoctor = (String) comboDocName.getSelectionModel().getSelectedItem();
-        DoctorTM doctorTM = doctorDAOImpl.findById(selectedDoctor);
+        DoctorTM doctorTM = doctorBO.findByDoctorId(selectedDoctor);
 
         if (doctorTM != null) {
             lblDocName.setText(doctorTM.getName());
