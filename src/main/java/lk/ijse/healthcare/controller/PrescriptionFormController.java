@@ -11,7 +11,7 @@ import lk.ijse.healthcare.dto.tm.PrescriptionTM;
 import lk.ijse.healthcare.dao.custom.impl.AppointmentDAOImpl;
 import lk.ijse.healthcare.dao.custom.impl.DoctorDAOImpl;
 import lk.ijse.healthcare.dao.custom.impl.PatientsDAOImpl;
-import lk.ijse.healthcare.model.PrescriptionFormModel;
+import lk.ijse.healthcare.dao.custom.impl.PrescriptionDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import lk.ijse.healthcare.util.CheckRegex;
 import javafx.collections.FXCollections;
@@ -33,7 +33,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class PrescriptionFormController implements Initializable {
-    PrescriptionFormModel prescriptionFormModel = new PrescriptionFormModel();
+    PrescriptionDAOImpl prescriptionDAOImpl = new PrescriptionDAOImpl();
     PatientsDAOImpl patientsDAOImpl = new PatientsDAOImpl();
     AppointmentDAOImpl appointmentDAOImpl = new AppointmentDAOImpl();
     DoctorDAOImpl doctorDAOImpl = new DoctorDAOImpl();
@@ -118,7 +118,7 @@ public class PrescriptionFormController implements Initializable {
         if (buttonType.get() == ButtonType.YES) {
             clearFields();
             refreshTable();
-            boolean isDeleted = prescriptionFormModel.isDeletePrescription(prescriptionDate);
+            boolean isDeleted = prescriptionDAOImpl.isDeletePrescription(prescriptionDate);
             if (isDeleted) {
                 btnSaveItem.setDisable(false);
                 btnUpdateItem.setDisable(true);
@@ -184,7 +184,7 @@ public class PrescriptionFormController implements Initializable {
         }
         LocalDate date = datePicker.getValue();
 
-        if (prescriptionFormModel.isAddPrescription((String.valueOf(date)), txtMediDetails.getText(), txtDosage.getText(), "1", comboDocName.getValue())) {
+        if (prescriptionDAOImpl.isAddPrescription((String.valueOf(date)), txtMediDetails.getText(), txtDosage.getText(), "1", comboDocName.getValue())) {
             getPrescription();
             new AlertNotification(
                     "Success Message",
@@ -221,7 +221,7 @@ public class PrescriptionFormController implements Initializable {
                 1,
                 doctorId
         );
-        boolean isUpdate = prescriptionFormModel.isUpdatePrescription(prescriptionFormDto);
+        boolean isUpdate = prescriptionDAOImpl.isUpdatePrescription(prescriptionFormDto);
 
         if (isUpdate){
             refreshTable();
@@ -295,7 +295,7 @@ public class PrescriptionFormController implements Initializable {
     @FXML
     void refreshTable() throws SQLException {
         tblPrescription.getItems().clear();
-        ArrayList<PrescriptionTM> allPrescription = prescriptionFormModel.getAllPrescription();
+        ArrayList<PrescriptionTM> allPrescription = prescriptionDAOImpl.getAllPrescription();
         ObservableList<PrescriptionTM> appointmentList = FXCollections.observableArrayList(allPrescription);
         tblPrescription.setItems(appointmentList);
     }
@@ -313,7 +313,7 @@ public class PrescriptionFormController implements Initializable {
     }
 
     public void getPrescription() throws SQLException {
-        ArrayList<PrescriptionTM> prescriptionTMS = prescriptionFormModel.getAllPrescription();
+        ArrayList<PrescriptionTM> prescriptionTMS = prescriptionDAOImpl.getAllPrescription();
         tblPrescription.getItems().clear();
         tblPrescription.getItems().addAll(prescriptionTMS);
     }
