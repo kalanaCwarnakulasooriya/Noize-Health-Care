@@ -56,9 +56,4 @@ public class DashboardFormController implements Initializable {
 
 //        loadTable();
     }
-
-    void loadTable() {
-        XYChart.Series<String, Number> series = dashboardModel.getData();
-        barChart.getData().add(series);
-    }
 }

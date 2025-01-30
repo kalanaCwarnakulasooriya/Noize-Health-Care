@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="Logout update kara">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/AppointmentBo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AppointmentBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/DoctorDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AddPatientsBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AddPatientsBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/controller/AppointmentFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/controller/AppointmentFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/controller/DashboardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/controller/DashboardFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/controller/DoctorFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/controller/DoctorFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/controller/PrescriptionFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/controller/PrescriptionFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/model/DashboardFormModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/model/DashboardFormModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/model/DoctorFormModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/DoctorDAOImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +289,10 @@
       <workItem from="1737914091382" duration="785000" />
       <workItem from="1737914950790" duration="4304000" />
       <workItem from="1737958519504" duration="7415000" />
-      <workItem from="1738001867015" duration="920000" />
+      <workItem from="1738001867015" duration="2009000" />
+      <workItem from="1738128266522" duration="16000" />
+      <workItem from="1738171241448" duration="682000" />
+      <workItem from="1738235180439" duration="2805000" />
     </task>
     <task id="LOCAL-00001" summary="login and signup page view">
       <option name="closed" value="true" />

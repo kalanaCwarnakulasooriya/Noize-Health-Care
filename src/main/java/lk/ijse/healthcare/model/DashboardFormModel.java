@@ -33,23 +33,4 @@ public class DashboardFormModel {
         }
         return status;
     }
-
-    public XYChart.Series<String, Number> getData() {
-        String sql = "SELECT i.Name, SUM(od.Quantity) AS total_quantity FROM orderdetail od JOIN item i ON od.ItemId = i.ItemId GROUP BY i.Name ORDER BY total_quantity DESC";
-
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        try {
-            ResultSet resultSet = SQLUtil.execute(sql);
-            while (resultSet.next()) {
-                String name = resultSet.getString("Name");
-                int totalQty = resultSet.getInt("total_quantity");
-                System.out.println(name + " " + totalQty);
-                series.getData().add(new XYChart.Data<>(name, totalQty));
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return series;
-    }
 }

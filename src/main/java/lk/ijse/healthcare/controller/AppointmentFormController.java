@@ -5,11 +5,9 @@ import com.jfoenix.controls.JFXTextField;
 import lk.ijse.healthcare.bo.custom.AppointmentBo;
 import lk.ijse.healthcare.bo.custom.impl.AppointmentBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
-import lk.ijse.healthcare.dto.AppointmentFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
-import lk.ijse.healthcare.dao.custom.impl.AppointmentDAOImpl;
-import lk.ijse.healthcare.model.DoctorFormModel;
+import lk.ijse.healthcare.dao.custom.impl.DoctorDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import lk.ijse.healthcare.util.CheckRegex;
 import javafx.collections.FXCollections;
@@ -32,7 +30,7 @@ import java.util.*;
 
 public class AppointmentFormController implements Initializable {
     AppointmentBo appointment = new AppointmentBOImpl();
-    DoctorFormModel doctorModel = new DoctorFormModel();
+    DoctorDAOImpl doctorModel = new DoctorDAOImpl();
 
     boolean isNameValid = false;
     boolean isAgeValid = false;

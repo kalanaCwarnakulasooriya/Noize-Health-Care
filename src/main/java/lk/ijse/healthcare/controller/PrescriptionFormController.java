@@ -9,7 +9,7 @@ import lk.ijse.healthcare.dto.tm.DoctorTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
 import lk.ijse.healthcare.dto.tm.PrescriptionTM;
 import lk.ijse.healthcare.dao.custom.impl.AppointmentDAOImpl;
-import lk.ijse.healthcare.model.DoctorFormModel;
+import lk.ijse.healthcare.dao.custom.impl.DoctorDAOImpl;
 import lk.ijse.healthcare.dao.custom.impl.PatientsDAOImpl;
 import lk.ijse.healthcare.model.PrescriptionFormModel;
 import lk.ijse.healthcare.util.AlertNotification;
@@ -36,7 +36,7 @@ public class PrescriptionFormController implements Initializable {
     PrescriptionFormModel prescriptionFormModel = new PrescriptionFormModel();
     PatientsDAOImpl patientsDAOImpl = new PatientsDAOImpl();
     AppointmentDAOImpl appointmentDAOImpl = new AppointmentDAOImpl();
-    DoctorFormModel doctorFormModel = new DoctorFormModel();
+    DoctorDAOImpl doctorDAOImpl = new DoctorDAOImpl();
 
     boolean isDosageValid = false;
     boolean isMediDetailsValid = false;
@@ -333,7 +333,7 @@ public class PrescriptionFormController implements Initializable {
     }
 
     private void loadDoctorsId() throws SQLException {
-        ArrayList<String> DoctorsId  = doctorFormModel.getAllDocId();
+        ArrayList<String> DoctorsId  = doctorDAOImpl.getAllDocId();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(DoctorsId);
         comboDocName.setItems(observableList);
@@ -378,7 +378,7 @@ public class PrescriptionFormController implements Initializable {
     public void comboDocNameOnAction(ActionEvent event) throws SQLException {
         comboDocName.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedDoctor = (String) comboDocName.getSelectionModel().getSelectedItem();
-        DoctorTM doctorTM = doctorFormModel.findById(selectedDoctor);
+        DoctorTM doctorTM = doctorDAOImpl.findById(selectedDoctor);
 
         if (doctorTM != null) {
             lblDocName.setText(doctorTM.getName());

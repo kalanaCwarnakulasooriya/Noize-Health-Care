@@ -5,7 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.DoctorFormDto;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
-import lk.ijse.healthcare.model.DoctorFormModel;
+import lk.ijse.healthcare.dao.custom.impl.DoctorDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import lk.ijse.healthcare.util.CheckRegex;
 import javafx.collections.FXCollections;
@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lombok.SneakyThrows;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -33,7 +34,7 @@ public class DoctorFormController implements Initializable {
     private boolean isEmailValid = false;
     private boolean isAddressValid = false;
 
-    DoctorFormModel doctorModel = new DoctorFormModel();
+    DoctorDAOImpl doctorModel = new DoctorDAOImpl();
 
     @FXML
     private AnchorPane addPane;
@@ -287,7 +288,11 @@ public class DoctorFormController implements Initializable {
         coNumCol.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
 
-        getDoctor();
+        try {
+            getDoctor();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void clearFields() {
@@ -304,8 +309,8 @@ public class DoctorFormController implements Initializable {
         tblDoctor.setItems(doctorList);
     }
 
-    public void getDoctor() {
-        ArrayList<DoctorTM> doctorDtos = doctorModel.getDoctor();
+    public void getDoctor() throws SQLException {
+        ArrayList<DoctorTM> doctorDtos = doctorModel.getAllDoctors();
         tblDoctor.getItems().clear();
         tblDoctor.getItems().addAll(doctorDtos);
     }
