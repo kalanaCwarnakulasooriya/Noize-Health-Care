@@ -12,7 +12,7 @@ import lk.ijse.healthcare.util.UserIdQrEncryption;
 import lk.ijse.healthcare.util.alert.AlertSound;
 import lk.ijse.healthcare.util.alert.Sound;
 import lk.ijse.healthcare.dto.LoginFormDto;
-import lk.ijse.healthcare.model.LoginFormModel;
+import lk.ijse.healthcare.dao.custom.impl.QueryDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,7 +36,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 
 public class LoginFormController {
-    private LoginFormModel loginFormModel = new LoginFormModel();
+    private QueryDAOImpl queryDAOImpl = new QueryDAOImpl();
     private final AlertSound alertSound = new AlertSound();
 
     @FXML
@@ -97,7 +97,7 @@ public class LoginFormController {
     void btnLogin(ActionEvent event) throws Exception {
         LoginFormDto loginFormDto = new LoginFormDto(txtUname.getText(), txtPwd.getText());
         System.out.println(loginFormDto.toString());
-        ResultSet resultSet = loginFormModel.btnLogin(loginFormDto);
+        ResultSet resultSet = queryDAOImpl.btnLogin(loginFormDto);
         refeshLoginForm();
         try {
             if (resultSet == null || !BCrypt.checkpw(loginFormDto.getPassword(), resultSet.getString("Password"))) {
