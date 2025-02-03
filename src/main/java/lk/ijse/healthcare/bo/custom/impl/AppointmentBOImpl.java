@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.bo.custom.impl;
 
 import lk.ijse.healthcare.bo.custom.AppointmentBo;
+import lk.ijse.healthcare.dao.DAOFactory;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.AppointmentDAO;
 import lk.ijse.healthcare.dao.custom.impl.AppointmentDAOImpl;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AppointmentBOImpl implements AppointmentBo {
-    AppointmentDAO appointmentDAO = new AppointmentDAOImpl();
+    AppointmentDAO appointmentDAO = (AppointmentDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.APPOINTMENT);
     @Override
     public ArrayList<AppointmentTM> getAllAppointment() throws SQLException {
         ArrayList<AppointmentTM> appointments = appointmentDAO.getAll();

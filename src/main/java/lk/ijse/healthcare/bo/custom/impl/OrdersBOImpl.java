@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.bo.custom.impl;
 
 import lk.ijse.healthcare.bo.custom.OrdersBO;
+import lk.ijse.healthcare.dao.DAOFactory;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.OrderDetailsDAO;
 import lk.ijse.healthcare.dao.custom.OrdersDAO;
@@ -13,8 +14,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class OrdersBOImpl implements OrdersBO {
-    OrderDetailsDAO orderDetailsDAOImpl = new OrderDetailsDAOImpl();
-    OrdersDAO ordersDAO = new OrdersDAOImpl();
+    OrderDetailsDAO orderDetailsDAOImpl = (OrderDetailsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ORDER_DETAILS);
+    OrdersDAO ordersDAO = (OrdersDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ORDER);
 
     @Override
     public String getNewOrderId() throws SQLException {

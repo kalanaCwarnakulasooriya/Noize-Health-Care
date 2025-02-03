@@ -1,7 +1,6 @@
 package lk.ijse.healthcare.bo.custom.impl;
 
 import lk.ijse.healthcare.bo.custom.ItemBO;
-import lk.ijse.healthcare.dao.DAOFactory;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.ItemDAO;
 import lk.ijse.healthcare.dao.custom.impl.ItemDAOImpl;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ItemBOImpl implements ItemBO {
-    ItemDAO itemDAO = (ItemDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ITEM);
+    ItemDAO itemDAO = new ItemDAOImpl();
     @Override
     public ArrayList<String> getAllSItem() throws SQLException {
         ArrayList<String> itemNames = itemDAO.getAllS();

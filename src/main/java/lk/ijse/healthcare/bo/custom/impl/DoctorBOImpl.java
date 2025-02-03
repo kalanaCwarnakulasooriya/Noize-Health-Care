@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.bo.custom.impl;
 
 import lk.ijse.healthcare.bo.custom.DoctorBO;
+import lk.ijse.healthcare.dao.DAOFactory;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.DoctorDAO;
 import lk.ijse.healthcare.dao.custom.impl.DoctorDAOImpl;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DoctorBOImpl implements DoctorBO {
-    DoctorDAO doctorDAO = new DoctorDAOImpl();
+    DoctorDAO doctorDAO = (DoctorDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.DOCTOR);
     @Override
     public ArrayList<String> getAllSDoctor() throws SQLException {
         ArrayList<String> docIds = doctorDAO.getAllS();

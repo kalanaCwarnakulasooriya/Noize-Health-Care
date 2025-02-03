@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.bo.custom.impl;
 
 import lk.ijse.healthcare.bo.custom.SignupBO;
+import lk.ijse.healthcare.dao.DAOFactory;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.SignupDAO;
 import lk.ijse.healthcare.dao.custom.impl.SignupDAOImpl;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SignupBOImpl implements SignupBO {
-    SignupDAO signupDAO = new SignupDAOImpl();
+    SignupDAO signupDAO = (SignupDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.SIGNUP);
     @Override
     public int getUserId() throws SQLException {
         return signupDAO.getUserId();
