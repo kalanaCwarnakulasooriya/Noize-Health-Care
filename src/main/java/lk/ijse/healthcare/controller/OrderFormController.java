@@ -340,7 +340,7 @@ public class OrderFormController implements Initializable {
 
         if (itemFormDto != null) {
             lblUPrice.setText(String.valueOf(itemFormDto.getUnitPrice()));
-            lblQoh.setText(String.valueOf(itemFormDto.getQty()));
+            lblQoh.setText(String.valueOf(itemFormDto.getStockQty()));
             lblExpire.setText(String.valueOf(itemFormDto.getExpireDate()));
             lblPack.setText(String.valueOf(itemFormDto.getPackSize()));
         }

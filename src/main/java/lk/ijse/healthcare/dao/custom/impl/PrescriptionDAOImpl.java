@@ -18,9 +18,9 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
         while (rst.next()) {
             PrescriptionTM prescriptionTM = new PrescriptionTM(
                     rst.getInt("PrescriptionId"),
+                    rst.getString("Dosage"),
                     rst.getString("PrescriptionDate"),
                     rst.getString("MedicineDetails"),
-                    rst.getString("Dosage"),
                     rst.getInt("UserId"),
                     rst.getString("DoctorId")
             );
@@ -47,10 +47,10 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     @Override
     public boolean save(PrescriptionTM prescription) throws SQLException {
         return SQLUtil.execute(
-                "INSERT INTO prescription(PrescriptionDate,MedicineDetails,Dosage,UserId,DoctorId) VALUES (?,?,?,?,?)",
-                prescription.getDate(),
+                "INSERT INTO prescription(MedicineDetails,Dosage,PrescriptionDate,UserId,DoctorId) VALUES (?,?,?,?,?)",
                 prescription.getMediDetails(),
                 prescription.getDosage(),
+                prescription.getDate(),
                 prescription.getUserId(),
                 prescription.getDoctorId()
         );
@@ -93,7 +93,7 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
 
     @Override
     public boolean update(PrescriptionTM prescriptionTM) throws SQLException {
-        return SQLUtil.execute("UPDATE prescription SET MedicineDetails = ?, Dosage = ? WHERE PrescriptionDate = ?",
+        return SQLUtil.execute("UPDATE prescription SET MedicineDetails = ?, Dosage = ?, WHERE PrescriptionDate = ?",
                 prescriptionTM.getMediDetails(),
                 prescriptionTM.getDosage(),
                 prescriptionTM.getDate()

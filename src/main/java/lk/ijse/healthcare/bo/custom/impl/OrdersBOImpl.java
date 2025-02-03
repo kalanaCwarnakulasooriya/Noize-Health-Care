@@ -3,21 +3,22 @@ package lk.ijse.healthcare.bo.custom.impl;
 import lk.ijse.healthcare.bo.custom.OrdersBO;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.OrderDetailsDAO;
+import lk.ijse.healthcare.dao.custom.OrdersDAO;
 import lk.ijse.healthcare.dao.custom.impl.OrderDetailsDAOImpl;
+import lk.ijse.healthcare.dao.custom.impl.OrdersDAOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.OrdersFormDto;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class OrdersBOImpl implements OrdersBO {
     OrderDetailsDAO orderDetailsDAOImpl = new OrderDetailsDAOImpl();
-    OrdersBO ordersBO = new OrdersBOImpl();
+    OrdersDAO ordersDAO = new OrdersDAOImpl();
 
     @Override
     public String getNewOrderId() throws SQLException {
-        return ordersBO.getNewOrderId();
+        return ordersDAO.getNewOrderId();
     }
 
     @Override

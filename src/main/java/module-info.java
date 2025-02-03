@@ -14,10 +14,10 @@ module com.noize.medicalcenter {
     requires resend.java;
     requires org.json;
     requires webcam.capture;
+    requires javafx.controls;
 
 
     opens lk.ijse.healthcare.controller to javafx.fxml;
-    opens lk.ijse.healthcare.model to javafx.base;
     opens lk.ijse.healthcare.dto to javafx.base;
     opens lk.ijse.healthcare.util.alert to javafx.base;
     opens lk.ijse.healthcare.util to javafx.base;

@@ -305,7 +305,7 @@ public class ItemFormController implements Initializable {
         ItemTM selectItem = tblItem.getSelectionModel().getSelectedItem();
         if (selectItem != null) {
             txtMediName.setText(selectItem.getName());
-            txtQty.setText(String.valueOf(selectItem.getStockQty()));
+            txtQty.setText(String.valueOf(selectItem.getQty()));
             txtUPrice.setText(String.valueOf(selectItem.getUnitPrice()));
             txtPackSize.setText(selectItem.getPackSize());
             txtDesc.setText(selectItem.getDescription());

@@ -17,6 +17,6 @@ public class ItemTM  {
     private String expireDate;
     private String packSize;
     private double unitPrice;
-    private int qty;
+    private int stockQty;
 //    private ImageView type;
 }

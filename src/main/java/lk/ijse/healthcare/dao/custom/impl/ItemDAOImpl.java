@@ -53,7 +53,7 @@ public class ItemDAOImpl implements ItemDAO {
             item.setExpireDate(String.valueOf(rst.getDate("ExpireDate")));
             item.setPackSize(rst.getString("PackSize"));
             item.setUnitPrice(rst.getDouble("UnitPrice"));
-            item.setQty(rst.getInt("StockQuantity"));
+            item.setStockQty(rst.getInt("StockQuantity"));
 
             stock.add(item);
         }
@@ -68,14 +68,14 @@ public class ItemDAOImpl implements ItemDAO {
                 item.getExpireDate(),
                 item.getPackSize(),
                 item.getUnitPrice(),
-                item.getQty(),
+                item.getStockQty(),
                 item.getName()
         );
     }
 
     @Override
     public boolean save(ItemTM item) throws SQLException {
-        return SQLUtil.execute("INSERT INTO item(Name,Description,ExpireDate,PackSize,UnitPrice,StockQuantity) VALUES (?,?,?,?,?,?)", item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getQty());
+        return SQLUtil.execute("INSERT INTO item(Name,Description,ExpireDate,PackSize,UnitPrice,StockQuantity) VALUES (?,?,?,?,?,?)", item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getStockQty());
     }
 
     @Override

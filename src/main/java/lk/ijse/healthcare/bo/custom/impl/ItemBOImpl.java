@@ -42,7 +42,7 @@ public class ItemBOImpl implements ItemBO {
             item1.setExpireDate(item.getExpireDate());
             item1.setPackSize(item.getPackSize());
             item1.setUnitPrice(item.getUnitPrice());
-            item1.setQty(item.getQty());
+            item1.setStockQty(item.getStockQty());
             items.add(item1);
         }
         return items;
@@ -50,13 +50,13 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public boolean updateItem(ItemTM item) throws SQLException {
-        ItemTM items = new ItemTM(item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getQty());
+        ItemTM items = new ItemTM(item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getStockQty());
         return itemDAO.update(items);
     }
 
     @Override
     public boolean saveItem(ItemTM item) throws SQLException {
-        ItemTM items = new ItemTM(item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getQty());
+        ItemTM items = new ItemTM(item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getStockQty());
         return itemDAO.save(items);
     }
 
@@ -81,7 +81,7 @@ public class ItemBOImpl implements ItemBO {
                     item.getExpireDate(),
                     item.getPackSize(),
                     item.getUnitPrice(),
-                    item.getQty()
+                    item.getStockQty()
             );
             itemTMS.add(item1);
         }

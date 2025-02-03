@@ -192,7 +192,7 @@ public class PrescriptionFormController implements Initializable {
         }
         LocalDate date = datePicker.getValue();
 
-        if (prescriptionBO.savePrescription((new PrescriptionTM(0,String.valueOf(date), txtMediDetails.getText(), txtDosage.getText(), 1, comboDocName.getValue())))) {
+        if (prescriptionBO.savePrescription(new PrescriptionTM(tblPrescription.getItems().size() + 1,   txtDosage.getText(),txtMediDetails.getText(),String.valueOf(date), 1, comboDocName.getValue()))) {
             getPrescription();
             new AlertNotification(
                     "Success Message",

@@ -49,9 +49,9 @@ public class PrescriptionBOImpl implements PrescriptionBO {
     public boolean savePrescription(PrescriptionTM dto) throws SQLException {
         PrescriptionTM prescription = new PrescriptionTM(
                 dto.getId(),
-                dto.getDate(),
                 dto.getMediDetails(),
                 dto.getDosage(),
+                dto.getDate(),
                 dto.getUserId(),
                 dto.getDoctorId()
         );
@@ -62,9 +62,9 @@ public class PrescriptionBOImpl implements PrescriptionBO {
     public boolean updatePrescription(PrescriptionTM prescriptionTM) throws SQLException {
         PrescriptionTM prescription = new PrescriptionTM(
                 prescriptionTM.getId(),
-                prescriptionTM.getDate(),
                 prescriptionTM.getMediDetails(),
                 prescriptionTM.getDosage(),
+                prescriptionTM.getDate(),
                 prescriptionTM.getUserId(),
                 prescriptionTM.getDoctorId()
         );
