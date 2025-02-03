@@ -1,12 +1,10 @@
 package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
-import lk.ijse.healthcare.bo.PatientsBOImpl;
+import lk.ijse.healthcare.bo.custom.impl.PatientsBOImpl;
 import lk.ijse.healthcare.bo.custom.PatientsBO;
-import lk.ijse.healthcare.dao.custom.PatientsDAO;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
-import lk.ijse.healthcare.dao.custom.impl.PatientsDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

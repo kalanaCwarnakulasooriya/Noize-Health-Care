@@ -2,7 +2,7 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import lk.ijse.healthcare.bo.PatientsBOImpl;
+import lk.ijse.healthcare.bo.custom.impl.PatientsBOImpl;
 import lk.ijse.healthcare.bo.custom.ItemBO;
 import lk.ijse.healthcare.bo.custom.OrdersBO;
 import lk.ijse.healthcare.bo.custom.PatientsBO;
@@ -15,7 +15,6 @@ import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.OrdersFormDto;
 import lk.ijse.healthcare.dto.tm.OrdersTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
-import lk.ijse.healthcare.dao.custom.impl.OrdersDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import lk.ijse.healthcare.util.CheckRegex;
 import javafx.collections.FXCollections;

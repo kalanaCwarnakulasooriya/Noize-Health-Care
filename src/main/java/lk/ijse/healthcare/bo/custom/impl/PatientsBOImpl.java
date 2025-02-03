@@ -1,12 +1,10 @@
-package lk.ijse.healthcare.bo;
+package lk.ijse.healthcare.bo.custom.impl;
 
 import lk.ijse.healthcare.bo.custom.PatientsBO;
-import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.PatientsDAO;
 import lk.ijse.healthcare.dao.custom.impl.PatientsDAOImpl;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
