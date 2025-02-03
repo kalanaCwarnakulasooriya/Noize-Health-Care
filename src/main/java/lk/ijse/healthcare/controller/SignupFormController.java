@@ -9,7 +9,7 @@ import lk.ijse.healthcare.util.SendGmail;
 import lk.ijse.healthcare.util.UserIdQrEncryption;
 import lk.ijse.healthcare.util.alert.Sound;
 import lk.ijse.healthcare.dto.SignupFormDto;
-import lk.ijse.healthcare.model.SignupFormModel;
+import lk.ijse.healthcare.dao.custom.impl.SignupDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import lk.ijse.healthcare.util.alert.AlertSound;
 import javafx.collections.FXCollections;
@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
 
 public class SignupFormController implements Initializable {
 
-    private final SignupFormModel signupFormModel = new SignupFormModel();
+    private final SignupDAOImpl signupDAOImpl = new SignupDAOImpl();
     private final AlertSound alertSound = new AlertSound();
     QrCodeFormController qrCodeController = new QrCodeFormController();
 
@@ -103,7 +103,7 @@ public class SignupFormController implements Initializable {
             return;
         }
 
-        int roleId = signupFormModel.getRoleIdByDescription(role);
+        int roleId = signupDAOImpl.getRoleIdByDescription(role);
         SignupFormDto signupFormDto = new SignupFormDto(
                 userName,
                 BCrypt.hashpw(password, BCrypt.gensalt()),
@@ -114,7 +114,7 @@ public class SignupFormController implements Initializable {
                 roleId
         );
 
-        if (signupFormModel.signupUser(signupFormDto)) {
+        if (signupDAOImpl.signupUser(signupFormDto)) {
 //            SendGmail.sendEmailWithGmail(txtEmail.getText();
 //            SendGmail.sendEmailWithGmail(
 //                    "noizemedicalcenter@gmail.com",
@@ -167,7 +167,7 @@ public class SignupFormController implements Initializable {
 
     private void loadRoles() throws SQLException {
         comRole.getItems().clear();
-        ArrayList<String> roles = signupFormModel.getAllRoles();
+        ArrayList<String> roles = signupDAOImpl.getAllRoles();
         ObservableList<String> obl = FXCollections.observableArrayList();
         obl.addAll(roles);
         comRole.setItems(obl);
