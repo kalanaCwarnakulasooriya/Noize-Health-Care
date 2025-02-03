@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="Logout update kara">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/ItemBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/DoctorDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/DoctorDAOImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="Logout update kara" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,8 +17,8 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -288,7 +285,7 @@
       <workItem from="1738171241448" duration="682000" />
       <workItem from="1738235180439" duration="11537000" />
       <workItem from="1738256836520" duration="3000" />
-      <workItem from="1738557347904" duration="3865000" />
+      <workItem from="1738557347904" duration="4540000" />
     </task>
     <task id="LOCAL-00001" summary="login and signup page view">
       <option name="closed" value="true" />

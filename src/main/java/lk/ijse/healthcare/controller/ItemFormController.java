@@ -1,6 +1,8 @@
 package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.custom.ItemBO;
+import lk.ijse.healthcare.bo.custom.impl.ItemBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.ItemFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
@@ -28,7 +30,8 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class ItemFormController implements Initializable {
-    ItemDAOImpl itemDAOImpl = new ItemDAOImpl();
+    ItemBO itemBO = new ItemBOImpl();
+
     Boolean isNameValid = false;
     Boolean isPackSizeValid = false;
     Boolean isQtyValid = false;
@@ -136,7 +139,7 @@ public class ItemFormController implements Initializable {
         if (buttonType.get() == ButtonType.YES) {
             clearFields();
             refreshTable();
-            boolean isDeleted = itemDAOImpl.deleteItem(ItemName);
+            boolean isDeleted = itemBO.deleteItem(ItemName);
             if (isDeleted) {
                 new AlertNotification(
                         "Success Message",
@@ -202,7 +205,7 @@ public class ItemFormController implements Initializable {
     }
 
     @FXML
-    void btnSaveItemOnAction(ActionEvent event) {
+    void btnSaveItemOnAction(ActionEvent event) throws SQLException {
         isExpireValid = expirePicker.getValue() != null;
 
         if (isExpireValid && !isNameValid && !isPackSizeValid && !isQtyValid && !isPriceValid && !isDescValid) {
@@ -221,7 +224,7 @@ public class ItemFormController implements Initializable {
         int qty = Integer.parseInt(txtQty.getText());
         double price = Double.parseDouble(txtUPrice.getText());
 
-        if (itemDAOImpl.isAddStock(name,description, String.valueOf(expire),packSize,price,qty)) {
+        if (itemBO.saveItem(new ItemTM(name, description, String.valueOf(expire), packSize, price, qty))) {
             getStockQty();
             new AlertNotification(
                     "Success Message",
@@ -253,8 +256,7 @@ public class ItemFormController implements Initializable {
         int qty = Integer.parseInt(txtQty.getText());
         double price = Double.parseDouble(txtUPrice.getText());
 
-            ItemFormDto itemFormDto = new ItemFormDto(
-                    0,
+            ItemTM itemTM = new ItemTM(
                     name,
                     description,
                     String.valueOf(expire),
@@ -262,7 +264,7 @@ public class ItemFormController implements Initializable {
                     price,
                     qty
             );
-            boolean isUpdate = itemDAOImpl.isUpdateStock(itemFormDto);
+            boolean isUpdate = itemBO.updateItem(itemTM);
 
             if (isUpdate){
                 refreshTable();
@@ -303,7 +305,7 @@ public class ItemFormController implements Initializable {
         ItemTM selectItem = tblItem.getSelectionModel().getSelectedItem();
         if (selectItem != null) {
             txtMediName.setText(selectItem.getName());
-            txtQty.setText(String.valueOf(selectItem.getStockQty()));
+            txtQty.setText(String.valueOf(selectItem.getQty()));
             txtUPrice.setText(String.valueOf(selectItem.getUnitPrice()));
             txtPackSize.setText(selectItem.getPackSize());
             txtDesc.setText(selectItem.getDescription());
@@ -370,9 +372,9 @@ public class ItemFormController implements Initializable {
     }
 
     @FXML
-    void refreshTable() {
+    void refreshTable() throws SQLException {
         tblItem.getItems().clear();
-        ArrayList<ItemTM> allItems = itemDAOImpl.getStock();
+        ArrayList<ItemTM> allItems = itemBO.getAllItem();
         ObservableList<ItemTM> itemsList = FXCollections.observableArrayList(allItems);
         tblItem.setItems(itemsList);
     }
@@ -394,14 +396,14 @@ public class ItemFormController implements Initializable {
         }
     }
 
-    public void getStockQty() {
-        ArrayList<ItemTM> itemsDtos = itemDAOImpl.getStock();
+    public void getStockQty() throws SQLException {
+        ArrayList<ItemTM> itemsDtos = itemBO.getAllItem();
         tblItem.getItems().clear();
         tblItem.getItems().addAll(itemsDtos);
     }
 
     public void getItems() throws SQLException {
-        ArrayList<String> items = itemDAOImpl.getAllItemNames();
+        ArrayList<String> items = itemBO.getAllSItem();
         comboName.getItems().clear();
         comboName.getItems().addAll(items);
 
@@ -423,7 +425,7 @@ public class ItemFormController implements Initializable {
     }
 
     public void searchStock(KeyEvent keyEvent) throws SQLException {
-        ArrayList<ItemTM> items = itemDAOImpl.searchStock(lblSearch.getText());
+        ArrayList<ItemTM> items = itemBO.searchItem(lblSearch.getText());
         ObservableList<ItemTM> itemTMS = FXCollections.observableArrayList();
         for (ItemTM item : items) {
             itemTMS.add(item);
