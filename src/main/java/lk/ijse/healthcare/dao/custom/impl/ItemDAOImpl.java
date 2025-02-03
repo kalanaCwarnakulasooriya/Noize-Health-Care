@@ -89,6 +89,31 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
+    public double getOrder(String orderId) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public boolean saveOrderDetails(ArrayList<ItemTM> orderDetailsDto) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public int getUserId() throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public String getNewOrderId() throws SQLException {
+        return "";
+    }
+
+    @Override
+    public ResultSet btnLogin(ItemTM loginFormDto) throws Exception {
+        return null;
+    }
+
+    @Override
     public int getIdBy(String name) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT StockQuantity FROM item WHERE Name = ?", name);
         if (rst.next()) {

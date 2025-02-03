@@ -67,6 +67,31 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
+    public double getOrder(String orderId) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public boolean saveOrderDetails(ArrayList<AppointmentTM> orderDetailsDto) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public int getUserId() throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public String getNewOrderId() throws SQLException {
+        return "";
+    }
+
+    @Override
+    public ResultSet btnLogin(AppointmentTM loginFormDto) throws Exception {
+        return null;
+    }
+
+    @Override
     public boolean delete(String age) throws SQLException {
         return SQLUtil.execute("DELETE FROM appointment WHERE Age = ?", age);
     }

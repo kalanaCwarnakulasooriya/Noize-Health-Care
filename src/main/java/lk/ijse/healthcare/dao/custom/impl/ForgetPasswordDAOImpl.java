@@ -19,6 +19,31 @@ public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
     }
 
     @Override
+    public double getOrder(String orderId) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public boolean saveOrderDetails(ArrayList<ForgetPasswordFormDto> orderDetailsDto) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public int getUserId() throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public String getNewOrderId() throws SQLException {
+        return "";
+    }
+
+    @Override
+    public ResultSet btnLogin(ForgetPasswordFormDto loginFormDto) throws Exception {
+        return null;
+    }
+
+    @Override
     public ForgetPasswordFormDto findById(String username) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM user WHERE Username = ?", username);
 

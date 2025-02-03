@@ -62,4 +62,9 @@ public class DashboardDAOImpl implements DashboardDAO {
             }
         return status;
     }
+
+    @Override
+    public boolean changePwd(String user, String newPassword) throws SQLException {
+        return false;
+    }
 }

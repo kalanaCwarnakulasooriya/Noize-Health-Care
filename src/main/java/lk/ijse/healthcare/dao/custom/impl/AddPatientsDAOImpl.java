@@ -83,4 +83,29 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
         return false;
     }
 
+    @Override
+    public double getOrder(String orderId) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public boolean saveOrderDetails(ArrayList<AddPatientFormDto> orderDetailsDto) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public int getUserId() throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public String getNewOrderId() throws SQLException {
+        return "";
+    }
+
+    @Override
+    public ResultSet btnLogin(AddPatientFormDto loginFormDto) throws Exception {
+        return null;
+    }
+
 }

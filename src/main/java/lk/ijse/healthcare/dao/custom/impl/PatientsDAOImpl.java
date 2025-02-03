@@ -124,12 +124,22 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<OrderDetailsFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<PatientsTM> orderDetailsDto) throws SQLException {
         return false;
     }
 
     @Override
     public int getUserId() throws SQLException {
         return 0;
+    }
+
+    @Override
+    public String getNewOrderId() throws SQLException {
+        return "";
+    }
+
+    @Override
+    public ResultSet btnLogin(PatientsTM loginFormDto) throws Exception {
+        return null;
     }
 }

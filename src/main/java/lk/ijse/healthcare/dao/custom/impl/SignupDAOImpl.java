@@ -23,6 +23,16 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
+    public String getNewOrderId() throws SQLException {
+        return "";
+    }
+
+    @Override
+    public ResultSet btnLogin(SignupFormDto loginFormDto) throws Exception {
+        return null;
+    }
+
+    @Override
     public int getIdBy(String description) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT RoleId FROM role WHERE Description = ?", description);
         if (rst.next()) {
@@ -52,7 +62,7 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<OrderDetailsFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<SignupFormDto> orderDetailsDto) throws SQLException {
         return false;
     }
 

@@ -66,7 +66,7 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<OrderDetailsFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<OrdersFormDto> orderDetailsDto) throws SQLException {
         return false;
     }
 
@@ -85,6 +85,11 @@ public class OrdersDAOImpl implements OrdersDAO {
             return String.format("%1d", newIdIndex);
         }
         return "1";
+    }
+
+    @Override
+    public ResultSet btnLogin(OrdersFormDto loginFormDto) throws Exception {
+        return null;
     }
 
     @Override

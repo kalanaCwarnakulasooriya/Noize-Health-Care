@@ -67,6 +67,31 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
+    public double getOrder(String orderId) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public boolean saveOrderDetails(ArrayList<PrescriptionTM> orderDetailsDto) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public int getUserId() throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public String getNewOrderId() throws SQLException {
+        return "";
+    }
+
+    @Override
+    public ResultSet btnLogin(PrescriptionTM loginFormDto) throws Exception {
+        return null;
+    }
+
+    @Override
     public boolean update(PrescriptionTM prescriptionTM) throws SQLException {
         return SQLUtil.execute("UPDATE prescription SET MedicineDetails = ?, Dosage = ? WHERE PrescriptionDate = ?",
                 prescriptionTM.getMediDetails(),
