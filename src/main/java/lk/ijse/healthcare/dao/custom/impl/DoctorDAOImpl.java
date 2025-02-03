@@ -78,7 +78,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public int getIdByDescription(String description) throws SQLException {
+    public int getIdBy(String description) throws SQLException {
         return 0;
     }
 
