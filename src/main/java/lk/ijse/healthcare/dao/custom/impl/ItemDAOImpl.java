@@ -8,6 +8,7 @@ import lk.ijse.healthcare.dao.SQLUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ItemDAOImpl implements ItemDAO {
     @Override
@@ -73,6 +74,16 @@ public class ItemDAOImpl implements ItemDAO {
     @Override
     public boolean save(ItemTM item) throws SQLException {
         return SQLUtil.execute("INSERT INTO item(Name,Description,ExpireDate,PackSize,UnitPrice,StockQuantity) VALUES (?,?,?,?,?,?)", item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getQty());
+    }
+
+    @Override
+    public HashMap<String, String> status() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean changePwd(ItemTM user, String newPassword) throws SQLException {
+        return false;
     }
 
     @Override

@@ -8,6 +8,7 @@ import lk.ijse.healthcare.dao.SQLUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AppointmentDAOImpl implements AppointmentDAO {
     @Override
@@ -39,7 +40,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public int getIdByDescription(String description) throws SQLException {
+    public int getIdBy(String name) throws SQLException {
         return 0;
     }
 
@@ -53,6 +54,16 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     appointment.getDoctorId(),
                     1
             );
+    }
+
+    @Override
+    public HashMap<String, String> status() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean changePwd(AppointmentTM user, String newPassword) throws SQLException {
+        return false;
     }
 
     @Override

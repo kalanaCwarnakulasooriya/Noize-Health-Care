@@ -8,6 +8,7 @@ import lk.ijse.healthcare.dao.SQLUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DoctorDAOImpl implements DoctorDAO {
     @Override
@@ -102,5 +103,15 @@ public class DoctorDAOImpl implements DoctorDAO {
                 doctorFormDto.getAddress(),
                 doctorFormDto.getUserId()
         );
+    }
+
+    @Override
+    public HashMap<String, String> status() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean changePwd(DoctorTM user, String newPassword) throws SQLException {
+        return false;
     }
 }

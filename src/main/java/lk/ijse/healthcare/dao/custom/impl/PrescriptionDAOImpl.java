@@ -8,6 +8,7 @@ import lk.ijse.healthcare.dao.SQLUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PrescriptionDAOImpl implements PrescriptionDAO {
     @Override
@@ -56,6 +57,16 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
+    public HashMap<String, String> status() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean changePwd(PrescriptionTM user, String newPassword) throws SQLException {
+        return false;
+    }
+
+    @Override
     public boolean update(PrescriptionTM prescriptionTM) throws SQLException {
         return SQLUtil.execute("UPDATE prescription SET MedicineDetails = ?, Dosage = ? WHERE PrescriptionDate = ?",
                 prescriptionTM.getMediDetails(),
@@ -65,12 +76,13 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
+    public int getIdBy(String name) throws SQLException {
+        return 0;
+    }
+
+    @Override
     public boolean delete(String id) throws SQLException {
         return SQLUtil.execute("DELETE FROM prescription WHERE PrescriptionDate = ?", id);
     }
 
-    @Override
-    public int getIdByDescription(String description) throws SQLException {
-        return 0;
-    }
 }

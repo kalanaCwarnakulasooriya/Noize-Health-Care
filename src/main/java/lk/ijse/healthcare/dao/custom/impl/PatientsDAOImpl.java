@@ -8,6 +8,7 @@ import lk.ijse.healthcare.dao.SQLUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PatientsDAOImpl implements PatientsDAO {
     @Override
@@ -103,6 +104,16 @@ public class PatientsDAOImpl implements PatientsDAO {
 
     @Override
     public boolean save(PatientsTM patientDTO) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public HashMap<String, String> status() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean changePwd(PatientsTM user, String newPassword) throws SQLException {
         return false;
     }
 }

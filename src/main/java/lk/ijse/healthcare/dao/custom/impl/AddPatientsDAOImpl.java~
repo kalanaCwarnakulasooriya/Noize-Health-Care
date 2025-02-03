@@ -8,7 +8,6 @@ import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class AddPatientsDAOImpl implements AddPatientsDAO {
     @Override
@@ -37,7 +36,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public int getIdBy(String description) throws SQLException {
+    public int getIdByDescription(String description) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT GenderId FROM Gender WHERE Description = ?", description);
             if (rst.next()) {
                 return rst.getInt("GenderId");
@@ -71,16 +70,6 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
                 patientDTO.getUserId(),
                 patientDTO.getPrescriptionId()
         );
-    }
-
-    @Override
-    public HashMap<String, String> status() throws SQLException {
-        return null;
-    }
-
-    @Override
-    public boolean changePwd(AddPatientFormDto user, String newPassword) throws SQLException {
-        return false;
     }
 
 }

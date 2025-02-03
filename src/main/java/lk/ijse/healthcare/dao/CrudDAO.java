@@ -1,5 +1,6 @@
 package lk.ijse.healthcare.dao;
 
+import lk.ijse.healthcare.dto.ForgetPasswordFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 
 import java.sql.SQLException;
@@ -16,4 +17,5 @@ public interface CrudDAO<T> {
     public int getIdBy(String name) throws SQLException;
     public boolean save(T dto) throws SQLException;
     public HashMap<String, String> status() throws SQLException;
+    public boolean changePwd(T user, String newPassword) throws SQLException;
 }
