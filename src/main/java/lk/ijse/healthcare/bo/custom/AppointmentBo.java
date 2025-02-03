@@ -1,11 +1,12 @@
 package lk.ijse.healthcare.bo.custom;
 
+import lk.ijse.healthcare.bo.SuperBO;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface AppointmentBo {
+public interface AppointmentBo extends SuperBO {
     public ArrayList<AppointmentTM> getAllAppointment() throws SQLException;
     public boolean updateAppointment(AppointmentTM dto) throws SQLException;
     public int getAppointmentIdByDescription(String description) throws SQLException;

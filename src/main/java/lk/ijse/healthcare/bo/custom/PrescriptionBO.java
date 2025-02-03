@@ -1,11 +1,12 @@
 package lk.ijse.healthcare.bo.custom;
 
+import lk.ijse.healthcare.bo.SuperBO;
 import lk.ijse.healthcare.dto.tm.PrescriptionTM;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface PrescriptionBO {
+public interface PrescriptionBO extends SuperBO {
     public ArrayList<PrescriptionTM> getAllPrescription() throws SQLException;
     public ArrayList<PrescriptionTM> searchPrescription(String name) throws SQLException;
     public PrescriptionTM findById(String selectedContact) throws SQLException;
