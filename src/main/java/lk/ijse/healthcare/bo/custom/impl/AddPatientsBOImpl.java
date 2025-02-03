@@ -15,7 +15,7 @@ public class AddPatientsBOImpl implements AddPatientsBO {
 
     @Override
     public int getGenderIdByDescription(String description) throws SQLException {
-        return addPatientsDAO.getIdByDescription(description);
+        return addPatientsDAO.getIdBy(description);
     }
 
     @Override

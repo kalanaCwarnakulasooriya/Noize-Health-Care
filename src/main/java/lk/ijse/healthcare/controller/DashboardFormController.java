@@ -1,5 +1,7 @@
 package lk.ijse.healthcare.controller;
 
+import lk.ijse.healthcare.bo.custom.DashboardBO;
+import lk.ijse.healthcare.bo.custom.impl.DashboardBOImpl;
 import lk.ijse.healthcare.dao.custom.impl.DashboardDAOImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +16,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class DashboardFormController implements Initializable {
-    DashboardDAOImpl dashboardModel = new DashboardDAOImpl();
+    DashboardBO dashboardBO = new DashboardBOImpl();
 
     @FXML
     private Label lblAppointmentCount;
@@ -47,7 +49,7 @@ public class DashboardFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HashMap<String,String> status = null;
         try {
-            status = dashboardModel.status();
+            status = dashboardBO.statusDashboard();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
