@@ -26,6 +26,11 @@ public class OrderDetailsFormModel {
         return true;
     }
 
+
+    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException {
+        return SQLUtil.execute("UPDATE item SET StockQuantity = StockQuantity - ? WHERE ItemId = ?", orderDetailsFormDto.getQuantity(), orderDetailsFormDto.getItemId());
+    }
+
     private boolean saveOrderDetails(OrderDetailsFormDto orderDetailsDTO) throws SQLException {
         return SQLUtil.execute(
                 "insert into orderdetail(Quantity,Price,OrderId,ItemId) values (?,?,?,?)",

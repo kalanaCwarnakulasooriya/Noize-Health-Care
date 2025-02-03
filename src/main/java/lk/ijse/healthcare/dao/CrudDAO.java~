@@ -4,7 +4,6 @@ import lk.ijse.healthcare.dto.tm.AppointmentTM;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public interface CrudDAO<T> {
     public ArrayList<T> getAll() throws SQLException;
@@ -15,5 +14,4 @@ public interface CrudDAO<T> {
     public boolean update(T dto) throws SQLException;
     public int getIdBy(String name) throws SQLException;
     public boolean save(T dto) throws SQLException;
-    public HashMap<String, String> status() throws SQLException;
 }
