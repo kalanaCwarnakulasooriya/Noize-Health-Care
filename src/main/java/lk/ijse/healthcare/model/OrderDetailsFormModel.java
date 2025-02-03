@@ -1,5 +1,6 @@
 package lk.ijse.healthcare.model;
 
+import lk.ijse.healthcare.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
 
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrderDetailsFormModel {
-    private final ItemFormModel itemFormModel = new ItemFormModel();
+    private final ItemDAOImpl itemDAOImpl = new ItemDAOImpl();
 
     public boolean saveOrderDetailsList(ArrayList<OrderDetailsFormDto> orderDetailsDto) throws SQLException {
         for (OrderDetailsFormDto orderDetailsDTO : orderDetailsDto) {
@@ -17,7 +18,7 @@ public class OrderDetailsFormModel {
                 return false;
             }
 
-            boolean isItemUpdated = itemFormModel.reduceQty(orderDetailsDTO);
+            boolean isItemUpdated = itemDAOImpl.reduceQty(orderDetailsDTO);
             if (!isItemUpdated) {
                 return false;
             }

@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.ItemFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
-import lk.ijse.healthcare.model.ItemFormModel;
+import lk.ijse.healthcare.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import lk.ijse.healthcare.util.CheckRegex;
 import javafx.collections.FXCollections;
@@ -28,7 +28,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class ItemFormController implements Initializable {
-    ItemFormModel itemFormModel = new ItemFormModel();
+    ItemDAOImpl itemDAOImpl = new ItemDAOImpl();
     Boolean isNameValid = false;
     Boolean isPackSizeValid = false;
     Boolean isQtyValid = false;
@@ -136,7 +136,7 @@ public class ItemFormController implements Initializable {
         if (buttonType.get() == ButtonType.YES) {
             clearFields();
             refreshTable();
-            boolean isDeleted = itemFormModel.deleteItem(ItemName);
+            boolean isDeleted = itemDAOImpl.deleteItem(ItemName);
             if (isDeleted) {
                 new AlertNotification(
                         "Success Message",
@@ -221,7 +221,7 @@ public class ItemFormController implements Initializable {
         int qty = Integer.parseInt(txtQty.getText());
         double price = Double.parseDouble(txtUPrice.getText());
 
-        if (itemFormModel.isAddStock(name,description, String.valueOf(expire),packSize,price,qty)) {
+        if (itemDAOImpl.isAddStock(name,description, String.valueOf(expire),packSize,price,qty)) {
             getStockQty();
             new AlertNotification(
                     "Success Message",
@@ -262,7 +262,7 @@ public class ItemFormController implements Initializable {
                     price,
                     qty
             );
-            boolean isUpdate = itemFormModel.isUpdateStock(itemFormDto);
+            boolean isUpdate = itemDAOImpl.isUpdateStock(itemFormDto);
 
             if (isUpdate){
                 refreshTable();
@@ -372,7 +372,7 @@ public class ItemFormController implements Initializable {
     @FXML
     void refreshTable() {
         tblItem.getItems().clear();
-        ArrayList<ItemTM> allItems = itemFormModel.getStock();
+        ArrayList<ItemTM> allItems = itemDAOImpl.getStock();
         ObservableList<ItemTM> itemsList = FXCollections.observableArrayList(allItems);
         tblItem.setItems(itemsList);
     }
@@ -395,13 +395,13 @@ public class ItemFormController implements Initializable {
     }
 
     public void getStockQty() {
-        ArrayList<ItemTM> itemsDtos = itemFormModel.getStock();
+        ArrayList<ItemTM> itemsDtos = itemDAOImpl.getStock();
         tblItem.getItems().clear();
         tblItem.getItems().addAll(itemsDtos);
     }
 
     public void getItems() throws SQLException {
-        ArrayList<String> items = itemFormModel.getAllItemNames();
+        ArrayList<String> items = itemDAOImpl.getAllItemNames();
         comboName.getItems().clear();
         comboName.getItems().addAll(items);
 
@@ -423,7 +423,7 @@ public class ItemFormController implements Initializable {
     }
 
     public void searchStock(KeyEvent keyEvent) throws SQLException {
-        ArrayList<ItemTM> items = itemFormModel.searchStock(lblSearch.getText());
+        ArrayList<ItemTM> items = itemDAOImpl.searchStock(lblSearch.getText());
         ObservableList<ItemTM> itemTMS = FXCollections.observableArrayList();
         for (ItemTM item : items) {
             itemTMS.add(item);

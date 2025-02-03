@@ -9,7 +9,7 @@ import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.OrdersFormDto;
 import lk.ijse.healthcare.dto.tm.OrdersTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
-import lk.ijse.healthcare.model.ItemFormModel;
+import lk.ijse.healthcare.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.healthcare.model.OrdersFormModel;
 import lk.ijse.healthcare.dao.custom.impl.PatientsDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
@@ -36,7 +36,7 @@ import java.util.*;
 
 public class OrderFormController implements Initializable {
     private final OrdersFormModel orderFormModel = new OrdersFormModel();
-    private final ItemFormModel itemFormModel = new ItemFormModel();
+    private final ItemDAOImpl itemDAOImpl = new ItemDAOImpl();
     private final PatientsDAOImpl patientsDAOImpl = new PatientsDAOImpl();
     private final AlertSound alertSound = new AlertSound();
     private final ObservableList<OrdersTM> obList = FXCollections.observableArrayList();
@@ -323,7 +323,7 @@ public class OrderFormController implements Initializable {
     }
 
     private void loadMediName() throws SQLException {
-        ArrayList<String> itemNames = itemFormModel.getAllItemNames();
+        ArrayList<String> itemNames = itemDAOImpl.getAllItemNames();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(itemNames);
         comboMediName.setItems(observableList);
@@ -332,7 +332,7 @@ public class OrderFormController implements Initializable {
     public void comboMediNameOnAction(ActionEvent actionEvent) throws SQLException {
         comboMediName.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectMediName = comboMediName.getSelectionModel().getSelectedItem();
-        ItemFormDto itemFormDto = itemFormModel.findById(selectMediName);
+        ItemFormDto itemFormDto = itemDAOImpl.findById(selectMediName);
 
         if (itemFormDto != null) {
             lblUPrice.setText(String.valueOf(itemFormDto.getPrice()));
