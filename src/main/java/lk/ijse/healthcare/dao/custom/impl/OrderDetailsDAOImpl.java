@@ -29,6 +29,16 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     }
 
     @Override
+    public int getUserId() throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public String getNewOrderId() throws SQLException {
+        return "";
+    }
+
+    @Override
     public boolean save(OrderDetailsFormDto orderDetailsDTO) throws SQLException {
         return SQLUtil.execute(
                 "insert into orderdetail(Quantity,Price,OrderId,ItemId) values (?,?,?,?)",

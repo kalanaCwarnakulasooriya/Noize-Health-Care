@@ -51,11 +51,6 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public boolean save(OrdersFormDto dto) throws SQLException {
-        return false;
-    }
-
-    @Override
     public HashMap<String, String> status() throws SQLException {
         return null;
     }
@@ -80,6 +75,7 @@ public class OrdersDAOImpl implements OrdersDAO {
         return 0;
     }
 
+    @Override
     public String getNewOrderId() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT OrderId FROM orders ORDER BY OrderId DESC LIMIT 1");
 
@@ -91,7 +87,8 @@ public class OrdersDAOImpl implements OrdersDAO {
         return "1";
     }
 
-    public boolean saveOrder(OrdersFormDto orderDTO) throws SQLException {
+    @Override
+    public boolean save(OrdersFormDto orderDTO) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         try {
             connection.setAutoCommit(false);

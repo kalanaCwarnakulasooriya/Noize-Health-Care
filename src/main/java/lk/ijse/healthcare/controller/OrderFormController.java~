@@ -4,10 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import lk.ijse.healthcare.bo.PatientsBOImpl;
 import lk.ijse.healthcare.bo.custom.ItemBO;
-import lk.ijse.healthcare.bo.custom.OrdersBO;
 import lk.ijse.healthcare.bo.custom.PatientsBO;
 import lk.ijse.healthcare.bo.custom.impl.ItemBOImpl;
-import lk.ijse.healthcare.bo.custom.impl.OrdersBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.tm.ItemTM;
 import lk.ijse.healthcare.util.alert.AlertSound;
@@ -39,7 +37,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class OrderFormController implements Initializable {
-    private final OrdersBO ordersBO = new OrdersBOImpl();
+    private final OrdersDAOImpl orderFormModel = new OrdersDAOImpl();
     private final ItemBO itemBO = new ItemBOImpl();
     private final PatientsBO patientsBO = new PatientsBOImpl();
     private final AlertSound alertSound = new AlertSound();
@@ -276,7 +274,7 @@ public class OrderFormController implements Initializable {
     }
 
     private void refeshPage() throws SQLException {
-        lblOrderId.setText(String.valueOf(ordersBO.getNewOrderId()));
+        lblOrderId.setText(String.valueOf(orderFormModel.getNewOrderId()));
         lblOrderDate.setText(LocalDate.now().toString());
 
         loadPatientMobile();
@@ -298,7 +296,7 @@ public class OrderFormController implements Initializable {
     }
 
     private void refeshFieldsOnly() throws SQLException {
-        lblOrderId.setText(String.valueOf(ordersBO.getNewOrderId()));
+        lblOrderId.setText(String.valueOf(orderFormModel.getNewOrderId()));
         lblOrderDate.setText(LocalDate.now().toString());
 
 //        loadPatientMobile();
@@ -407,7 +405,7 @@ public class OrderFormController implements Initializable {
                     orderDetailsDTOS
             );
 
-            boolean isSaved = ordersBO.saveOrder(orderDTO);
+            boolean isSaved = orderFormModel.saveOrder(orderDTO);
 
             if (isSaved) {
                 paymentPane.setVisible(false);
