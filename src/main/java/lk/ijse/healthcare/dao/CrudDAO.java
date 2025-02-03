@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface CrudDAO<T> {
+public interface CrudDAO<T> extends SuperDAO {
     public ArrayList<T> getAll() throws SQLException;
     public ArrayList<T> search(String name) throws SQLException;
     public T findById(String name) throws SQLException;
