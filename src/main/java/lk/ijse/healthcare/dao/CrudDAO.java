@@ -22,4 +22,5 @@ public interface CrudDAO<T> {
     public double getOrder(String orderId) throws SQLException;
     public boolean saveOrderDetails(ArrayList<OrderDetailsFormDto> orderDetailsDto) throws SQLException;
     public int getUserId() throws SQLException;
+    public String getNewOrderId() throws SQLException;
 }

@@ -9,14 +9,11 @@ import lk.ijse.healthcare.bo.custom.impl.ItemBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.tm.ItemTM;
 import lk.ijse.healthcare.util.alert.AlertSound;
-import lk.ijse.healthcare.dto.ItemFormDto;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.OrdersFormDto;
 import lk.ijse.healthcare.dto.tm.OrdersTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
-import lk.ijse.healthcare.dao.custom.impl.ItemDAOImpl;
-import lk.ijse.healthcare.model.OrdersFormModel;
-import lk.ijse.healthcare.dao.custom.impl.PatientsDAOImpl;
+import lk.ijse.healthcare.dao.custom.impl.OrdersDAOImpl;
 import lk.ijse.healthcare.util.AlertNotification;
 import lk.ijse.healthcare.util.CheckRegex;
 import javafx.collections.FXCollections;
@@ -40,7 +37,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class OrderFormController implements Initializable {
-    private final OrdersFormModel orderFormModel = new OrdersFormModel();
+    private final OrdersDAOImpl orderFormModel = new OrdersDAOImpl();
     private final ItemBO itemBO = new ItemBOImpl();
     private final PatientsBO patientsBO = new PatientsBOImpl();
     private final AlertSound alertSound = new AlertSound();
