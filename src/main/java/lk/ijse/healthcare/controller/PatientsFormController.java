@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
+import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.impl.PatientsBOImpl;
 import lk.ijse.healthcare.bo.custom.PatientsBO;
 import lk.ijse.healthcare.db.DBConnection;
@@ -32,7 +33,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class PatientsFormController implements Initializable {
-    PatientsBO patientsBO = new PatientsBOImpl();
+    PatientsBO patientsBO = (PatientsBO) BOFactory.getInstance().getBO(BOFactory.BOType.PATIENT);
 
     @FXML
     private TableColumn<PatientsTM, String> addressCol;

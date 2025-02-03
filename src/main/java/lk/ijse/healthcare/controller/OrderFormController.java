@@ -2,6 +2,7 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.impl.PatientsBOImpl;
 import lk.ijse.healthcare.bo.custom.ItemBO;
 import lk.ijse.healthcare.bo.custom.OrdersBO;
@@ -38,9 +39,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class OrderFormController implements Initializable {
-    private final OrdersBO ordersBO = new OrdersBOImpl();
-    private final ItemBO itemBO = new ItemBOImpl();
-    private final PatientsBO patientsBO = new PatientsBOImpl();
+    private final OrdersBO ordersBO = (OrdersBO) BOFactory.getInstance().getBO(BOFactory.BOType.ORDER);
+    private final ItemBO itemBO = (ItemBO) BOFactory.getInstance().getBO(BOFactory.BOType.ITEM);
+    private final PatientsBO patientsBO = (PatientsBO) BOFactory.getInstance().getBO(BOFactory.BOType.PATIENT);
     private final AlertSound alertSound = new AlertSound();
     private final ObservableList<OrdersTM> obList = FXCollections.observableArrayList();
 

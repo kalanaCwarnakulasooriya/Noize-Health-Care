@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.SignupBO;
 import lk.ijse.healthcare.bo.custom.impl.SignupBOImpl;
 import lk.ijse.healthcare.util.CheckRegex;
@@ -34,8 +35,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SignupFormController implements Initializable {
-
-    private final SignupBO signupBO = new SignupBOImpl();
+    private final SignupBO signupBO = (SignupBO) BOFactory.getInstance().getBO(BOFactory.BOType.SIGNUP);
     private final AlertSound alertSound = new AlertSound();
     QrCodeFormController qrCodeController = new QrCodeFormController();
 

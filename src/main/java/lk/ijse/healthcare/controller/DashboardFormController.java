@@ -1,5 +1,6 @@
 package lk.ijse.healthcare.controller;
 
+import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.DashboardBO;
 import lk.ijse.healthcare.bo.custom.impl.DashboardBOImpl;
 import lk.ijse.healthcare.dao.custom.impl.DashboardDAOImpl;
@@ -16,7 +17,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class DashboardFormController implements Initializable {
-    DashboardBO dashboardBO = new DashboardBOImpl();
+    DashboardBO dashboardBO = (DashboardBO) BOFactory.getInstance().getBO(BOFactory.BOType.DASHBOARD);
 
     @FXML
     private Label lblAppointmentCount;

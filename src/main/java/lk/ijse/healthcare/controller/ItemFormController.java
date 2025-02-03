@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.ItemBO;
 import lk.ijse.healthcare.bo.custom.impl.ItemBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
@@ -30,7 +31,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class ItemFormController implements Initializable {
-    ItemBO itemBO = new ItemBOImpl();
+    ItemBO itemBO = (ItemBO) BOFactory.getInstance().getBO(BOFactory.BOType.ITEM);
 
     Boolean isNameValid = false;
     Boolean isPackSizeValid = false;

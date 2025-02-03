@@ -2,6 +2,7 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.AddPatientsBO;
 import lk.ijse.healthcare.bo.custom.impl.AddPatientsBOImpl;
 import lk.ijse.healthcare.dao.custom.AddPatientsDAO;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddPatientsFormController implements Initializable {
-    private final AddPatientsBO ADDPATIENTSBO = new AddPatientsBOImpl();
+    private final AddPatientsBO ADDPATIENTSBO = (AddPatientsBO) BOFactory.getInstance().getBO(BOFactory.BOType.ADD_PATIENTS);
 
     private Boolean isEmailValid = false;
     private Boolean isNameValid = false;

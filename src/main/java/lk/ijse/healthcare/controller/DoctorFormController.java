@@ -2,6 +2,7 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.DoctorBO;
 import lk.ijse.healthcare.bo.custom.impl.DoctorBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
@@ -36,7 +37,7 @@ public class DoctorFormController implements Initializable {
     private boolean isEmailValid = false;
     private boolean isAddressValid = false;
 
-    DoctorBO doctorBO = new DoctorBOImpl();
+    DoctorBO doctorBO = (DoctorBO) BOFactory.getInstance().getBO(BOFactory.BOType.DOCTOR);
 
     @FXML
     private AnchorPane addPane;

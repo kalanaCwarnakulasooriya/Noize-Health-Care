@@ -2,6 +2,7 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.AppointmentBo;
 import lk.ijse.healthcare.bo.custom.DoctorBO;
 import lk.ijse.healthcare.bo.custom.impl.AppointmentBOImpl;
@@ -31,8 +32,8 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class AppointmentFormController implements Initializable {
-    AppointmentBo appointment = new AppointmentBOImpl();
-    DoctorBO doctorBO = new DoctorBOImpl();
+    AppointmentBo appointment = (AppointmentBo) BOFactory.getInstance().getBO(BOFactory.BOType.APPOINTMENT);
+    DoctorBO doctorBO = (DoctorBO) BOFactory.getInstance().getBO(BOFactory.BOType.DOCTOR);
 
     boolean isNameValid = false;
     boolean isAgeValid = false;
