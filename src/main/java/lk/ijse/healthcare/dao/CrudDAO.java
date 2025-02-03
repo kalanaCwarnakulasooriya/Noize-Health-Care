@@ -21,4 +21,5 @@ public interface CrudDAO<T> {
     public boolean changePwd(T user, String newPassword) throws SQLException;
     public double getOrder(String orderId) throws SQLException;
     public boolean saveOrderDetails(ArrayList<OrderDetailsFormDto> orderDetailsDto) throws SQLException;
+    public int getUserId() throws SQLException;
 }

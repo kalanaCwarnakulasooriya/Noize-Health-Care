@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.dao.custom.impl;
 
 import lk.ijse.healthcare.dao.custom.PatientsDAO;
+import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
 import lk.ijse.healthcare.dao.SQLUtil;
@@ -115,5 +116,20 @@ public class PatientsDAOImpl implements PatientsDAO {
     @Override
     public boolean changePwd(PatientsTM user, String newPassword) throws SQLException {
         return false;
+    }
+
+    @Override
+    public double getOrder(String orderId) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public boolean saveOrderDetails(ArrayList<OrderDetailsFormDto> orderDetailsDto) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public int getUserId() throws SQLException {
+        return 0;
     }
 }

@@ -2,7 +2,12 @@ package lk.ijse.healthcare.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.PatientsBOImpl;
+import lk.ijse.healthcare.bo.custom.ItemBO;
+import lk.ijse.healthcare.bo.custom.PatientsBO;
+import lk.ijse.healthcare.bo.custom.impl.ItemBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
+import lk.ijse.healthcare.dto.tm.ItemTM;
 import lk.ijse.healthcare.util.alert.AlertSound;
 import lk.ijse.healthcare.dto.ItemFormDto;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
@@ -36,8 +41,8 @@ import java.util.*;
 
 public class OrderFormController implements Initializable {
     private final OrdersFormModel orderFormModel = new OrdersFormModel();
-    private final ItemDAOImpl itemDAOImpl = new ItemDAOImpl();
-    private final PatientsDAOImpl patientsDAOImpl = new PatientsDAOImpl();
+    private final ItemBO itemBO = new ItemBOImpl();
+    private final PatientsBO patientsBO = new PatientsBOImpl();
     private final AlertSound alertSound = new AlertSound();
     private final ObservableList<OrdersTM> obList = FXCollections.observableArrayList();
 
@@ -316,14 +321,14 @@ public class OrderFormController implements Initializable {
     }
 
     private void loadPatientMobile() throws SQLException {
-        ArrayList<String> patientsMobile  = patientsDAOImpl.getAllPatientMobile();
+        ArrayList<String> patientsMobile  = patientsBO.getAllPatientMobile();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(patientsMobile);
         comboMobile.setItems(observableList);
     }
 
     private void loadMediName() throws SQLException {
-        ArrayList<String> itemNames = itemDAOImpl.getAllItemNames();
+        ArrayList<String> itemNames = itemBO.getAllSItem();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(itemNames);
         comboMediName.setItems(observableList);
@@ -332,10 +337,10 @@ public class OrderFormController implements Initializable {
     public void comboMediNameOnAction(ActionEvent actionEvent) throws SQLException {
         comboMediName.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectMediName = comboMediName.getSelectionModel().getSelectedItem();
-        ItemFormDto itemFormDto = itemDAOImpl.findById(selectMediName);
+        ItemTM itemFormDto = itemBO.findByItemId(selectMediName);
 
         if (itemFormDto != null) {
-            lblUPrice.setText(String.valueOf(itemFormDto.getPrice()));
+            lblUPrice.setText(String.valueOf(itemFormDto.getUnitPrice()));
             lblQoh.setText(String.valueOf(itemFormDto.getQty()));
             lblExpire.setText(String.valueOf(itemFormDto.getExpireDate()));
             lblPack.setText(String.valueOf(itemFormDto.getPackSize()));
@@ -345,7 +350,7 @@ public class OrderFormController implements Initializable {
     public void comboMobileOnAction(ActionEvent actionEvent) throws SQLException {
         comboMobile.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedMobile = comboMobile.getSelectionModel().getSelectedItem();
-        PatientsTM patientsTM = patientsDAOImpl.findById(selectedMobile);
+        PatientsTM patientsTM = patientsBO.findPatientsById(selectedMobile);
 
         if (patientsTM != null) {
             lblPName.setText(patientsTM.getPatientsName());
