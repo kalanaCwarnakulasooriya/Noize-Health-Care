@@ -13,10 +13,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
+    @Override
     public boolean changePwd(ForgetPasswordFormDto forgetPasswordFormDto, String newPassword) throws SQLException {
         return SQLUtil.execute("UPDATE user SET Password = ? WHERE Username = ?", newPassword, forgetPasswordFormDto.getUsername());
     }
 
+    @Override
     public ForgetPasswordFormDto findById(String username) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM user WHERE Username = ?", username);
 

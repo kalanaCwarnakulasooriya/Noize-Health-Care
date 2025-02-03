@@ -3,6 +3,8 @@ package lk.ijse.healthcare.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.custom.ForgetPasswordBO;
+import lk.ijse.healthcare.bo.custom.impl.ForgetPasswordBOImpl;
 import lk.ijse.healthcare.util.CheckRegex;
 import lk.ijse.healthcare.util.alert.AlertSound;
 import lk.ijse.healthcare.util.alert.Sound;
@@ -29,7 +31,7 @@ import java.util.Random;
 public class ForgetPasswordFormController {
     static int count = 10;
     ForgetPasswordFormDto forgetPwdDto;
-    ForgetPasswordDAOImpl forgetPwdDAO = new ForgetPasswordDAOImpl();
+    ForgetPasswordBO forgetPasswordBO = new ForgetPasswordBOImpl();
     private final AlertSound alertSound = new AlertSound();
 
     @FXML
@@ -94,7 +96,7 @@ public class ForgetPasswordFormController {
 
     @FXML
     void btnGetDataOnAction(ActionEvent event) throws SQLException {
-        forgetPwdDto = forgetPwdDAO.getUserData(txtFUname.getText());
+        forgetPwdDto = forgetPasswordBO.getUserData(txtFUname.getText());
         if (forgetPwdDto == null) {
             new AlertNotification(
                     "User Not Found ! ",
@@ -152,7 +154,7 @@ public class ForgetPasswordFormController {
         if (txtNewPwd.getText().equals(txtConfirmPwd.getText()) && !txtNewPwd.getText().isEmpty() && !txtConfirmPwd.getText().isEmpty()) {
             String newPasswd = BCrypt.hashpw(txtNewPwd.getText(), BCrypt.gensalt());
 
-            Boolean isChangeUserPW = forgetPwdDAO.isChangedUserPassword(forgetPwdDto, newPasswd);
+            Boolean isChangeUserPW = forgetPasswordBO.isChangedUserPassword(forgetPwdDto, newPasswd);
 
             navigateTo("/view/LoginForm.fxml");
             alertSound.checkSounds(Sound.CONFIRM);
