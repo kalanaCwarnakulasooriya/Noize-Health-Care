@@ -4,6 +4,7 @@ import lk.ijse.healthcare.bo.custom.ItemBO;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.ItemDAO;
 import lk.ijse.healthcare.dao.custom.impl.ItemDAOImpl;
+import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
 
 import java.sql.ResultSet;
@@ -27,9 +28,9 @@ public class ItemBOImpl implements ItemBO {
         return itemDAO.findById(name);
     }
 
-    //    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException {
-//        return SQLUtil.execute("UPDATE item SET StockQuantity = StockQuantity - ? WHERE ItemId = ?", orderDetailsFormDto.getQuantity(), orderDetailsFormDto.getItemId());
-//    }
+    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException {
+        return itemDAO.reduceQty(orderDetailsFormDto);
+    }
     @Override
     public ArrayList<ItemTM> getAllItem() throws SQLException {
         ArrayList<ItemTM> stock = itemDAO.getAll();

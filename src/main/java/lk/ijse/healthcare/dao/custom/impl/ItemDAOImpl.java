@@ -37,9 +37,11 @@ public class ItemDAOImpl implements ItemDAO {
         return null;
     }
 
-//    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException {
-//        return SQLUtil.execute("UPDATE item SET StockQuantity = StockQuantity - ? WHERE ItemId = ?", orderDetailsFormDto.getQuantity(), orderDetailsFormDto.getItemId());
-//    }
+    @Override
+    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException {
+        return SQLUtil.execute("UPDATE item SET StockQuantity = StockQuantity - ? WHERE ItemId = ?", orderDetailsFormDto.getQuantity(), orderDetailsFormDto.getItemId());
+    }
+
     @Override
     public ArrayList<ItemTM> getAll() throws SQLException {
         ArrayList<ItemTM> stock = new ArrayList<>();

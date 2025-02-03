@@ -1,5 +1,6 @@
 package lk.ijse.healthcare.model;
 
+import lk.ijse.healthcare.dao.custom.impl.OrderDetailsDAOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.OrdersFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
@@ -9,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class OrdersFormModel {
-    private final OrderDetailsFormModel orderDetailsFormModel = new OrderDetailsFormModel();
+    private final OrderDetailsDAOImpl orderDetailsDAOImpl = new OrderDetailsDAOImpl();
 
     public String getNewOrderId() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT OrderId FROM orders ORDER BY OrderId DESC LIMIT 1");
@@ -35,7 +36,7 @@ public class OrdersFormModel {
             );
 
             if (isOrderSaved) {
-                boolean isOrderDetailListSaved = orderDetailsFormModel.saveOrderDetailsList(orderDTO.getOrderDetailsFormDtos());
+                boolean isOrderDetailListSaved = orderDetailsDAOImpl.saveOrderDetailsList(orderDTO.getOrderDetailsFormDtos());
                 if (isOrderDetailListSaved) {
                     connection.commit();
                     return true;

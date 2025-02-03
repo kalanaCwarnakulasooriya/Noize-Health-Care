@@ -1,6 +1,5 @@
 package lk.ijse.healthcare.bo.custom;
 
-import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
 
 import java.sql.SQLException;
@@ -15,6 +14,5 @@ public interface ItemBO {
     public int getIdByItem(String name) throws SQLException;
     public boolean deleteItem(String name) throws SQLException;
     public ArrayList<ItemTM> searchItem(String name) throws SQLException;
-    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException;
 
 }
