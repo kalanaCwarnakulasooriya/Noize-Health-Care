@@ -14,6 +14,7 @@ import lk.ijse.healthcare.bo.custom.impl.PrescriptionBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.AppointmentFormDto;
 import lk.ijse.healthcare.dto.DoctorFormDto;
+import lk.ijse.healthcare.dto.PatientsFormDto;
 import lk.ijse.healthcare.dto.PrescriptionFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
@@ -365,7 +366,7 @@ public class PrescriptionFormController implements Initializable {
     public void comboPatientOnAction(ActionEvent event) throws SQLException {
         comboPID.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedDoctor = comboPID.getSelectionModel().getSelectedItem();
-        PatientsTM patientTM = patientsBO.findPatientsById(selectedDoctor);
+        PatientsFormDto patientTM = patientsBO.findPatientsById(selectedDoctor);
 
         if (patientTM != null) {
             lblPName.setText(patientTM.getPatientsName());

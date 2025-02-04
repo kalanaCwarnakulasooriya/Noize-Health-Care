@@ -2,6 +2,7 @@ package lk.ijse.healthcare.dao.custom.impl;
 
 import lk.ijse.healthcare.dao.custom.PatientsDAO;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
+import lk.ijse.healthcare.dto.PatientsFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
 import lk.ijse.healthcare.dao.SQLUtil;
@@ -13,12 +14,12 @@ import java.util.HashMap;
 
 public class PatientsDAOImpl implements PatientsDAO {
     @Override
-    public ArrayList<PatientsTM> getAll() throws SQLException {
+    public ArrayList<PatientsFormDto> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM patient");
 
-        ArrayList<PatientsTM> patients = new ArrayList<>();
+        ArrayList<PatientsFormDto> patients = new ArrayList<>();
         while (rst.next()) {
-            PatientsTM patientsDto = new PatientsTM(
+            PatientsFormDto patientsDto = new PatientsFormDto(
                     rst.getString("Name"),
                     rst.getString("Address"),
                     rst.getString("ContactNumber"),
@@ -33,11 +34,11 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public ArrayList<PatientsTM> search(String name) throws SQLException {
+    public ArrayList<PatientsFormDto> search(String name) throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from patient where Name like ?", name+"%");
-        ArrayList<PatientsTM> patient = new ArrayList<>();
+        ArrayList<PatientsFormDto> patient = new ArrayList<>();
         while (rst.next()) {
-            PatientsTM newPatients = new PatientsTM(
+            PatientsFormDto newPatients = new PatientsFormDto(
                     rst.getString("Name"),
                     rst.getString("Address"),
                     rst.getString("ContactNumber"),
@@ -52,11 +53,11 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public PatientsTM findById(String selectedContact) throws SQLException {
+    public PatientsFormDto findById(String selectedContact) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM patient WHERE PatientId = ?", selectedContact);
 
         if (rst.next()) {
-            return new PatientsTM(
+            return new PatientsFormDto(
                     rst.getString("Name"),
                     rst.getString("Address"),
                     rst.getString("ContactNumber"),
@@ -85,7 +86,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean update(PatientsTM patientsTM) throws SQLException {
+    public boolean update(PatientsFormDto patientsTM) throws SQLException {
         return SQLUtil.execute(
                 "UPDATE patient SET Address = ?, ContactNumber = ?, Email = ?, DOB = ?, Gender = ?, RegistrationDate = ? WHERE Name = ?",
                 patientsTM.getPatientsAddress(),
@@ -104,7 +105,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean save(PatientsTM patientDTO) throws SQLException {
+    public boolean save(PatientsFormDto patientDTO) throws SQLException {
         return false;
     }
 
@@ -114,7 +115,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean changePwd(PatientsTM user, String newPassword) throws SQLException {
+    public boolean changePwd(PatientsFormDto user, String newPassword) throws SQLException {
         return false;
     }
 
@@ -124,7 +125,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<PatientsTM> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<PatientsFormDto> orderDetailsDto) throws SQLException {
         return false;
     }
 
@@ -139,7 +140,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public ResultSet btnLogin(PatientsTM loginFormDto) throws Exception {
+    public ResultSet btnLogin(PatientsFormDto loginFormDto) throws Exception {
         return null;
     }
 }

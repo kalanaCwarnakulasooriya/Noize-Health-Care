@@ -11,6 +11,7 @@ import lk.ijse.healthcare.bo.custom.impl.ItemBOImpl;
 import lk.ijse.healthcare.bo.custom.impl.OrdersBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.ItemFormDto;
+import lk.ijse.healthcare.dto.PatientsFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
 import lk.ijse.healthcare.util.alert.AlertSound;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
@@ -350,7 +351,7 @@ public class OrderFormController implements Initializable {
     public void comboMobileOnAction(ActionEvent actionEvent) throws SQLException {
         comboMobile.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedMobile = comboMobile.getSelectionModel().getSelectedItem();
-        PatientsTM patientsTM = patientsBO.findPatientsById(selectedMobile);
+        PatientsFormDto patientsTM = patientsBO.findPatientsById(selectedMobile);
 
         if (patientsTM != null) {
             lblPName.setText(patientsTM.getPatientsName());

@@ -5,6 +5,7 @@ import lk.ijse.healthcare.bo.BOFactory;
 import lk.ijse.healthcare.bo.custom.impl.PatientsBOImpl;
 import lk.ijse.healthcare.bo.custom.PatientsBO;
 import lk.ijse.healthcare.db.DBConnection;
+import lk.ijse.healthcare.dto.PatientsFormDto;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
 import lk.ijse.healthcare.util.AlertNotification;
 import javafx.collections.FXCollections;
@@ -66,7 +67,7 @@ public class PatientsFormController implements Initializable {
     private TableColumn<PatientsTM, Date> registerCol;
 
     @FXML
-    private TableView<PatientsTM> tblPatient;
+    private TableView<PatientsFormDto> tblPatient;
 
     @FXML
     void addPatientClick(ActionEvent event) throws IOException {
@@ -90,9 +91,9 @@ public class PatientsFormController implements Initializable {
     @FXML
     void refreshTable() throws SQLException {
         tblPatient.getItems().clear();
-        ArrayList<PatientsTM> allStaff = patientsBO.getAllPatients();
-        ObservableList<PatientsTM> patientsDtos = FXCollections.observableArrayList();
-        for (PatientsTM patientsDto : allStaff) {
+        ArrayList<PatientsFormDto> allStaff = patientsBO.getAllPatients();
+        ObservableList<PatientsFormDto> patientsDtos = FXCollections.observableArrayList();
+        for (PatientsFormDto patientsDto : allStaff) {
             patientsDtos.add(patientsDto);
         }
         tblPatient.setItems(patientsDtos);
@@ -100,9 +101,9 @@ public class PatientsFormController implements Initializable {
 
     @FXML
     void searchPatients(KeyEvent event) throws SQLException {
-        ArrayList<PatientsTM> patients = patientsBO.searchPatients(lblSearch.getText());
-        ObservableList<PatientsTM> patientTMS = FXCollections.observableArrayList();
-        for (PatientsTM patientsDto : patients) {
+        ArrayList<PatientsFormDto> patients = patientsBO.searchPatients(lblSearch.getText());
+        ObservableList<PatientsFormDto> patientTMS = FXCollections.observableArrayList();
+        for (PatientsFormDto patientsDto : patients) {
             System.out.println(patientsDto.toString());
             patientTMS.add(patientsDto);
         }
@@ -148,7 +149,7 @@ public class PatientsFormController implements Initializable {
     @FXML
     public void btnDeleteOnAction(ActionEvent actionEvent) throws SQLException {
         if (tblPatient != null) {
-            PatientsTM selectedPatient = tblPatient.getSelectionModel().getSelectedItem();
+            PatientsFormDto selectedPatient = tblPatient.getSelectionModel().getSelectedItem();
             if (selectedPatient == null) {
                 new AlertNotification(
                         "Error Message",
