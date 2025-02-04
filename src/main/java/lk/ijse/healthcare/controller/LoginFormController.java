@@ -7,6 +7,8 @@ import com.github.sarxos.webcam.util.ImageUtils;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import lk.ijse.healthcare.bo.custom.QueryBO;
+import lk.ijse.healthcare.bo.custom.impl.QueryBOImpl;
 import lk.ijse.healthcare.util.CheckRegex;
 import lk.ijse.healthcare.util.UserIdQrEncryption;
 import lk.ijse.healthcare.util.alert.AlertSound;
@@ -36,7 +38,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 
 public class LoginFormController {
-    private QueryDAOImpl queryDAOImpl = new QueryDAOImpl();
+    private QueryBO queryBO = new QueryBOImpl();
     private final AlertSound alertSound = new AlertSound();
 
     @FXML
@@ -97,7 +99,7 @@ public class LoginFormController {
     void btnLogin(ActionEvent event) throws Exception {
         LoginFormDto loginFormDto = new LoginFormDto(txtUname.getText(), txtPwd.getText());
         System.out.println(loginFormDto.toString());
-        ResultSet resultSet = queryDAOImpl.btnLogin(loginFormDto);
+        ResultSet resultSet = queryBO.btnLogin(loginFormDto);
         refeshLoginForm();
         try {
             if (resultSet == null || !BCrypt.checkpw(loginFormDto.getPassword(), resultSet.getString("Password"))) {

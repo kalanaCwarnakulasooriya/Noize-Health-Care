@@ -3,6 +3,7 @@ package lk.ijse.healthcare.dao.custom.impl;
 import lk.ijse.healthcare.dao.custom.QueryDAO;
 import lk.ijse.healthcare.dto.LoginFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
+import lk.ijse.healthcare.entity.Login;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,17 +12,17 @@ import java.util.HashMap;
 
 public class QueryDAOImpl implements QueryDAO {
     @Override
-    public ArrayList<LoginFormDto> getAll() throws SQLException {
+    public ArrayList<Login> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public ArrayList<LoginFormDto> search(String search) throws SQLException {
+    public ArrayList<Login> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public LoginFormDto findById(String id) throws SQLException {
+    public Login findById(String id) throws SQLException {
         return null;
     }
 
@@ -36,7 +37,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public boolean update(LoginFormDto update) throws SQLException {
+    public boolean update(Login update) throws SQLException {
         return false;
     }
 
@@ -46,7 +47,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public boolean save(LoginFormDto save) throws SQLException {
+    public boolean save(Login save) throws SQLException {
         return false;
     }
 
@@ -56,7 +57,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public boolean changePwd(LoginFormDto user, String newPwd) throws SQLException {
+    public boolean changePwd(Login user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -66,7 +67,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<LoginFormDto> saveOrder) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<Login> saveOrder) throws SQLException {
         return false;
     }
 
@@ -81,7 +82,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public ResultSet btnLogin(LoginFormDto login) throws Exception {
+    public ResultSet btnLogin(Login login) throws Exception {
         ResultSet rst = SQLUtil.execute("SELECT e.Name, e.Email, e.ContactNumber, e.Address, e.Role, u.Password " +
                 "FROM user u " +
                 "JOIN employee e ON u.UserId = e.UserId " +
