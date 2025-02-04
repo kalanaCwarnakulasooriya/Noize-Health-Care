@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="Logout update kara">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/AppointmentBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/AppointmentBo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AppointmentBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AppointmentBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/AppointmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/AppointmentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/AppointmentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/AppointmentDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/AppointmentFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/DoctorBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/DoctorBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/DoctorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/DoctorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/DoctorDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/DoctorDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/DoctorFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/Doctor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,7 +297,7 @@
       <workItem from="1738256836520" duration="3000" />
       <workItem from="1738557347904" duration="5509000" />
       <workItem from="1738580919508" duration="22111000" />
-      <workItem from="1738647423173" duration="17139000" />
+      <workItem from="1738647423173" duration="17887000" />
     </task>
     <task id="LOCAL-00001" summary="login and signup page view">
       <option name="closed" value="true" />

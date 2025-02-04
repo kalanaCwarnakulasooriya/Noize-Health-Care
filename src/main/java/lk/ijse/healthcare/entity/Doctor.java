@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 
-public class DoctorFormDto {
+public class Doctor {
     private int id;
     private String name;
     private String email;

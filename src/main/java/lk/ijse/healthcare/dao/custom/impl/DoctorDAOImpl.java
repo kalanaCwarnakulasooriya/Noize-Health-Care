@@ -3,6 +3,7 @@ package lk.ijse.healthcare.dao.custom.impl;
 import lk.ijse.healthcare.dao.custom.DoctorDAO;
 import lk.ijse.healthcare.dto.DoctorFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
+import lk.ijse.healthcare.entity.Doctor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,11 +22,11 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public ArrayList<DoctorFormDto> getAll() throws SQLException {
-        ArrayList<DoctorFormDto> doctorDto = new ArrayList<>();
+    public ArrayList<Doctor> getAll() throws SQLException {
+        ArrayList<Doctor> doctorDto = new ArrayList<>();
         ResultSet rst = SQLUtil.execute("select * from doctor");
         while (rst.next()){
-            DoctorFormDto doctor = new DoctorFormDto(
+            Doctor doctor = new Doctor(
                     rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
@@ -39,11 +40,11 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public ArrayList<DoctorFormDto> search(String search) throws SQLException {
+    public ArrayList<Doctor> search(String search) throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from doctor where Name like ?", search+"%");
-        ArrayList<DoctorFormDto> doctorDto = new ArrayList<>();
+        ArrayList<Doctor> doctorDto = new ArrayList<>();
         while (rst.next()) {
-            DoctorFormDto doctor = new DoctorFormDto(
+            Doctor doctor = new Doctor(
                     rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
@@ -57,10 +58,10 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public DoctorFormDto findById(String id) throws SQLException {
+    public Doctor findById(String id) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM doctor WHERE DoctorId = ?", id);
         if (rst.next()) {
-            return new DoctorFormDto(
+            return new Doctor(
                     rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
@@ -83,7 +84,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean update(DoctorFormDto update) throws SQLException {
+    public boolean update(Doctor update) throws SQLException {
         return SQLUtil.execute("UPDATE doctor SET Email = ?, ContactNumber = ?, Address = ? WHERE Name = ?",
                 update.getEmail(),
                 update.getContactNumber(),
@@ -93,7 +94,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean save(DoctorFormDto save) throws SQLException {
+    public boolean save(Doctor save) throws SQLException {
         return SQLUtil.execute("INSERT INTO doctor VALUES (?,?,?,?,?,?)",
                 save.getId(),
                 save.getName(),
@@ -110,7 +111,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean changePwd(DoctorFormDto user, String newPwd) throws SQLException {
+    public boolean changePwd(Doctor user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -120,7 +121,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<DoctorFormDto> saveOrder) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<Doctor> saveOrder) throws SQLException {
         return false;
     }
 
@@ -135,7 +136,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public ResultSet btnLogin(DoctorFormDto login) throws Exception {
+    public ResultSet btnLogin(Doctor login) throws Exception {
         return null;
     }
 }
