@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 
-public class AppointmentFormDto {
+public class Appointment {
     private String age;
     private String status;
     private String description;

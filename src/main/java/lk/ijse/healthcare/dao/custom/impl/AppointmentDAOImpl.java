@@ -4,6 +4,7 @@ import lk.ijse.healthcare.dao.custom.AppointmentDAO;
 import lk.ijse.healthcare.dto.AppointmentFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dao.SQLUtil;
+import lk.ijse.healthcare.entity.Appointment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,11 +13,11 @@ import java.util.HashMap;
 
 public class AppointmentDAOImpl implements AppointmentDAO {
     @Override
-    public ArrayList<AppointmentFormDto> getAll() throws SQLException {
+    public ArrayList<Appointment> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM appointment");
-        ArrayList<AppointmentFormDto> appointments = new ArrayList<>();
+        ArrayList<Appointment> appointments = new ArrayList<>();
         while (rst.next()) {
-                AppointmentFormDto dto = new AppointmentFormDto(
+                Appointment dto = new Appointment(
                         rst.getString("Age"),
                         rst.getString("Status"),
                         rst.getString("Description"),
@@ -30,7 +31,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public boolean update(AppointmentFormDto update) throws SQLException {
+    public boolean update(Appointment update) throws SQLException {
         return SQLUtil.execute("UPDATE appointment SET Status = ?, Description = ?, Date = ? WHERE Age = ?",
                 update.getStatus(),
                 update.getDescription(),
@@ -45,7 +46,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public boolean save(AppointmentFormDto save) throws SQLException {
+    public boolean save(Appointment save) throws SQLException {
             return SQLUtil.execute("INSERT INTO appointment(Age,Status,Description,Date,DoctorId,UserId) VALUES (?,?,?,?,?,?)",
                     save.getAge(),
                     save.getStatus(),
@@ -62,7 +63,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public boolean changePwd(AppointmentFormDto user, String newPwd) throws SQLException {
+    public boolean changePwd(Appointment user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -72,7 +73,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<AppointmentFormDto> saveOrder) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<Appointment> saveOrder) throws SQLException {
         return false;
     }
 
@@ -87,7 +88,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public ResultSet btnLogin(AppointmentFormDto login) throws Exception {
+    public ResultSet btnLogin(Appointment login) throws Exception {
         return null;
     }
 
@@ -97,11 +98,11 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public ArrayList<AppointmentFormDto> search(String search) throws SQLException {
+    public ArrayList<Appointment> search(String search) throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from appointment where Age like ?;", search + "%");
-        ArrayList<AppointmentFormDto> appointments = new ArrayList<>();
+        ArrayList<Appointment> appointments = new ArrayList<>();
         while (rst.next()) {
-            AppointmentFormDto dto = new AppointmentFormDto(
+            Appointment dto = new Appointment(
                     rst.getString("Age"),
                     rst.getString("Status"),
                     rst.getString("Description"),
@@ -115,11 +116,11 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public AppointmentFormDto findById(String id) throws SQLException {
+    public Appointment findById(String id) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM appointment WHERE AppointmentId = ?", id);
 
         if (rst.next()) {
-            return new AppointmentFormDto(
+            return new Appointment(
                     rst.getString("Age"),
                     rst.getString("Status"),
                     rst.getString("Description"),

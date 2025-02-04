@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="Logout update kara">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/AddPatient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/AppointmentFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/DoctorFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/ForgetPasswordFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/ItemFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/LoginFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/OrderDetailsFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/OrdersFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/PatientsFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/PrescriptionFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/SignupFormDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AddPatientsBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AddPatientsBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/AddPatientsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/AddPatientsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/AddPatientsDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/AddPatientsDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/AppointmentBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/AppointmentBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AppointmentBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/AppointmentBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/AppointmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/AppointmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/AppointmentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/dao/custom/impl/AppointmentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/AppointmentFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/entity/Appointment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +298,7 @@
       <workItem from="1738256836520" duration="3000" />
       <workItem from="1738557347904" duration="5509000" />
       <workItem from="1738580919508" duration="22111000" />
-      <workItem from="1738647423173" duration="16194000" />
+      <workItem from="1738647423173" duration="17139000" />
     </task>
     <task id="LOCAL-00001" summary="login and signup page view">
       <option name="closed" value="true" />

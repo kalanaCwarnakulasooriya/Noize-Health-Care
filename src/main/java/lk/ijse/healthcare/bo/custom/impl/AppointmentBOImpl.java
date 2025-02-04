@@ -7,6 +7,7 @@ import lk.ijse.healthcare.dao.custom.AppointmentDAO;
 import lk.ijse.healthcare.dao.custom.impl.AppointmentDAOImpl;
 import lk.ijse.healthcare.dto.AppointmentFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
+import lk.ijse.healthcare.entity.Appointment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,9 +17,9 @@ public class AppointmentBOImpl implements AppointmentBo {
     AppointmentDAO appointmentDAO = (AppointmentDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.APPOINTMENT);
     @Override
     public ArrayList<AppointmentFormDto> getAllAppointment() throws SQLException {
-        ArrayList<AppointmentFormDto> appointments = appointmentDAO.getAll();
+        ArrayList<Appointment> appointments = appointmentDAO.getAll();
         ArrayList<AppointmentFormDto> appointment = new ArrayList<>();
-        for (AppointmentFormDto appointmentDto : appointments) {
+        for (Appointment appointmentDto : appointments) {
             AppointmentFormDto dto = new AppointmentFormDto();
             dto.setAge(appointmentDto.getAge());
             dto.setStatus(appointmentDto.getStatus());
@@ -33,7 +34,7 @@ public class AppointmentBOImpl implements AppointmentBo {
 
     @Override
     public boolean updateAppointment(AppointmentFormDto update) throws SQLException {
-        AppointmentFormDto appointment = new AppointmentFormDto(
+        Appointment appointment = new Appointment(
                 update.getAge(),
                 update.getStatus(),
                 update.getDescription(),
@@ -51,7 +52,7 @@ public class AppointmentBOImpl implements AppointmentBo {
 
     @Override
     public boolean saveAppointment(AppointmentFormDto save) throws SQLException {
-        AppointmentFormDto appointment = new AppointmentFormDto(
+        Appointment appointment = new Appointment(
                 save.getAge(),
                 save.getStatus(),
                 save.getDescription(),
@@ -69,9 +70,9 @@ public class AppointmentBOImpl implements AppointmentBo {
 
     @Override
     public ArrayList<AppointmentFormDto> searchAppointment(String search) throws SQLException {
-        ArrayList<AppointmentFormDto> appointments = appointmentDAO.search(search);
+        ArrayList<Appointment> appointments = appointmentDAO.search(search);
         ArrayList<AppointmentFormDto> appointment = new ArrayList<>();
-        for (AppointmentFormDto appointmentDto : appointments) {
+        for (Appointment appointmentDto : appointments) {
             AppointmentFormDto dto = new AppointmentFormDto();
             dto.setAge(appointmentDto.getAge());
             dto.setStatus(appointmentDto.getStatus());
@@ -86,8 +87,8 @@ public class AppointmentBOImpl implements AppointmentBo {
 
     @Override
     public AppointmentFormDto findByAppointmentId(String id) throws SQLException {
-        ArrayList<AppointmentFormDto> appointments = appointmentDAO.search(id);
-        for (AppointmentFormDto appointment : appointments) {
+        ArrayList<Appointment> appointments = appointmentDAO.search(id);
+        for (Appointment appointment : appointments) {
             AppointmentFormDto dto = new AppointmentFormDto();
             dto.setAge(appointment.getAge());
             dto.setStatus(appointment.getStatus());
