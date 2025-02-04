@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class SignupFormDto {
+public class Signup {
     String username;
     String password;
     String address;

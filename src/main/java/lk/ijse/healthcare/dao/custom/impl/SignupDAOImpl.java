@@ -5,6 +5,7 @@ import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.SignupFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
+import lk.ijse.healthcare.entity.Signup;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public ResultSet btnLogin(SignupFormDto login) throws Exception {
+    public ResultSet btnLogin(Signup login) throws Exception {
         return null;
     }
 
@@ -42,7 +43,7 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean save(SignupFormDto save) throws SQLException {
+    public boolean save(Signup save) throws SQLException {
         return false;
     }
 
@@ -52,7 +53,7 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean changePwd(SignupFormDto user, String newPwd) throws SQLException {
+    public boolean changePwd(Signup user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -62,22 +63,22 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<SignupFormDto> saveOrder) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<Signup> saveOrder) throws SQLException {
         return false;
     }
 
     @Override
-    public ArrayList<SignupFormDto> getAll() throws SQLException {
+    public ArrayList<Signup> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public ArrayList<SignupFormDto> search(String search) throws SQLException {
+    public ArrayList<Signup> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public SignupFormDto findById(String id) throws SQLException {
+    public Signup findById(String id) throws SQLException {
         return null;
     }
 
@@ -97,7 +98,7 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean update(SignupFormDto update) throws SQLException {
+    public boolean update(Signup update) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
 
         try {
