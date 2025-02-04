@@ -19,7 +19,7 @@ public class PatientsDAOImpl implements PatientsDAO {
 
         ArrayList<PatientsFormDto> patients = new ArrayList<>();
         while (rst.next()) {
-            PatientsFormDto patientsDto = new PatientsFormDto(
+            PatientsFormDto dto = new PatientsFormDto(
                     rst.getString("Name"),
                     rst.getString("Address"),
                     rst.getString("ContactNumber"),
@@ -28,17 +28,17 @@ public class PatientsDAOImpl implements PatientsDAO {
                     rst.getString("Gender"),
                     rst.getDate("RegistrationDate")
             );
-            patients.add(patientsDto);
+            patients.add(dto);
         }
         return patients;
     }
 
     @Override
-    public ArrayList<PatientsFormDto> search(String name) throws SQLException {
-        ResultSet rst = SQLUtil.execute("select * from patient where Name like ?", name+"%");
+    public ArrayList<PatientsFormDto> search(String search) throws SQLException {
+        ResultSet rst = SQLUtil.execute("select * from patient where Name like ?", search+"%");
         ArrayList<PatientsFormDto> patient = new ArrayList<>();
         while (rst.next()) {
-            PatientsFormDto newPatients = new PatientsFormDto(
+            PatientsFormDto dto = new PatientsFormDto(
                     rst.getString("Name"),
                     rst.getString("Address"),
                     rst.getString("ContactNumber"),
@@ -47,14 +47,14 @@ public class PatientsDAOImpl implements PatientsDAO {
                     rst.getString("Gender"),
                     rst.getDate("RegistrationDate")
             );
-            patient.add(newPatients);
+            patient.add(dto);
         }
         return patient;
     }
 
     @Override
-    public PatientsFormDto findById(String selectedContact) throws SQLException {
-        ResultSet rst = SQLUtil.execute("SELECT * FROM patient WHERE PatientId = ?", selectedContact);
+    public PatientsFormDto findById(String id) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT * FROM patient WHERE PatientId = ?", id);
 
         if (rst.next()) {
             return new PatientsFormDto(
@@ -73,39 +73,39 @@ public class PatientsDAOImpl implements PatientsDAO {
     @Override
     public ArrayList<String> getAllS() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT PatientId FROM patient");
-        ArrayList<String> patientMobile = new ArrayList<>();
+        ArrayList<String> patient = new ArrayList<>();
         while (rst.next()) {
-            patientMobile.add(rst.getString("PatientId"));
+            patient.add(rst.getString("PatientId"));
         }
-        return patientMobile;
+        return patient;
     }
 
     @Override
-    public boolean delete(String patientName) throws SQLException {
-        return SQLUtil.execute("DELETE FROM patient WHERE Name = ?", patientName);
+    public boolean delete(String delete) throws SQLException {
+        return SQLUtil.execute("DELETE FROM patient WHERE Name = ?", delete);
     }
 
     @Override
-    public boolean update(PatientsFormDto patientsTM) throws SQLException {
+    public boolean update(PatientsFormDto update) throws SQLException {
         return SQLUtil.execute(
                 "UPDATE patient SET Address = ?, ContactNumber = ?, Email = ?, DOB = ?, Gender = ?, RegistrationDate = ? WHERE Name = ?",
-                patientsTM.getPatientsAddress(),
-                patientsTM.getPatientsContactNumber(),
-                patientsTM.getPatientsEmail(),
-                patientsTM.getPatientsDob(),
-                patientsTM.getPatientsGender(),
-                patientsTM.getPatientsRegDate(),
-                patientsTM.getPatientsName()
+                update.getPatientsAddress(),
+                update.getPatientsContactNumber(),
+                update.getPatientsEmail(),
+                update.getPatientsDob(),
+                update.getPatientsGender(),
+                update.getPatientsRegDate(),
+                update.getPatientsName()
                 );
     }
 
     @Override
-    public int getIdBy(String name) throws SQLException {
+    public int getIdBy(String id) throws SQLException {
         return 0;
     }
 
     @Override
-    public boolean save(PatientsFormDto patientDTO) throws SQLException {
+    public boolean save(PatientsFormDto save) throws SQLException {
         return false;
     }
 
@@ -115,7 +115,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean changePwd(PatientsFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(PatientsFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -125,7 +125,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<PatientsFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<PatientsFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -140,7 +140,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public ResultSet btnLogin(PatientsFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(PatientsFormDto login) throws Exception {
         return null;
     }
 }

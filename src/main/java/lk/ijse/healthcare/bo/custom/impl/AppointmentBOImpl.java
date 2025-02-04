@@ -19,27 +19,27 @@ public class AppointmentBOImpl implements AppointmentBo {
         ArrayList<AppointmentFormDto> appointments = appointmentDAO.getAll();
         ArrayList<AppointmentFormDto> appointment = new ArrayList<>();
         for (AppointmentFormDto appointmentDto : appointments) {
-            AppointmentFormDto newAppointment = new AppointmentFormDto();
-            newAppointment.setAge(appointmentDto.getAge());
-            newAppointment.setStatus(appointmentDto.getStatus());
-            newAppointment.setDescription(appointmentDto.getDescription());
-            newAppointment.setDate(appointmentDto.getDate());
-            newAppointment.setDoctorId(appointmentDto.getDoctorId());
-            newAppointment.setUserId(appointmentDto.getUserId());
-            appointment.add(newAppointment);
+            AppointmentFormDto dto = new AppointmentFormDto();
+            dto.setAge(appointmentDto.getAge());
+            dto.setStatus(appointmentDto.getStatus());
+            dto.setDescription(appointmentDto.getDescription());
+            dto.setDate(appointmentDto.getDate());
+            dto.setDoctorId(appointmentDto.getDoctorId());
+            dto.setUserId(appointmentDto.getUserId());
+            appointment.add(dto);
         }
         return appointment;
     }
 
     @Override
-    public boolean updateAppointment(AppointmentFormDto dto) throws SQLException {
+    public boolean updateAppointment(AppointmentFormDto update) throws SQLException {
         AppointmentFormDto appointment = new AppointmentFormDto(
-                dto.getAge(),
-                dto.getStatus(),
-                dto.getDescription(),
-                dto.getDate(),
-                dto.getDoctorId(),
-                dto.getUserId()
+                update.getAge(),
+                update.getStatus(),
+                update.getDescription(),
+                update.getDate(),
+                update.getDoctorId(),
+                update.getUserId()
         );
         return appointmentDAO.update(appointment);
     }
@@ -50,52 +50,52 @@ public class AppointmentBOImpl implements AppointmentBo {
     }
 
     @Override
-    public boolean saveAppointment(AppointmentFormDto dto) throws SQLException {
+    public boolean saveAppointment(AppointmentFormDto save) throws SQLException {
         AppointmentFormDto appointment = new AppointmentFormDto(
-                dto.getAge(),
-                dto.getStatus(),
-                dto.getDescription(),
-                dto.getDate(),
-                dto.getDoctorId(),
-                dto.getUserId()
+                save.getAge(),
+                save.getStatus(),
+                save.getDescription(),
+                save.getDate(),
+                save.getDoctorId(),
+                save.getUserId()
         );
         return appointmentDAO.save(appointment);
     }
 
     @Override
-    public boolean deleteAppointment(String age) throws SQLException {
-        return appointmentDAO.delete(age);
+    public boolean deleteAppointment(String delete) throws SQLException {
+        return appointmentDAO.delete(delete);
     }
 
     @Override
-    public ArrayList<AppointmentFormDto> searchAppointment(String age) throws SQLException {
-        ArrayList<AppointmentFormDto> appointments = appointmentDAO.search(age);
+    public ArrayList<AppointmentFormDto> searchAppointment(String search) throws SQLException {
+        ArrayList<AppointmentFormDto> appointments = appointmentDAO.search(search);
         ArrayList<AppointmentFormDto> appointment = new ArrayList<>();
         for (AppointmentFormDto appointmentDto : appointments) {
-            AppointmentFormDto newAppointment = new AppointmentFormDto();
-            newAppointment.setAge(appointmentDto.getAge());
-            newAppointment.setStatus(appointmentDto.getStatus());
-            newAppointment.setDescription(appointmentDto.getDescription());
-            newAppointment.setDate(appointmentDto.getDate());
-            newAppointment.setDoctorId(appointmentDto.getDoctorId());
-            newAppointment.setUserId(appointmentDto.getUserId());
-            appointment.add(newAppointment);
+            AppointmentFormDto dto = new AppointmentFormDto();
+            dto.setAge(appointmentDto.getAge());
+            dto.setStatus(appointmentDto.getStatus());
+            dto.setDescription(appointmentDto.getDescription());
+            dto.setDate(appointmentDto.getDate());
+            dto.setDoctorId(appointmentDto.getDoctorId());
+            dto.setUserId(appointmentDto.getUserId());
+            appointment.add(dto);
         }
         return appointment;
     }
 
     @Override
-    public AppointmentFormDto findByAppointmentId(String selectName) throws SQLException {
-        ArrayList<AppointmentFormDto> appointments = appointmentDAO.search(selectName);
-        for (AppointmentFormDto appointmentDto : appointments) {
-            AppointmentFormDto newAppointment = new AppointmentFormDto();
-            newAppointment.setAge(appointmentDto.getAge());
-            newAppointment.setStatus(appointmentDto.getStatus());
-            newAppointment.setDescription(appointmentDto.getDescription());
-            newAppointment.setDate(appointmentDto.getDate());
-            newAppointment.setDoctorId(appointmentDto.getDoctorId());
-            newAppointment.setUserId(appointmentDto.getUserId());
-            return newAppointment;
+    public AppointmentFormDto findByAppointmentId(String id) throws SQLException {
+        ArrayList<AppointmentFormDto> appointments = appointmentDAO.search(id);
+        for (AppointmentFormDto appointment : appointments) {
+            AppointmentFormDto dto = new AppointmentFormDto();
+            dto.setAge(appointment.getAge());
+            dto.setStatus(appointment.getStatus());
+            dto.setDescription(appointment.getDescription());
+            dto.setDate(appointment.getDate());
+            dto.setDoctorId(appointment.getDoctorId());
+            dto.setUserId(appointment.getUserId());
+            return dto;
         }
         return null;
     }
@@ -104,8 +104,8 @@ public class AppointmentBOImpl implements AppointmentBo {
     public ArrayList<String> getAllSAppointment() throws SQLException {
         ArrayList<String> appointments = appointmentDAO.getAllS();
         ArrayList<String> appointment = new ArrayList<>();
-        for (String appointmentTM : appointments) {
-            appointment.add(appointmentTM);
+        for (String dto : appointments) {
+            appointment.add(dto);
         }
         return appointment;
     }

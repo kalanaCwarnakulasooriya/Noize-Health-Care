@@ -28,13 +28,13 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public ResultSet btnLogin(SignupFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(SignupFormDto login) throws Exception {
         return null;
     }
 
     @Override
-    public int getIdBy(String description) throws SQLException {
-        ResultSet rst = SQLUtil.execute("SELECT RoleId FROM role WHERE Description = ?", description);
+    public int getIdBy(String id) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT RoleId FROM role WHERE Description = ?", id);
         if (rst.next()) {
             return rst.getInt("RoleId");
         }
@@ -42,7 +42,7 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean save(SignupFormDto dto) throws SQLException {
+    public boolean save(SignupFormDto save) throws SQLException {
         return false;
     }
 
@@ -52,7 +52,7 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean changePwd(SignupFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(SignupFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -62,7 +62,7 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<SignupFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<SignupFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -72,12 +72,12 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public ArrayList<SignupFormDto> search(String name) throws SQLException {
+    public ArrayList<SignupFormDto> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public SignupFormDto findById(String name) throws SQLException {
+    public SignupFormDto findById(String id) throws SQLException {
         return null;
     }
 
@@ -97,18 +97,18 @@ public class SignupDAOImpl implements SignupDAO {
     }
 
     @Override
-    public boolean update(SignupFormDto signupFormDto) throws SQLException {
+    public boolean update(SignupFormDto update) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
 
         try {
             connection.setAutoCommit(false);
-            if (SQLUtil.execute("INSERT INTO `user` (`Username`, `Password`) VALUES (?, ?)", signupFormDto.getUsername(), signupFormDto.getPassword())) {
+            if (SQLUtil.execute("INSERT INTO `user` (`Username`, `Password`) VALUES (?, ?)", update.getUsername(), update.getPassword())) {
                 System.out.println("Data added to user table successfully.");
                 ResultSet rst = SQLUtil.execute("SELECT LAST_INSERT_ID() AS `UserId`");
                 if (rst != null && rst.next()) {
                     int userId = rst.getInt("UserId");
                     System.out.println("Retrieved last UserId: " + userId);
-                    if (SQLUtil.execute("INSERT INTO `employee` (`ContactNumber`,`Email`, `Address`,`Name`, `Role`, `UserId`) VALUES (?, ?, ?, ?, ?, ?)", signupFormDto.getName(), signupFormDto.getEmail(), signupFormDto.getContactNumber(), signupFormDto.getAddress(), signupFormDto.getRole(), userId)) {
+                    if (SQLUtil.execute("INSERT INTO `employee` (`ContactNumber`,`Email`, `Address`,`Name`, `Role`, `UserId`) VALUES (?, ?, ?, ?, ?, ?)", update.getName(), update.getEmail(), update.getContactNumber(), update.getAddress(), update.getRole(), userId)) {
                         System.out.println("Data added to employee table successfully.");
                         connection.commit();
                         return true;

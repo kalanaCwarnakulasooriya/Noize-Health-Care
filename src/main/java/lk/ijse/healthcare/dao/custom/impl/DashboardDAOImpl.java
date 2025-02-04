@@ -15,12 +15,12 @@ public class DashboardDAOImpl implements DashboardDAO {
     }
 
     @Override
-    public ArrayList<String> search(String name) throws SQLException {
+    public ArrayList<String> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public String findById(String name) throws SQLException {
+    public String findById(String id) throws SQLException {
         return "";
     }
 
@@ -35,17 +35,17 @@ public class DashboardDAOImpl implements DashboardDAO {
     }
 
     @Override
-    public boolean update(String dto) throws SQLException {
+    public boolean update(String update) throws SQLException {
         return false;
     }
 
     @Override
-    public int getIdBy(String name) throws SQLException {
+    public int getIdBy(String id) throws SQLException {
         return 0;
     }
 
     @Override
-    public boolean save(String dto) throws SQLException {
+    public boolean save(String save) throws SQLException {
         return false;
     }
 
@@ -64,7 +64,7 @@ public class DashboardDAOImpl implements DashboardDAO {
     }
 
     @Override
-    public boolean changePwd(String user, String newPassword) throws SQLException {
+    public boolean changePwd(String user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -74,7 +74,7 @@ public class DashboardDAOImpl implements DashboardDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<String> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<String> saveOrder) throws SQLException {
         return false;
     }
 
@@ -89,7 +89,7 @@ public class DashboardDAOImpl implements DashboardDAO {
     }
 
     @Override
-    public ResultSet btnLogin(String loginFormDto) throws Exception {
+    public ResultSet btnLogin(String login) throws Exception {
         return null;
     }
 }

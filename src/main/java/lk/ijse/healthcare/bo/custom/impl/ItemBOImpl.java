@@ -26,59 +26,60 @@ public class ItemBOImpl implements ItemBO {
     }
 
     @Override
-    public ItemFormDto findByItemId(String name) throws SQLException {
-        return itemDAO.findById(name);
+    public ItemFormDto findByItemId(String id) throws SQLException {
+        return itemDAO.findById(id);
     }
 
-    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException {
-        return itemDAO.reduceQty(orderDetailsFormDto);
+    @Override
+    public boolean reduceQty(OrderDetailsFormDto reduce) throws SQLException {
+        return itemDAO.reduceQty(reduce);
     }
     @Override
     public ArrayList<ItemFormDto> getAllItem() throws SQLException {
         ArrayList<ItemFormDto> stock = itemDAO.getAll();
         ArrayList<ItemFormDto> items = new ArrayList<>();
         for (ItemFormDto item : stock) {
-            ItemFormDto item1 = new ItemFormDto();
-            item1.setItemId(item.getItemId());
-            item1.setName(item.getName());
-            item1.setDescription(item.getDescription());
-            item1.setExpireDate(item.getExpireDate());
-            item1.setPackSize(item.getPackSize());
-            item1.setUnitPrice(item.getUnitPrice());
-            item1.setStockQty(item.getStockQty());
-            items.add(item1);
+            ItemFormDto dto = new ItemFormDto();
+            dto.setItemId(item.getItemId());
+            dto.setName(item.getName());
+            dto.setDescription(item.getDescription());
+            dto.setExpireDate(item.getExpireDate());
+            dto.setPackSize(item.getPackSize());
+            dto.setUnitPrice(item.getUnitPrice());
+            dto.setStockQty(item.getStockQty());
+            items.add(dto);
         }
         return items;
     }
 
     @Override
-    public boolean updateItem(ItemFormDto item) throws SQLException {
-        ItemFormDto items = new ItemFormDto(item.getItemId(),item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getStockQty());
+    public boolean updateItem(ItemFormDto update) throws SQLException {
+        ItemFormDto items = new ItemFormDto(update.getItemId(),update.getName(), update.getDescription(), update.getExpireDate(), update.getPackSize(), update.getUnitPrice(), update.getStockQty());
         return itemDAO.update(items);
     }
 
     @Override
-    public boolean saveItem(ItemFormDto item) throws SQLException {
-        ItemFormDto items = new ItemFormDto(item.getItemId(),item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getStockQty());
+    public boolean saveItem(ItemFormDto save) throws SQLException {
+        ItemFormDto items = new ItemFormDto(save.getItemId(),save.getName(), save.getDescription(), save.getExpireDate(), save.getPackSize(), save.getUnitPrice(), save.getStockQty());
         return itemDAO.save(items);
     }
 
     @Override
-    public int getIdByItem(String name) throws SQLException {
-        return itemDAO.getIdBy(name);
+    public int getIdByItem(String id) throws SQLException {
+        return itemDAO.getIdBy(id);
     }
 
     @Override
-    public boolean deleteItem(String name) throws SQLException {
-        return itemDAO.delete(name);
+    public boolean deleteItem(String delete) throws SQLException {
+        return itemDAO.delete(delete);
     }
 
     @Override
-    public ArrayList<ItemFormDto> searchItem(String name) throws SQLException {
-        ArrayList<ItemFormDto> items = itemDAO.search(name);
-        ArrayList<ItemFormDto> itemTMS = new ArrayList<>();
+    public ArrayList<ItemFormDto> searchItem(String search) throws SQLException {
+        ArrayList<ItemFormDto> items = itemDAO.search(search);
+        ArrayList<ItemFormDto> itemDto = new ArrayList<>();
         for (ItemFormDto item : items) {
-            ItemFormDto item1 = new ItemFormDto(
+            ItemFormDto dto = new ItemFormDto(
                     item.getItemId(),
                     item.getName(),
                     item.getDescription(),
@@ -87,8 +88,8 @@ public class ItemBOImpl implements ItemBO {
                     item.getUnitPrice(),
                     item.getStockQty()
             );
-            itemTMS.add(item1);
+            itemDto.add(dto);
         }
-        return itemTMS;
+        return itemDto;
     }
 }

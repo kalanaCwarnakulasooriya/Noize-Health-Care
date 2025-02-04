@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public interface DoctorBO extends SuperBO {
     public ArrayList<String> getAllSDoctor() throws SQLException;
     public ArrayList<DoctorFormDto> getAllDoctor() throws SQLException;
-    public ArrayList<DoctorFormDto> searchDoctor(String name) throws SQLException;
-    public DoctorFormDto findByDoctorId(String name) throws SQLException;
-    public boolean deleteDoctor(String name) throws SQLException;
+    public ArrayList<DoctorFormDto> searchDoctor(String search) throws SQLException;
+    public DoctorFormDto findByDoctorId(String id) throws SQLException;
+    public boolean deleteDoctor(String delete) throws SQLException;
     public int getIdByDescription(String description) throws SQLException;
-    public boolean updateDoctor(DoctorFormDto doctor) throws SQLException;
-    public boolean saveDoctor(DoctorFormDto doctor) throws SQLException;
+    public boolean updateDoctor(DoctorFormDto update) throws SQLException;
+    public boolean saveDoctor(DoctorFormDto save) throws SQLException;
 }

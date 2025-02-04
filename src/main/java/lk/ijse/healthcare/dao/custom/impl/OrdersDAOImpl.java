@@ -21,12 +21,12 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public ArrayList<OrdersFormDto> search(String name) throws SQLException {
+    public ArrayList<OrdersFormDto> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public OrdersFormDto findById(String name) throws SQLException {
+    public OrdersFormDto findById(String id) throws SQLException {
         return null;
     }
 
@@ -41,12 +41,12 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public boolean update(OrdersFormDto dto) throws SQLException {
+    public boolean update(OrdersFormDto update) throws SQLException {
         return false;
     }
 
     @Override
-    public int getIdBy(String name) throws SQLException {
+    public int getIdBy(String id) throws SQLException {
         return 0;
     }
 
@@ -56,7 +56,7 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public boolean changePwd(OrdersFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(OrdersFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -66,7 +66,7 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<OrdersFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<OrdersFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -88,25 +88,25 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public ResultSet btnLogin(OrdersFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(OrdersFormDto login) throws Exception {
         return null;
     }
 
     @Override
-    public boolean save(OrdersFormDto orderDTO) throws SQLException {
+    public boolean save(OrdersFormDto save) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         try {
             connection.setAutoCommit(false);
 
             boolean isOrderSaved = SQLUtil.execute(
                     "insert into orders values (?,?,?)",
-                    orderDTO.getOrderId(),
-                    orderDTO.getOrderDate(),
-                    orderDTO.getPatientId()
+                    save.getOrderId(),
+                    save.getOrderDate(),
+                    save.getPatientId()
             );
 
             if (isOrderSaved) {
-                boolean isOrderDetailListSaved = orderDetailsDAOImpl.saveOrderDetails(orderDTO.getOrderDetailsFormDtos());
+                boolean isOrderDetailListSaved = orderDetailsDAOImpl.saveOrderDetails(save.getOrderDetailsFormDtos());
                 if (isOrderDetailListSaved) {
                     connection.commit();
                     return true;

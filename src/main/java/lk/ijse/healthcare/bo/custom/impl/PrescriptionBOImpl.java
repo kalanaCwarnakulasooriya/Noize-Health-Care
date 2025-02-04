@@ -17,9 +17,9 @@ public class PrescriptionBOImpl implements PrescriptionBO {
     @Override
     public ArrayList<PrescriptionFormDto> getAllPrescription() throws SQLException {
         ArrayList<PrescriptionFormDto> prescriptions = prescriptionDAO.getAll();
-        ArrayList<PrescriptionFormDto> prescriptionTMS = new ArrayList<>();
+        ArrayList<PrescriptionFormDto> prescriptionDto = new ArrayList<>();
         for (PrescriptionFormDto prescription : prescriptions) {
-            PrescriptionFormDto prescriptionTM = new PrescriptionFormDto(
+            PrescriptionFormDto dto = new PrescriptionFormDto(
                     prescription.getId(),
                     prescription.getDate(),
                     prescription.getMediDetails(),
@@ -27,18 +27,18 @@ public class PrescriptionBOImpl implements PrescriptionBO {
                     prescription.getUserId(),
                     prescription.getDoctorId()
             );
-            prescriptionTMS.add(prescriptionTM);
+            prescriptionDto.add(dto);
         }
-        return prescriptionTMS;
+        return prescriptionDto;
     }
 
     @Override
-    public ArrayList<PrescriptionFormDto> searchPrescription(String name) throws SQLException {
+    public ArrayList<PrescriptionFormDto> searchPrescription(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public PrescriptionFormDto findById(String selectedContact) throws SQLException {
+    public PrescriptionFormDto findById(String id) throws SQLException {
         return null;
     }
 
@@ -48,34 +48,34 @@ public class PrescriptionBOImpl implements PrescriptionBO {
     }
 
     @Override
-    public boolean savePrescription(PrescriptionFormDto dto) throws SQLException {
+    public boolean savePrescription(PrescriptionFormDto save) throws SQLException {
         PrescriptionFormDto prescription = new PrescriptionFormDto(
-                dto.getId(),
-                dto.getMediDetails(),
-                dto.getDosage(),
-                dto.getDate(),
-                dto.getUserId(),
-                dto.getDoctorId()
+                save.getId(),
+                save.getMediDetails(),
+                save.getDosage(),
+                save.getDate(),
+                save.getUserId(),
+                save.getDoctorId()
         );
         return prescriptionDAO.save(prescription);
     }
 
     @Override
-    public boolean updatePrescription(PrescriptionFormDto prescriptionTM) throws SQLException {
+    public boolean updatePrescription(PrescriptionFormDto update) throws SQLException {
         PrescriptionFormDto prescription = new PrescriptionFormDto(
-                prescriptionTM.getId(),
-                prescriptionTM.getMediDetails(),
-                prescriptionTM.getDosage(),
-                prescriptionTM.getDate(),
-                prescriptionTM.getUserId(),
-                prescriptionTM.getDoctorId()
+                update.getId(),
+                update.getMediDetails(),
+                update.getDosage(),
+                update.getDate(),
+                update.getUserId(),
+                update.getDoctorId()
         );
         return prescriptionDAO.update(prescription);
     }
 
     @Override
-    public boolean deletePrescription(String id) throws SQLException {
-        return prescriptionDAO.delete(id);
+    public boolean deletePrescription(String delete) throws SQLException {
+        return prescriptionDAO.delete(delete);
     }
 
     @Override

@@ -16,12 +16,12 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public ArrayList<LoginFormDto> search(String name) throws SQLException {
+    public ArrayList<LoginFormDto> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public LoginFormDto findById(String name) throws SQLException {
+    public LoginFormDto findById(String id) throws SQLException {
         return null;
     }
 
@@ -36,17 +36,17 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public boolean update(LoginFormDto dto) throws SQLException {
+    public boolean update(LoginFormDto update) throws SQLException {
         return false;
     }
 
     @Override
-    public int getIdBy(String name) throws SQLException {
+    public int getIdBy(String id) throws SQLException {
         return 0;
     }
 
     @Override
-    public boolean save(LoginFormDto dto) throws SQLException {
+    public boolean save(LoginFormDto save) throws SQLException {
         return false;
     }
 
@@ -56,7 +56,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public boolean changePwd(LoginFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(LoginFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -66,7 +66,7 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<LoginFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<LoginFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -81,11 +81,11 @@ public class QueryDAOImpl implements QueryDAO {
     }
 
     @Override
-    public ResultSet btnLogin(LoginFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(LoginFormDto login) throws Exception {
         ResultSet rst = SQLUtil.execute("SELECT e.Name, e.Email, e.ContactNumber, e.Address, e.Role, u.Password " +
                 "FROM user u " +
                 "JOIN employee e ON u.UserId = e.UserId " +
-                "WHERE u.Username = ?", loginFormDto.getUsername()
+                "WHERE u.Username = ?", login.getUsername()
         );
         if (rst.next()) {
             return rst;

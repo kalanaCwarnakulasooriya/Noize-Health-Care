@@ -23,20 +23,20 @@ public class OrdersBOImpl implements OrdersBO {
     }
 
     @Override
-    public boolean saveOrder(OrdersFormDto save) throws SQLException {
+    public boolean saveOrder(OrdersFormDto orderDTO) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         try {
             connection.setAutoCommit(false);
 
             boolean isOrderSaved = SQLUtil.execute(
                     "insert into orders values (?,?,?)",
-                    save.getOrderId(),
-                    save.getOrderDate(),
-                    save.getPatientId()
+                    orderDTO.getOrderId(),
+                    orderDTO.getOrderDate(),
+                    orderDTO.getPatientId()
             );
 
             if (isOrderSaved) {
-                boolean isOrderDetailListSaved = orderDetailsDAOImpl.saveOrderDetails(save.getOrderDetailsFormDtos());
+                boolean isOrderDetailListSaved = orderDetailsDAOImpl.saveOrderDetails(orderDTO.getOrderDetailsFormDtos());
                 if (isOrderDetailListSaved) {
                     connection.commit();
                     return true;

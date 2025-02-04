@@ -17,28 +17,28 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public ArrayList<AddPatientFormDto> search(String name) throws SQLException {
+    public ArrayList<AddPatientFormDto> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public AddPatientFormDto findById(String selectedContact) throws SQLException {
+    public AddPatientFormDto findById(String id) throws SQLException {
         return null;
     }
 
     @Override
-    public boolean delete(String patientName) throws SQLException {
+    public boolean delete(String delete) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean update(AddPatientFormDto patientsTM) throws SQLException {
+    public boolean update(AddPatientFormDto update) throws SQLException {
         return false;
     }
 
     @Override
-    public int getIdBy(String description) throws SQLException {
-        ResultSet rst = SQLUtil.execute("SELECT GenderId FROM Gender WHERE Description = ?", description);
+    public int getIdBy(String id) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT GenderId FROM Gender WHERE Description = ?", id);
             if (rst.next()) {
                 return rst.getInt("GenderId");
             }
@@ -57,19 +57,19 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public boolean save(AddPatientFormDto patientDTO) throws SQLException {
+    public boolean save(AddPatientFormDto save) throws SQLException {
         return SQLUtil.execute(
                 "INSERT INTO patient VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                patientDTO.getId(),
-                patientDTO.getName(),
-                patientDTO.getEmail(),
-                patientDTO.getContactNumber(),
-                patientDTO.getAddress(),
-                patientDTO.getDob(),
-                patientDTO.getGenderId(),
-                patientDTO.getRegDate(),
-                patientDTO.getUserId(),
-                patientDTO.getPrescriptionId()
+                save.getId(),
+                save.getName(),
+                save.getEmail(),
+                save.getContactNumber(),
+                save.getAddress(),
+                save.getDob(),
+                save.getGenderId(),
+                save.getRegDate(),
+                save.getUserId(),
+                save.getPrescriptionId()
         );
     }
 
@@ -79,7 +79,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public boolean changePwd(AddPatientFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(AddPatientFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -89,7 +89,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<AddPatientFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<AddPatientFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -104,7 +104,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public ResultSet btnLogin(AddPatientFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(AddPatientFormDto login) throws Exception {
         return null;
     }
 

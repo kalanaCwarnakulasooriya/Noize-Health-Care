@@ -7,5 +7,5 @@ import java.sql.SQLException;
 
 public interface OrdersBO extends SuperBO {
     public String getNewOrderId() throws SQLException;
-    public boolean saveOrder(OrdersFormDto orderDTO) throws SQLException;
+    public boolean saveOrder(OrdersFormDto save) throws SQLException;
 }

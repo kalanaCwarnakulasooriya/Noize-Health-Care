@@ -25,7 +25,7 @@ public class AddPatientsBOImpl implements AddPatientsBO {
     }
 
     @Override
-    public boolean savePatient(AddPatientFormDto patientDTO) throws SQLException {
-        return addPatientsDAO.save(patientDTO);
+    public boolean savePatient(AddPatientFormDto save) throws SQLException {
+        return addPatientsDAO.save(save);
     }
 }

@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 public interface ItemBO extends SuperBO {
     public ArrayList<String> getAllSItem() throws SQLException;
-    public ItemFormDto findByItemId(String name) throws SQLException;
+    public ItemFormDto findByItemId(String id) throws SQLException;
     public ArrayList<ItemFormDto> getAllItem() throws SQLException;
-    public boolean updateItem(ItemFormDto item) throws SQLException;
-    public boolean saveItem(ItemFormDto item) throws SQLException;
-    public int getIdByItem(String name) throws SQLException;
-    public boolean deleteItem(String name) throws SQLException;
-    public ArrayList<ItemFormDto> searchItem(String name) throws SQLException;
-    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException;
+    public boolean updateItem(ItemFormDto update) throws SQLException;
+    public boolean saveItem(ItemFormDto save) throws SQLException;
+    public int getIdByItem(String id) throws SQLException;
+    public boolean deleteItem(String delete) throws SQLException;
+    public ArrayList<ItemFormDto> searchItem(String search) throws SQLException;
+    public boolean reduceQty(OrderDetailsFormDto order) throws SQLException;
 
 }

@@ -16,7 +16,7 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
         ResultSet rst = SQLUtil.execute("SELECT * FROM prescription");
         ArrayList<PrescriptionFormDto> prescription = new ArrayList<>();
         while (rst.next()) {
-            PrescriptionFormDto prescriptionTM = new PrescriptionFormDto(
+            PrescriptionFormDto dto = new PrescriptionFormDto(
                     rst.getInt("PrescriptionId"),
                     rst.getString("Dosage"),
                     rst.getString("PrescriptionDate"),
@@ -24,18 +24,18 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
                     rst.getInt("UserId"),
                     rst.getString("DoctorId")
             );
-            prescription.add(prescriptionTM);
+            prescription.add(dto);
         }
         return prescription;
     }
 
     @Override
-    public ArrayList<PrescriptionFormDto> search(String name) throws SQLException {
+    public ArrayList<PrescriptionFormDto> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public PrescriptionFormDto findById(String selectedContact) throws SQLException {
+    public PrescriptionFormDto findById(String id) throws SQLException {
         return null;
     }
 
@@ -45,14 +45,14 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public boolean save(PrescriptionFormDto prescription) throws SQLException {
+    public boolean save(PrescriptionFormDto save) throws SQLException {
         return SQLUtil.execute(
                 "INSERT INTO prescription(MedicineDetails,Dosage,PrescriptionDate,UserId,DoctorId) VALUES (?,?,?,?,?)",
-                prescription.getMediDetails(),
-                prescription.getDosage(),
-                prescription.getDate(),
-                prescription.getUserId(),
-                prescription.getDoctorId()
+                save.getMediDetails(),
+                save.getDosage(),
+                save.getDate(),
+                save.getUserId(),
+                save.getDoctorId()
         );
     }
 
@@ -62,7 +62,7 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public boolean changePwd(PrescriptionFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(PrescriptionFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -72,7 +72,7 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<PrescriptionFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<PrescriptionFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -87,27 +87,27 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public ResultSet btnLogin(PrescriptionFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(PrescriptionFormDto login) throws Exception {
         return null;
     }
 
     @Override
-    public boolean update(PrescriptionFormDto prescriptionTM) throws SQLException {
+    public boolean update(PrescriptionFormDto update) throws SQLException {
         return SQLUtil.execute("UPDATE prescription SET MedicineDetails = ?, Dosage = ?, WHERE PrescriptionDate = ?",
-                prescriptionTM.getMediDetails(),
-                prescriptionTM.getDosage(),
-                prescriptionTM.getDate()
+                update.getMediDetails(),
+                update.getDosage(),
+                update.getDate()
         );
     }
 
     @Override
-    public int getIdBy(String name) throws SQLException {
+    public int getIdBy(String id) throws SQLException {
         return 0;
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
-        return SQLUtil.execute("DELETE FROM prescription WHERE PrescriptionDate = ?", id);
+    public boolean delete(String delete) throws SQLException {
+        return SQLUtil.execute("DELETE FROM prescription WHERE PrescriptionDate = ?", delete);
     }
 
 }

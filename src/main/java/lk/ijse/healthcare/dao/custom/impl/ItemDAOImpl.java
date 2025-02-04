@@ -23,8 +23,8 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ItemFormDto findById(String name) throws SQLException {
-        ResultSet rst = SQLUtil.execute("SELECT * FROM item WHERE Name = ?", name);
+    public ItemFormDto findById(String id) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT * FROM item WHERE Name = ?", id);
         if (rst.next()) {
             return new ItemFormDto(
                     rst.getInt("ItemId"),
@@ -40,8 +40,8 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean reduceQty(OrderDetailsFormDto orderDetailsFormDto) throws SQLException {
-        return SQLUtil.execute("UPDATE item SET StockQuantity = StockQuantity - ? WHERE ItemId = ?", orderDetailsFormDto.getQuantity(), orderDetailsFormDto.getItemId());
+    public boolean reduceQty(OrderDetailsFormDto reduce) throws SQLException {
+        return SQLUtil.execute("UPDATE item SET StockQuantity = StockQuantity - ? WHERE ItemId = ?", reduce.getQuantity(), reduce.getItemId());
     }
 
     @Override
@@ -64,21 +64,27 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean update(ItemFormDto item) throws SQLException {
+    public boolean update(ItemFormDto update) throws SQLException {
         return SQLUtil.execute(
                 "UPDATE item SET Description = ?,ExpireDate = ?, PackSize = ?, UnitPrice = ?, StockQuantity = ? WHERE Name = ?",
-                item.getDescription(),
-                item.getExpireDate(),
-                item.getPackSize(),
-                item.getUnitPrice(),
-                item.getStockQty(),
-                item.getName()
+                update.getDescription(),
+                update.getExpireDate(),
+                update.getPackSize(),
+                update.getUnitPrice(),
+                update.getStockQty(),
+                update.getName()
         );
     }
 
     @Override
-    public boolean save(ItemFormDto item) throws SQLException {
-        return SQLUtil.execute("INSERT INTO item(Name,Description,ExpireDate,PackSize,UnitPrice,StockQuantity) VALUES (?,?,?,?,?,?)", item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getStockQty());
+    public boolean save(ItemFormDto save) throws SQLException {
+        return SQLUtil.execute("INSERT INTO item(Name,Description,ExpireDate,PackSize,UnitPrice,StockQuantity) VALUES (?,?,?,?,?,?)", save.getName(),
+                save.getDescription(),
+                save.getExpireDate(),
+                save.getPackSize(),
+                save.getUnitPrice(),
+                save.getStockQty()
+        );
     }
 
     @Override
@@ -87,7 +93,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean changePwd(ItemFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(ItemFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -97,7 +103,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<ItemFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<ItemFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -112,13 +118,13 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ResultSet btnLogin(ItemFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(ItemFormDto login) throws Exception {
         return null;
     }
 
     @Override
-    public int getIdBy(String name) throws SQLException {
-        ResultSet rst = SQLUtil.execute("SELECT StockQuantity FROM item WHERE Name = ?", name);
+    public int getIdBy(String id) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT StockQuantity FROM item WHERE Name = ?", id);
         if (rst.next()) {
             return rst.getInt("StockQuantity");
         }
@@ -126,13 +132,13 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean delete(String name) throws SQLException {
-        return SQLUtil.execute("DELETE FROM item WHERE Name = ?", name);
+    public boolean delete(String delete) throws SQLException {
+        return SQLUtil.execute("DELETE FROM item WHERE Name = ?", delete);
     }
 
     @Override
-    public ArrayList<ItemFormDto> search(String name) throws SQLException {
-        ResultSet rst = SQLUtil.execute("select * from item where Name like ?", name+"%");
+    public ArrayList<ItemFormDto> search(String search) throws SQLException {
+        ResultSet rst = SQLUtil.execute("select * from item where Name like ?", search+"%");
         ArrayList<ItemFormDto> stock = new ArrayList<>();
         while (rst.next()) {
             ItemFormDto stockItem = new ItemFormDto(

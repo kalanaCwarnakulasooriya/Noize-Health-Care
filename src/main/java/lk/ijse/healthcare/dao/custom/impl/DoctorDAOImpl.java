@@ -22,10 +22,10 @@ public class DoctorDAOImpl implements DoctorDAO {
 
     @Override
     public ArrayList<DoctorFormDto> getAll() throws SQLException {
-        ArrayList<DoctorFormDto> doctorTMS = new ArrayList<>();
+        ArrayList<DoctorFormDto> doctorDto = new ArrayList<>();
         ResultSet rst = SQLUtil.execute("select * from doctor");
         while (rst.next()){
-            DoctorFormDto newDoctors = new DoctorFormDto(
+            DoctorFormDto doctor = new DoctorFormDto(
                     rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
@@ -33,17 +33,17 @@ public class DoctorDAOImpl implements DoctorDAO {
                     rst.getString("Address"),
                     rst.getInt("UserId")
             );
-            doctorTMS.add(newDoctors);
+            doctorDto.add(doctor);
         }
-        return doctorTMS;
+        return doctorDto;
     }
 
     @Override
-    public ArrayList<DoctorFormDto> search(String name) throws SQLException {
-        ResultSet rst = SQLUtil.execute("select * from doctor where Name like ?", name+"%");
-        ArrayList<DoctorFormDto> doctorTMS = new ArrayList<>();
+    public ArrayList<DoctorFormDto> search(String search) throws SQLException {
+        ResultSet rst = SQLUtil.execute("select * from doctor where Name like ?", search+"%");
+        ArrayList<DoctorFormDto> doctorDto = new ArrayList<>();
         while (rst.next()) {
-            DoctorFormDto newDoctors = new DoctorFormDto(
+            DoctorFormDto doctor = new DoctorFormDto(
                     rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
@@ -51,14 +51,14 @@ public class DoctorDAOImpl implements DoctorDAO {
                     rst.getString("Address"),
                     rst.getInt("UserId")
             );
-            doctorTMS.add(newDoctors);
+            doctorDto.add(doctor);
         }
-        return doctorTMS;
+        return doctorDto;
     }
 
     @Override
-    public DoctorFormDto findById(String selectedName) throws SQLException {
-        ResultSet rst = SQLUtil.execute("SELECT * FROM doctor WHERE DoctorId = ?", selectedName);
+    public DoctorFormDto findById(String id) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT * FROM doctor WHERE DoctorId = ?", id);
         if (rst.next()) {
             return new DoctorFormDto(
                     rst.getInt("DoctorId"),
@@ -73,34 +73,34 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean delete(String name) throws SQLException {
-        return SQLUtil.execute("DELETE FROM doctor WHERE Name = ?", name);
+    public boolean delete(String delete) throws SQLException {
+        return SQLUtil.execute("DELETE FROM doctor WHERE Name = ?", delete);
     }
 
     @Override
-    public int getIdBy(String description) throws SQLException {
+    public int getIdBy(String id) throws SQLException {
         return 0;
     }
 
     @Override
-    public boolean update(DoctorFormDto doctorFormDto) throws SQLException {
+    public boolean update(DoctorFormDto update) throws SQLException {
         return SQLUtil.execute("UPDATE doctor SET Email = ?, ContactNumber = ?, Address = ? WHERE Name = ?",
-                doctorFormDto.getEmail(),
-                doctorFormDto.getContactNumber(),
-                doctorFormDto.getAddress(),
-                doctorFormDto.getName()
+                update.getEmail(),
+                update.getContactNumber(),
+                update.getAddress(),
+                update.getName()
         );
     }
 
     @Override
-    public boolean save(DoctorFormDto doctorFormDto) throws SQLException {
+    public boolean save(DoctorFormDto save) throws SQLException {
         return SQLUtil.execute("INSERT INTO doctor VALUES (?,?,?,?,?,?)",
-                doctorFormDto.getId(),
-                doctorFormDto.getName(),
-                doctorFormDto.getEmail(),
-                doctorFormDto.getContactNumber(),
-                doctorFormDto.getAddress(),
-                doctorFormDto.getUserId()
+                save.getId(),
+                save.getName(),
+                save.getEmail(),
+                save.getContactNumber(),
+                save.getAddress(),
+                save.getUserId()
         );
     }
 
@@ -110,7 +110,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean changePwd(DoctorFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(DoctorFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -120,7 +120,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<DoctorFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<DoctorFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -135,7 +135,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public ResultSet btnLogin(DoctorFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(DoctorFormDto login) throws Exception {
         return null;
     }
 }

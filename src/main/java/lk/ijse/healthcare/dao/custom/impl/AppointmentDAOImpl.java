@@ -16,7 +16,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         ResultSet rst = SQLUtil.execute("SELECT * FROM appointment");
         ArrayList<AppointmentFormDto> appointments = new ArrayList<>();
         while (rst.next()) {
-                AppointmentFormDto appointment = new AppointmentFormDto(
+                AppointmentFormDto dto = new AppointmentFormDto(
                         rst.getString("Age"),
                         rst.getString("Status"),
                         rst.getString("Description"),
@@ -24,34 +24,34 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                         rst.getString("DoctorId"),
                         rst.getInt("UserId")
                 );
-                appointments.add(appointment);
+                appointments.add(dto);
         }
         return appointments;
     }
 
     @Override
-    public boolean update(AppointmentFormDto appointment) throws SQLException {
+    public boolean update(AppointmentFormDto update) throws SQLException {
         return SQLUtil.execute("UPDATE appointment SET Status = ?, Description = ?, Date = ? WHERE Age = ?",
-                appointment.getStatus(),
-                appointment.getDescription(),
-                appointment.getDate(),
-                appointment.getAge()
+                update.getStatus(),
+                update.getDescription(),
+                update.getDate(),
+                update.getAge()
                 );
     }
 
     @Override
-    public int getIdBy(String name) throws SQLException {
+    public int getIdBy(String id) throws SQLException {
         return 0;
     }
 
     @Override
-    public boolean save(AppointmentFormDto appointment) throws SQLException {
+    public boolean save(AppointmentFormDto save) throws SQLException {
             return SQLUtil.execute("INSERT INTO appointment(Age,Status,Description,Date,DoctorId,UserId) VALUES (?,?,?,?,?,?)",
-                    appointment.getAge(),
-                    appointment.getStatus(),
-                    appointment.getDescription(),
-                    appointment.getDate(),
-                    appointment.getDoctorId(),
+                    save.getAge(),
+                    save.getStatus(),
+                    save.getDescription(),
+                    save.getDate(),
+                    save.getDoctorId(),
                     1
             );
     }
@@ -62,7 +62,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public boolean changePwd(AppointmentFormDto user, String newPassword) throws SQLException {
+    public boolean changePwd(AppointmentFormDto user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -72,7 +72,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<AppointmentFormDto> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<AppointmentFormDto> saveOrder) throws SQLException {
         return false;
     }
 
@@ -87,21 +87,21 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public ResultSet btnLogin(AppointmentFormDto loginFormDto) throws Exception {
+    public ResultSet btnLogin(AppointmentFormDto login) throws Exception {
         return null;
     }
 
     @Override
-    public boolean delete(String age) throws SQLException {
-        return SQLUtil.execute("DELETE FROM appointment WHERE Age = ?", age);
+    public boolean delete(String delete) throws SQLException {
+        return SQLUtil.execute("DELETE FROM appointment WHERE Age = ?", delete);
     }
 
     @Override
-    public ArrayList<AppointmentFormDto> search(String age) throws SQLException {
-        ResultSet rst = SQLUtil.execute("select * from appointment where Age like ?;", age + "%");
+    public ArrayList<AppointmentFormDto> search(String search) throws SQLException {
+        ResultSet rst = SQLUtil.execute("select * from appointment where Age like ?;", search + "%");
         ArrayList<AppointmentFormDto> appointments = new ArrayList<>();
         while (rst.next()) {
-            AppointmentFormDto newAppointments = new AppointmentFormDto(
+            AppointmentFormDto dto = new AppointmentFormDto(
                     rst.getString("Age"),
                     rst.getString("Status"),
                     rst.getString("Description"),
@@ -109,14 +109,14 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     rst.getString("DoctorId"),
                     rst.getInt("UserId")
             );
-            appointments.add(newAppointments);
+            appointments.add(dto);
         }
         return appointments;
     }
 
     @Override
-    public AppointmentFormDto findById(String selectName) throws SQLException {
-        ResultSet rst = SQLUtil.execute("SELECT * FROM appointment WHERE AppointmentId = ?", selectName);
+    public AppointmentFormDto findById(String id) throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT * FROM appointment WHERE AppointmentId = ?", id);
 
         if (rst.next()) {
             return new AppointmentFormDto(

@@ -30,26 +30,26 @@ public class SignupBOImpl implements SignupBO {
     @Override
     public ArrayList<String> getAllSRoles() throws SQLException {
         ArrayList<String> roles = new ArrayList<>();
-        ArrayList<String> roles1 = signupDAO.getAllS();
-        for (String role : roles1) {
+        ArrayList<String> string = signupDAO.getAllS();
+        for (String role : string) {
             roles.add(role);
         }
         return roles;
     }
 
     @Override
-    public boolean signupUser(SignupFormDto signupFormDto) throws SQLException {
+    public boolean signupUser(SignupFormDto signup) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
 
         try {
             connection.setAutoCommit(false);
-            if (SQLUtil.execute("INSERT INTO `user` (`Username`, `Password`) VALUES (?, ?)", signupFormDto.getUsername(), signupFormDto.getPassword())) {
+            if (SQLUtil.execute("INSERT INTO `user` (`Username`, `Password`) VALUES (?, ?)", signup.getUsername(), signup.getPassword())) {
                 System.out.println("Data added to user table successfully.");
                 ResultSet rst = SQLUtil.execute("SELECT LAST_INSERT_ID() AS `UserId`");
                 if (rst != null && rst.next()) {
                     int userId = rst.getInt("UserId");
                     System.out.println("Retrieved last UserId: " + userId);
-                    if (SQLUtil.execute("INSERT INTO `employee` (`ContactNumber`,`Email`, `Address`,`Name`, `Role`, `UserId`) VALUES (?, ?, ?, ?, ?, ?)", signupFormDto.getName(), signupFormDto.getEmail(), signupFormDto.getContactNumber(), signupFormDto.getAddress(), signupFormDto.getRole(), userId)) {
+                    if (SQLUtil.execute("INSERT INTO `employee` (`ContactNumber`,`Email`, `Address`,`Name`, `Role`, `UserId`) VALUES (?, ?, ?, ?, ?, ?)", signup.getName(), signup.getEmail(), signup.getContactNumber(), signup.getAddress(), signup.getRole(), userId)) {
                         System.out.println("Data added to employee table successfully.");
                         connection.commit();
                         return true;

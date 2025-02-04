@@ -13,15 +13,17 @@ import java.util.ArrayList;
 
 public class ForgetPasswordBOImpl implements ForgetPasswordBO {
     ForgetPasswordDAO forgetPwd = (ForgetPasswordDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PASSWORD);
-    public boolean isChangedUserPassword(ForgetPasswordFormDto forgetPasswordFormDto, String newPassword) throws SQLException {
-        return forgetPwd.changePwd(forgetPasswordFormDto, newPassword);
+    @Override
+    public boolean isChangedUserPassword(ForgetPasswordFormDto forget, String newPwd) throws SQLException {
+        return forgetPwd.changePwd(forget, newPwd);
     }
 
+    @Override
     public ForgetPasswordFormDto getUserData(String username) throws SQLException {
-        ArrayList<ForgetPasswordFormDto> forgetPasswordFormDtos = forgetPwd.getAll();
-        for (ForgetPasswordFormDto forgetPasswordFormDto : forgetPasswordFormDtos) {
-            if (forgetPasswordFormDto.getUsername().equals(username)) {
-                return forgetPasswordFormDto;
+        ArrayList<ForgetPasswordFormDto> dtos = forgetPwd.getAll();
+        for (ForgetPasswordFormDto dto : dtos) {
+            if (dto.getUsername().equals(username)) {
+                return dto;
             }
         }
         return null;

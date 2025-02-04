@@ -15,42 +15,42 @@ public class PatientsBOImpl implements PatientsBO {
     @Override
     public ArrayList<PatientsFormDto> getAllPatients() throws SQLException {
         ArrayList<PatientsFormDto> patients = patientsDAO.getAll();
-        ArrayList<PatientsFormDto> patientsTMS = new ArrayList<>();
+        ArrayList<PatientsFormDto> patientsDto = new ArrayList<>();
         for (PatientsFormDto patient : patients) {
-            PatientsFormDto patientsTM = new PatientsFormDto();
-            patientsTM.setPatientsName(patient.getPatientsName());
-            patientsTM.setPatientsAddress(patient.getPatientsAddress());
-            patientsTM.setPatientsContactNumber(patient.getPatientsContactNumber());
-            patientsTM.setPatientsEmail(patient.getPatientsEmail());
-            patientsTM.setPatientsDob(patient.getPatientsDob());
-            patientsTM.setPatientsGender(patient.getPatientsGender());
-            patientsTM.setPatientsRegDate(patient.getPatientsRegDate());
-            patientsTMS.add(patientsTM);
+            PatientsFormDto dto = new PatientsFormDto();
+            dto.setPatientsName(patient.getPatientsName());
+            dto.setPatientsAddress(patient.getPatientsAddress());
+            dto.setPatientsContactNumber(patient.getPatientsContactNumber());
+            dto.setPatientsEmail(patient.getPatientsEmail());
+            dto.setPatientsDob(patient.getPatientsDob());
+            dto.setPatientsGender(patient.getPatientsGender());
+            dto.setPatientsRegDate(patient.getPatientsRegDate());
+            patientsDto.add(dto);
         }
         return patients;
     }
 
     @Override
-    public ArrayList<PatientsFormDto> searchPatients(String name) throws SQLException {
-        ArrayList<PatientsFormDto> patients = patientsDAO.search(name);
-        ArrayList<PatientsFormDto> patientsTMS = new ArrayList<>();
+    public ArrayList<PatientsFormDto> searchPatients(String search) throws SQLException {
+        ArrayList<PatientsFormDto> patients = patientsDAO.search(search);
+        ArrayList<PatientsFormDto> patientsDto = new ArrayList<>();
         for (PatientsFormDto patient : patients) {
-            PatientsFormDto patientsTM = new PatientsFormDto();
-            patientsTM.setPatientsName(patient.getPatientsName());
-            patientsTM.setPatientsAddress(patient.getPatientsAddress());
-            patientsTM.setPatientsContactNumber(patient.getPatientsContactNumber());
-            patientsTM.setPatientsEmail(patient.getPatientsEmail());
-            patientsTM.setPatientsDob(patient.getPatientsDob());
-            patientsTM.setPatientsGender(patient.getPatientsGender());
-            patientsTM.setPatientsRegDate(patient.getPatientsRegDate());
-            patientsTMS.add(patientsTM);
+            PatientsFormDto dto = new PatientsFormDto();
+            dto.setPatientsName(patient.getPatientsName());
+            dto.setPatientsAddress(patient.getPatientsAddress());
+            dto.setPatientsContactNumber(patient.getPatientsContactNumber());
+            dto.setPatientsEmail(patient.getPatientsEmail());
+            dto.setPatientsDob(patient.getPatientsDob());
+            dto.setPatientsGender(patient.getPatientsGender());
+            dto.setPatientsRegDate(patient.getPatientsRegDate());
+            patientsDto.add(dto);
         }
         return patients;
     }
 
     @Override
-    public PatientsFormDto findPatientsById(String selectedContact) throws SQLException {
-        return patientsDAO.findById(selectedContact);
+    public PatientsFormDto findPatientsById(String id) throws SQLException {
+        return patientsDAO.findById(id);
     }
 
     @Override
@@ -59,12 +59,12 @@ public class PatientsBOImpl implements PatientsBO {
     }
 
     @Override
-    public boolean deletePatient(String patientName) throws SQLException {
-        return patientsDAO.delete(patientName);
+    public boolean deletePatient(String delete) throws SQLException {
+        return patientsDAO.delete(delete);
     }
 
     @Override
-    public boolean updatePatient(PatientsFormDto patients) throws SQLException {
-        return patientsDAO.update(patients);
+    public boolean updatePatient(PatientsFormDto update) throws SQLException {
+        return patientsDAO.update(update);
     }
 }
