@@ -1,6 +1,7 @@
 package lk.ijse.healthcare.dao.custom.impl;
 
 import lk.ijse.healthcare.dao.custom.ItemDAO;
+import lk.ijse.healthcare.dto.ItemFormDto;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
 import lk.ijse.healthcare.dao.SQLUtil;
@@ -22,10 +23,11 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ItemTM findById(String name) throws SQLException {
+    public ItemFormDto findById(String name) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM item WHERE Name = ?", name);
         if (rst.next()) {
-            return new ItemTM(
+            return new ItemFormDto(
+                    rst.getInt("ItemId"),
                     rst.getString("Name"),
                     rst.getString("Description"),
                     String.valueOf(rst.getDate("ExpireDate")),
@@ -43,11 +45,12 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ArrayList<ItemTM> getAll() throws SQLException {
-        ArrayList<ItemTM> stock = new ArrayList<>();
+    public ArrayList<ItemFormDto> getAll() throws SQLException {
+        ArrayList<ItemFormDto> stock = new ArrayList<>();
         ResultSet rst = SQLUtil.execute("SELECT * FROM item");
         while (rst.next()){
-            ItemTM item = new ItemTM();
+            ItemFormDto item = new ItemFormDto();
+            item.setItemId(rst.getInt("ItemId"));
             item.setName(rst.getString("Name"));
             item.setDescription(rst.getString("Description"));
             item.setExpireDate(String.valueOf(rst.getDate("ExpireDate")));
@@ -61,7 +64,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean update(ItemTM item) throws SQLException {
+    public boolean update(ItemFormDto item) throws SQLException {
         return SQLUtil.execute(
                 "UPDATE item SET Description = ?,ExpireDate = ?, PackSize = ?, UnitPrice = ?, StockQuantity = ? WHERE Name = ?",
                 item.getDescription(),
@@ -74,7 +77,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean save(ItemTM item) throws SQLException {
+    public boolean save(ItemFormDto item) throws SQLException {
         return SQLUtil.execute("INSERT INTO item(Name,Description,ExpireDate,PackSize,UnitPrice,StockQuantity) VALUES (?,?,?,?,?,?)", item.getName(), item.getDescription(), item.getExpireDate(), item.getPackSize(), item.getUnitPrice(), item.getStockQty());
     }
 
@@ -84,7 +87,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean changePwd(ItemTM user, String newPassword) throws SQLException {
+    public boolean changePwd(ItemFormDto user, String newPassword) throws SQLException {
         return false;
     }
 
@@ -94,7 +97,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<ItemTM> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<ItemFormDto> orderDetailsDto) throws SQLException {
         return false;
     }
 
@@ -109,7 +112,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ResultSet btnLogin(ItemTM loginFormDto) throws Exception {
+    public ResultSet btnLogin(ItemFormDto loginFormDto) throws Exception {
         return null;
     }
 
@@ -128,11 +131,12 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ArrayList<ItemTM> search(String name) throws SQLException {
+    public ArrayList<ItemFormDto> search(String name) throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from item where Name like ?", name+"%");
-        ArrayList<ItemTM> stock = new ArrayList<>();
+        ArrayList<ItemFormDto> stock = new ArrayList<>();
         while (rst.next()) {
-            ItemTM stockItem = new ItemTM(
+            ItemFormDto stockItem = new ItemFormDto(
+                    rst.getInt("ItemId"),
                     rst.getString("Name"),
                     rst.getString("Description"),
                     rst.getString("ExpireDate"),

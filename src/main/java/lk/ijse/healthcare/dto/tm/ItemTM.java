@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 
 public class ItemTM  {
+    private int itemId;
     private String name;
     private String description;
     private String expireDate;

@@ -16,6 +16,6 @@ public class ItemFormDto {
     private String description;
     private String expireDate;
     private String packSize;
-    private double price;
-    private int qty;
+    private double unitPrice;
+    private int stockQty;
 }

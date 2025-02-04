@@ -83,7 +83,7 @@ public class ItemFormController implements Initializable {
     private TableColumn<ItemTM, Integer> stockQtyCol;
 
     @FXML
-    private TableView<ItemTM> tblItem;
+    private TableView<ItemFormDto> tblItem;
 
     @FXML
     private JFXTextField txtDesc;
@@ -121,7 +121,7 @@ public class ItemFormController implements Initializable {
     @FXML
     void btnDeleteItemOnAction(ActionEvent event) throws SQLException {
         if (tblItem != null) {
-            ItemTM selectedItem = tblItem.getSelectionModel().getSelectedItem();
+            ItemFormDto selectedItem = tblItem.getSelectionModel().getSelectedItem();
             if (selectedItem == null) {
                 new AlertNotification(
                         "Error Message",
@@ -225,7 +225,7 @@ public class ItemFormController implements Initializable {
         int qty = Integer.parseInt(txtQty.getText());
         double price = Double.parseDouble(txtUPrice.getText());
 
-        if (itemBO.saveItem(new ItemTM(name, description, String.valueOf(expire), packSize, price, qty))) {
+        if (itemBO.saveItem(new ItemFormDto(0,name, description, String.valueOf(expire), packSize, price, qty))) {
             getStockQty();
             new AlertNotification(
                     "Success Message",
@@ -257,7 +257,8 @@ public class ItemFormController implements Initializable {
         int qty = Integer.parseInt(txtQty.getText());
         double price = Double.parseDouble(txtUPrice.getText());
 
-            ItemTM itemTM = new ItemTM(
+            ItemFormDto itemTM = new ItemFormDto(
+                    0,
                     name,
                     description,
                     String.valueOf(expire),
@@ -303,7 +304,7 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void onClickTable(MouseEvent event) {
-        ItemTM selectItem = tblItem.getSelectionModel().getSelectedItem();
+        ItemFormDto selectItem = tblItem.getSelectionModel().getSelectedItem();
         if (selectItem != null) {
             txtMediName.setText(selectItem.getName());
             txtQty.setText(String.valueOf(selectItem.getStockQty()));
@@ -375,8 +376,8 @@ public class ItemFormController implements Initializable {
     @FXML
     void refreshTable() throws SQLException {
         tblItem.getItems().clear();
-        ArrayList<ItemTM> allItems = itemBO.getAllItem();
-        ObservableList<ItemTM> itemsList = FXCollections.observableArrayList(allItems);
+        ArrayList<ItemFormDto> allItems = itemBO.getAllItem();
+        ObservableList<ItemFormDto> itemsList = FXCollections.observableArrayList(allItems);
         tblItem.setItems(itemsList);
     }
 
@@ -398,7 +399,7 @@ public class ItemFormController implements Initializable {
     }
 
     public void getStockQty() throws SQLException {
-        ArrayList<ItemTM> itemsDtos = itemBO.getAllItem();
+        ArrayList<ItemFormDto> itemsDtos = itemBO.getAllItem();
         tblItem.getItems().clear();
         tblItem.getItems().addAll(itemsDtos);
     }
@@ -426,9 +427,9 @@ public class ItemFormController implements Initializable {
     }
 
     public void searchStock(KeyEvent keyEvent) throws SQLException {
-        ArrayList<ItemTM> items = itemBO.searchItem(lblSearch.getText());
-        ObservableList<ItemTM> itemTMS = FXCollections.observableArrayList();
-        for (ItemTM item : items) {
+        ArrayList<ItemFormDto> items = itemBO.searchItem(lblSearch.getText());
+        ObservableList<ItemFormDto> itemTMS = FXCollections.observableArrayList();
+        for (ItemFormDto item : items) {
             itemTMS.add(item);
         }
         tblItem.setItems(itemTMS);
