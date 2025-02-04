@@ -4,6 +4,7 @@ import lk.ijse.healthcare.dao.custom.AddPatientsDAO;
 import lk.ijse.healthcare.dto.AddPatientFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
+import lk.ijse.healthcare.entity.AddPatient;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,17 +13,17 @@ import java.util.HashMap;
 
 public class AddPatientsDAOImpl implements AddPatientsDAO {
     @Override
-    public ArrayList<AddPatientFormDto> getAll() throws SQLException {
+    public ArrayList<AddPatient> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public ArrayList<AddPatientFormDto> search(String search) throws SQLException {
+    public ArrayList<AddPatient> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public AddPatientFormDto findById(String id) throws SQLException {
+    public AddPatient findById(String id) throws SQLException {
         return null;
     }
 
@@ -32,7 +33,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public boolean update(AddPatientFormDto update) throws SQLException {
+    public boolean update(AddPatient update) throws SQLException {
         return false;
     }
 
@@ -57,7 +58,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public boolean save(AddPatientFormDto save) throws SQLException {
+    public boolean save(AddPatient save) throws SQLException {
         return SQLUtil.execute(
                 "INSERT INTO patient VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 save.getId(),
@@ -79,7 +80,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public boolean changePwd(AddPatientFormDto user, String newPwd) throws SQLException {
+    public boolean changePwd(AddPatient user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -89,7 +90,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<AddPatientFormDto> saveOrder) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<AddPatient> saveOrder) throws SQLException {
         return false;
     }
 
@@ -104,7 +105,7 @@ public class AddPatientsDAOImpl implements AddPatientsDAO {
     }
 
     @Override
-    public ResultSet btnLogin(AddPatientFormDto login) throws Exception {
+    public ResultSet btnLogin(AddPatient login) throws Exception {
         return null;
     }
 

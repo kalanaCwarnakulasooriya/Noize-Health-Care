@@ -6,6 +6,7 @@ import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.AddPatientsDAO;
 import lk.ijse.healthcare.dao.custom.impl.AddPatientsDAOImpl;
 import lk.ijse.healthcare.dto.AddPatientFormDto;
+import lk.ijse.healthcare.entity.AddPatient;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +27,17 @@ public class AddPatientsBOImpl implements AddPatientsBO {
 
     @Override
     public boolean savePatient(AddPatientFormDto save) throws SQLException {
-        return addPatientsDAO.save(save);
+        AddPatient addPatient = new AddPatient(save.getId(),
+                save.getName(),
+                save.getAddress(),
+                save.getContactNumber(),
+                save.getEmail(),
+                save.getDob(),
+                save.getRegDate(),
+                save.getGenderId(),
+                save.getUserId(),
+                save.getPrescriptionId()
+                );
+        return addPatientsDAO.save(addPatient);
     }
 }
