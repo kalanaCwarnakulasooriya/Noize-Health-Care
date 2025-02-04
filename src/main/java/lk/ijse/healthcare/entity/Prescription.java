@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 
-public class PrescriptionFormDto {
+public class Prescription {
     private int id;
     private String mediDetails;
     private String dosage;

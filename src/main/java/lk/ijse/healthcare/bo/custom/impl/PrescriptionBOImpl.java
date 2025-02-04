@@ -7,6 +7,7 @@ import lk.ijse.healthcare.dao.custom.PrescriptionDAO;
 import lk.ijse.healthcare.dao.custom.impl.PrescriptionDAOImpl;
 import lk.ijse.healthcare.dto.PrescriptionFormDto;
 import lk.ijse.healthcare.dto.tm.PrescriptionTM;
+import lk.ijse.healthcare.entity.Prescription;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,9 +17,9 @@ public class PrescriptionBOImpl implements PrescriptionBO {
     PrescriptionDAO prescriptionDAO = (PrescriptionDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.PRESCRIPTION);
     @Override
     public ArrayList<PrescriptionFormDto> getAllPrescription() throws SQLException {
-        ArrayList<PrescriptionFormDto> prescriptions = prescriptionDAO.getAll();
+        ArrayList<Prescription> prescriptions = prescriptionDAO.getAll();
         ArrayList<PrescriptionFormDto> prescriptionDto = new ArrayList<>();
-        for (PrescriptionFormDto prescription : prescriptions) {
+        for (Prescription prescription : prescriptions) {
             PrescriptionFormDto dto = new PrescriptionFormDto(
                     prescription.getId(),
                     prescription.getDate(),
@@ -49,7 +50,7 @@ public class PrescriptionBOImpl implements PrescriptionBO {
 
     @Override
     public boolean savePrescription(PrescriptionFormDto save) throws SQLException {
-        PrescriptionFormDto prescription = new PrescriptionFormDto(
+        Prescription prescription = new Prescription(
                 save.getId(),
                 save.getMediDetails(),
                 save.getDosage(),
@@ -62,7 +63,7 @@ public class PrescriptionBOImpl implements PrescriptionBO {
 
     @Override
     public boolean updatePrescription(PrescriptionFormDto update) throws SQLException {
-        PrescriptionFormDto prescription = new PrescriptionFormDto(
+        Prescription prescription = new Prescription(
                 update.getId(),
                 update.getMediDetails(),
                 update.getDosage(),
