@@ -4,6 +4,7 @@ import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.dao.custom.ForgetPasswordDAO;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.ForgetPasswordFormDto;
+import lk.ijse.healthcare.entity.ForgetPassword;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +15,7 @@ import java.util.HashMap;
 
 public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
     @Override
-    public boolean changePwd(ForgetPasswordFormDto pwd, String newPwd) throws SQLException {
+    public boolean changePwd(ForgetPassword pwd, String newPwd) throws SQLException {
         return SQLUtil.execute("UPDATE user SET Password = ? WHERE Username = ?", newPwd, pwd.getUsername());
     }
 
@@ -24,7 +25,7 @@ public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<ForgetPasswordFormDto> saveOrder) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<ForgetPassword> saveOrder) throws SQLException {
         return false;
     }
 
@@ -39,12 +40,12 @@ public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
     }
 
     @Override
-    public ResultSet btnLogin(ForgetPasswordFormDto login) throws Exception {
+    public ResultSet btnLogin(ForgetPassword login) throws Exception {
         return null;
     }
 
     @Override
-    public ForgetPasswordFormDto findById(String id) throws SQLException {
+    public ForgetPassword findById(String id) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM user WHERE Username = ?", id);
 
         if (rst.next()) {
@@ -52,7 +53,7 @@ public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
             ResultSet forgetRst = SQLUtil.execute("SELECT * FROM employee WHERE UserId = ?", userId);
 
             if (forgetRst.next()) {
-                ForgetPasswordFormDto dto = new ForgetPasswordFormDto();
+                ForgetPassword dto = new ForgetPassword();
                 dto.setId(forgetRst.getString("UserId"));
                 dto.setPhone(forgetRst.getString("ContactNumber"));
                 dto.setEmail(forgetRst.getString("Email"));
@@ -68,12 +69,20 @@ public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
     }
 
     @Override
-    public ArrayList<ForgetPasswordFormDto> getAll() throws SQLException {
-        return null;
+    public ArrayList<ForgetPassword> getAll() throws SQLException {
+        ResultSet rst = SQLUtil.execute("SELECT * FROM user");
+        ArrayList<ForgetPassword> forgetPassword = new ArrayList<>();
+        while (rst.next()) {
+            ForgetPassword dto = new ForgetPassword();
+            dto.setUsername(rst.getString("Username"));
+            dto.setPassword(rst.getString("Password"));
+            forgetPassword.add(dto);
+        }
+        return forgetPassword;
     }
 
     @Override
-    public ArrayList<ForgetPasswordFormDto> search(String search) throws SQLException {
+    public ArrayList<ForgetPassword> search(String search) throws SQLException {
         return null;
     }
 
@@ -88,7 +97,7 @@ public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
     }
 
     @Override
-    public boolean update(ForgetPasswordFormDto update) throws SQLException {
+    public boolean update(ForgetPassword update) throws SQLException {
         return false;
     }
 
@@ -98,7 +107,7 @@ public class ForgetPasswordDAOImpl implements ForgetPasswordDAO{
     }
 
     @Override
-    public boolean save(ForgetPasswordFormDto save) throws SQLException {
+    public boolean save(ForgetPassword save) throws SQLException {
         return false;
     }
 

@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 
-public class ForgetPasswordFormDto {
+public class ForgetPassword {
     private String id;
     private String username;
     private String password;
