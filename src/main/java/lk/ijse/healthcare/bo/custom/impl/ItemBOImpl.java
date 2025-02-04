@@ -8,6 +8,7 @@ import lk.ijse.healthcare.dao.custom.impl.ItemDAOImpl;
 import lk.ijse.healthcare.dto.ItemFormDto;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
+import lk.ijse.healthcare.entity.Item;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +28,19 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public ItemFormDto findByItemId(String id) throws SQLException {
-        return itemDAO.findById(id);
+        ArrayList<Item> items = itemDAO.search(id);
+        for (Item item : items) {
+            ItemFormDto dto = new ItemFormDto();
+            dto.setItemId(item.getItemId());
+            dto.setName(item.getName());
+            dto.setDescription(item.getDescription());
+            dto.setExpireDate(item.getExpireDate());
+            dto.setPackSize(item.getPackSize());
+            dto.setUnitPrice(item.getUnitPrice());
+            dto.setStockQty(item.getStockQty());
+            return dto;
+        }
+        return null;
     }
 
     @Override
@@ -36,9 +49,9 @@ public class ItemBOImpl implements ItemBO {
     }
     @Override
     public ArrayList<ItemFormDto> getAllItem() throws SQLException {
-        ArrayList<ItemFormDto> stock = itemDAO.getAll();
+        ArrayList<Item> stock = itemDAO.getAll();
         ArrayList<ItemFormDto> items = new ArrayList<>();
-        for (ItemFormDto item : stock) {
+        for (Item item : stock) {
             ItemFormDto dto = new ItemFormDto();
             dto.setItemId(item.getItemId());
             dto.setName(item.getName());
@@ -54,13 +67,13 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public boolean updateItem(ItemFormDto update) throws SQLException {
-        ItemFormDto items = new ItemFormDto(update.getItemId(),update.getName(), update.getDescription(), update.getExpireDate(), update.getPackSize(), update.getUnitPrice(), update.getStockQty());
+        Item items = new Item(update.getItemId(),update.getName(), update.getDescription(), update.getExpireDate(), update.getPackSize(), update.getUnitPrice(), update.getStockQty());
         return itemDAO.update(items);
     }
 
     @Override
     public boolean saveItem(ItemFormDto save) throws SQLException {
-        ItemFormDto items = new ItemFormDto(save.getItemId(),save.getName(), save.getDescription(), save.getExpireDate(), save.getPackSize(), save.getUnitPrice(), save.getStockQty());
+        Item items = new Item(save.getItemId(),save.getName(), save.getDescription(), save.getExpireDate(), save.getPackSize(), save.getUnitPrice(), save.getStockQty());
         return itemDAO.save(items);
     }
 
@@ -76,9 +89,9 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public ArrayList<ItemFormDto> searchItem(String search) throws SQLException {
-        ArrayList<ItemFormDto> items = itemDAO.search(search);
+        ArrayList<Item> items = itemDAO.search(search);
         ArrayList<ItemFormDto> itemDto = new ArrayList<>();
-        for (ItemFormDto item : items) {
+        for (Item item : items) {
             ItemFormDto dto = new ItemFormDto(
                     item.getItemId(),
                     item.getName(),

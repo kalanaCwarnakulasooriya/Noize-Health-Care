@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 
-public class ItemFormDto {
+public class Item {
     private int itemId;
     private String name;
     private String description;
