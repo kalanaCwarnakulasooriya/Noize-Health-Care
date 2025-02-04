@@ -25,11 +25,11 @@ public class DoctorBOImpl implements DoctorBO {
     }
 
     @Override
-    public ArrayList<DoctorTM> getAllDoctor() throws SQLException {
-        ArrayList<DoctorTM> doctors = doctorDAO.getAll();
-        ArrayList<DoctorTM> doctorTMS = new ArrayList<>();
-        for (DoctorTM doctorTM : doctors) {
-            DoctorTM newDoctors = new DoctorTM();
+    public ArrayList<DoctorFormDto> getAllDoctor() throws SQLException {
+        ArrayList<DoctorFormDto> doctors = doctorDAO.getAll();
+        ArrayList<DoctorFormDto> doctorTMS = new ArrayList<>();
+        for (DoctorFormDto doctorTM : doctors) {
+            DoctorFormDto newDoctors = new DoctorFormDto();
             newDoctors.setId(doctorTM.getId());
             newDoctors.setName(doctorTM.getName());
             newDoctors.setEmail(doctorTM.getEmail());
@@ -42,11 +42,11 @@ public class DoctorBOImpl implements DoctorBO {
     }
 
     @Override
-    public ArrayList<DoctorTM> searchDoctor(String name) throws SQLException {
-        ArrayList<DoctorTM> doctorTMS = doctorDAO.search(name);
-        ArrayList<DoctorTM> doctors = new ArrayList<>();
-        for (DoctorTM doctorTM : doctorTMS) {
-            DoctorTM newDoctors = new DoctorTM();
+    public ArrayList<DoctorFormDto> searchDoctor(String name) throws SQLException {
+        ArrayList<DoctorFormDto> doctorTMS = doctorDAO.search(name);
+        ArrayList<DoctorFormDto> doctors = new ArrayList<>();
+        for (DoctorFormDto doctorTM : doctorTMS) {
+            DoctorFormDto newDoctors = new DoctorFormDto();
             newDoctors.setId(doctorTM.getId());
             newDoctors.setName(doctorTM.getName());
             newDoctors.setEmail(doctorTM.getEmail());
@@ -59,7 +59,7 @@ public class DoctorBOImpl implements DoctorBO {
     }
 
     @Override
-    public DoctorTM findByDoctorId(String selectedName) throws SQLException {
+    public DoctorFormDto findByDoctorId(String selectedName) throws SQLException {
         return doctorDAO.findById(selectedName);
     }
 
@@ -74,14 +74,14 @@ public class DoctorBOImpl implements DoctorBO {
     }
 
     @Override
-    public boolean updateDoctor(DoctorTM doctorFormDto) throws SQLException {
-        DoctorTM doctor = new DoctorTM(doctorFormDto.getId(), doctorFormDto.getName(), doctorFormDto.getEmail(), doctorFormDto.getContactNumber(), doctorFormDto.getAddress(), doctorFormDto.getUserId());
+    public boolean updateDoctor(DoctorFormDto doctorFormDto) throws SQLException {
+        DoctorFormDto doctor = new DoctorFormDto(doctorFormDto.getId(), doctorFormDto.getName(), doctorFormDto.getEmail(), doctorFormDto.getContactNumber(), doctorFormDto.getAddress(), doctorFormDto.getUserId());
         return doctorDAO.update(doctor);
     }
 
     @Override
-    public boolean saveDoctor(DoctorTM doctorFormDto) throws SQLException {
-        DoctorTM doctor = new DoctorTM(doctorFormDto.getId(), doctorFormDto.getName(), doctorFormDto.getEmail(), doctorFormDto.getContactNumber(), doctorFormDto.getAddress(), doctorFormDto.getUserId());
+    public boolean saveDoctor(DoctorFormDto doctorFormDto) throws SQLException {
+        DoctorFormDto doctor = new DoctorFormDto(doctorFormDto.getId(), doctorFormDto.getName(), doctorFormDto.getEmail(), doctorFormDto.getContactNumber(), doctorFormDto.getAddress(), doctorFormDto.getUserId());
         return doctorDAO.save(doctor);
     }
 }

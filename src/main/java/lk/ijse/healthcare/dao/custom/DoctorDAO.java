@@ -7,6 +7,6 @@ import lk.ijse.healthcare.dto.tm.DoctorTM;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface DoctorDAO extends CrudDAO<DoctorTM> {
+public interface DoctorDAO extends CrudDAO<DoctorFormDto> {
 
 }

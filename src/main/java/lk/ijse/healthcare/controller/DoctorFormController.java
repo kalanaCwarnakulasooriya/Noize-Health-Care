@@ -73,7 +73,7 @@ public class DoctorFormController implements Initializable {
     private TableColumn<DoctorTM, String> namCol;
 
     @FXML
-    private TableView<DoctorTM> tblDoctor;
+    private TableView<DoctorFormDto> tblDoctor;
 
     @FXML
     private JFXTextField txtAddress;
@@ -101,7 +101,7 @@ public class DoctorFormController implements Initializable {
     @FXML
     void btnDeleteItemOnAction(ActionEvent event) throws SQLException {
         if (tblDoctor != null) {
-            DoctorTM selectedDoctor = tblDoctor.getSelectionModel().getSelectedItem();
+            DoctorFormDto selectedDoctor = tblDoctor.getSelectionModel().getSelectedItem();
             if (selectedDoctor == null) {
                 new AlertNotification(
                         "Error Message",
@@ -168,7 +168,7 @@ public class DoctorFormController implements Initializable {
     void btnSaveItemOnAction(ActionEvent event) throws SQLException {
         if (isNameValid && isCoNumValid && isEmailValid && isAddressValid) {
             Boolean isAddedDoctor = doctorBO.saveDoctor(
-                    new DoctorTM(
+                    new DoctorFormDto(
                             0,
                             txtDocName.getText(),
                             txtEmail.getText(),
@@ -212,7 +212,7 @@ public class DoctorFormController implements Initializable {
         String mobile = txtMobile.getText();
         String address = txtAddress.getText();
 
-        DoctorTM doctorTM = new DoctorTM(
+        DoctorFormDto doctorTM = new DoctorFormDto(
                 0,
                 name,
                 email,
@@ -276,9 +276,9 @@ public class DoctorFormController implements Initializable {
 
     @FXML
     void searchPatients(KeyEvent event) throws SQLException {
-        ArrayList<DoctorTM> doctors = doctorBO.searchDoctor(lblSearch.getText());
-        ObservableList<DoctorTM> doctorList = FXCollections.observableArrayList();
-        for (DoctorTM doctor : doctors) {
+        ArrayList<DoctorFormDto> doctors = doctorBO.searchDoctor(lblSearch.getText());
+        ObservableList<DoctorFormDto> doctorList = FXCollections.observableArrayList();
+        for (DoctorFormDto doctor : doctors) {
             doctorList.add(doctor);
         }
         tblDoctor.setItems(doctorList);
@@ -307,19 +307,19 @@ public class DoctorFormController implements Initializable {
 
     private void refreshTable() throws SQLException {
         tblDoctor.getItems().clear();
-        ArrayList<DoctorTM> allDoctors = doctorBO.getAllDoctor();
-        ObservableList<DoctorTM> doctorList = FXCollections.observableArrayList(allDoctors);
+        ArrayList<DoctorFormDto> allDoctors = doctorBO.getAllDoctor();
+        ObservableList<DoctorFormDto> doctorList = FXCollections.observableArrayList(allDoctors);
         tblDoctor.setItems(doctorList);
     }
 
     public void getDoctor() throws SQLException {
-        ArrayList<DoctorTM> doctorDtos = doctorBO.getAllDoctor();
+        ArrayList<DoctorFormDto> doctorDtos = doctorBO.getAllDoctor();
         tblDoctor.getItems().clear();
         tblDoctor.getItems().addAll(doctorDtos);
     }
 
     public void onClickTable(MouseEvent mouseEvent) {
-        DoctorTM selectDoctor = tblDoctor.getSelectionModel().getSelectedItem();
+        DoctorFormDto selectDoctor = tblDoctor.getSelectionModel().getSelectedItem();
         if (selectDoctor != null) {
             txtDocName.setText(selectDoctor.getName());
             txtMobile.setText(selectDoctor.getContactNumber());

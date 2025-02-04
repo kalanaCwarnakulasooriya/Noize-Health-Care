@@ -9,6 +9,7 @@ import lk.ijse.healthcare.bo.custom.impl.AppointmentBOImpl;
 import lk.ijse.healthcare.bo.custom.impl.DoctorBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.AppointmentFormDto;
+import lk.ijse.healthcare.dto.DoctorFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
 import lk.ijse.healthcare.dao.custom.impl.DoctorDAOImpl;
@@ -367,7 +368,7 @@ public class AppointmentFormController implements Initializable {
     public void comboDoctorOnAction(ActionEvent event) throws SQLException {
         comboDoctor.setStyle("-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: green;");
         String selectedDoctor = (String) comboDoctor.getSelectionModel().getSelectedItem();
-        DoctorTM doctorTM = doctorBO.findByDoctorId(selectedDoctor);
+        DoctorFormDto doctorTM = doctorBO.findByDoctorId(selectedDoctor);
 
         if (doctorTM != null) {
             lblName.setText(doctorTM.getName());

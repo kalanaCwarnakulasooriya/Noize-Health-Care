@@ -2,7 +2,6 @@ package lk.ijse.healthcare.dao.custom.impl;
 
 import lk.ijse.healthcare.dao.custom.DoctorDAO;
 import lk.ijse.healthcare.dto.DoctorFormDto;
-import lk.ijse.healthcare.dto.tm.DoctorTM;
 import lk.ijse.healthcare.dao.SQLUtil;
 
 import java.sql.ResultSet;
@@ -22,11 +21,11 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public ArrayList<DoctorTM> getAll() throws SQLException {
-        ArrayList<DoctorTM> doctorTMS = new ArrayList<>();
+    public ArrayList<DoctorFormDto> getAll() throws SQLException {
+        ArrayList<DoctorFormDto> doctorTMS = new ArrayList<>();
         ResultSet rst = SQLUtil.execute("select * from doctor");
         while (rst.next()){
-            DoctorTM newDoctors = new DoctorTM(
+            DoctorFormDto newDoctors = new DoctorFormDto(
                     rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
@@ -40,11 +39,11 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public ArrayList<DoctorTM> search(String name) throws SQLException {
+    public ArrayList<DoctorFormDto> search(String name) throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from doctor where Name like ?", name+"%");
-        ArrayList<DoctorTM> doctorTMS = new ArrayList<>();
+        ArrayList<DoctorFormDto> doctorTMS = new ArrayList<>();
         while (rst.next()) {
-            DoctorTM newDoctors = new DoctorTM(
+            DoctorFormDto newDoctors = new DoctorFormDto(
                     rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
@@ -58,10 +57,10 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public DoctorTM findById(String selectedName) throws SQLException {
+    public DoctorFormDto findById(String selectedName) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM doctor WHERE DoctorId = ?", selectedName);
         if (rst.next()) {
-            return new DoctorTM(
+            return new DoctorFormDto(
                     rst.getInt("DoctorId"),
                     rst.getString("Name"),
                     rst.getString("Email"),
@@ -84,17 +83,17 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean update(DoctorTM doctorFormDto) throws SQLException {
-        return SQLUtil.execute("UPDATE doctor SET Name = ?, Email = ?, ContactNumber = ?, Address = ? WHERE DoctorId = ?",
-                doctorFormDto.getName(),
+    public boolean update(DoctorFormDto doctorFormDto) throws SQLException {
+        return SQLUtil.execute("UPDATE doctor SET Email = ?, ContactNumber = ?, Address = ? WHERE Name = ?",
                 doctorFormDto.getEmail(),
                 doctorFormDto.getContactNumber(),
                 doctorFormDto.getAddress(),
-                doctorFormDto.getId());
+                doctorFormDto.getName()
+        );
     }
 
     @Override
-    public boolean save(DoctorTM doctorFormDto) throws SQLException {
+    public boolean save(DoctorFormDto doctorFormDto) throws SQLException {
         return SQLUtil.execute("INSERT INTO doctor VALUES (?,?,?,?,?,?)",
                 doctorFormDto.getId(),
                 doctorFormDto.getName(),
@@ -111,7 +110,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean changePwd(DoctorTM user, String newPassword) throws SQLException {
+    public boolean changePwd(DoctorFormDto user, String newPassword) throws SQLException {
         return false;
     }
 
@@ -121,7 +120,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<DoctorTM> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<DoctorFormDto> orderDetailsDto) throws SQLException {
         return false;
     }
 
@@ -136,7 +135,7 @@ public class DoctorDAOImpl implements DoctorDAO {
     }
 
     @Override
-    public ResultSet btnLogin(DoctorTM loginFormDto) throws Exception {
+    public ResultSet btnLogin(DoctorFormDto loginFormDto) throws Exception {
         return null;
     }
 }
