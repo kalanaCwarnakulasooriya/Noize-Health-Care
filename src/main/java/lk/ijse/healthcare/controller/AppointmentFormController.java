@@ -8,6 +8,7 @@ import lk.ijse.healthcare.bo.custom.DoctorBO;
 import lk.ijse.healthcare.bo.custom.impl.AppointmentBOImpl;
 import lk.ijse.healthcare.bo.custom.impl.DoctorBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
+import lk.ijse.healthcare.dto.AppointmentFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
 import lk.ijse.healthcare.dao.custom.impl.DoctorDAOImpl;
@@ -83,7 +84,7 @@ public class AppointmentFormController implements Initializable {
     private TableColumn<AppointmentTM, String> statusCol;
 
     @FXML
-    private TableView<AppointmentTM> tblAppointment;
+    private TableView<AppointmentFormDto> tblAppointment;
     
     @FXML
     private TextField lblSearch;
@@ -108,7 +109,7 @@ public class AppointmentFormController implements Initializable {
     @FXML
     void btnDeleteItemOnAction(ActionEvent event) throws SQLException {
         if (tblAppointment != null) {
-            AppointmentTM selectedAppointment = tblAppointment.getSelectionModel().getSelectedItem();
+            AppointmentFormDto selectedAppointment = tblAppointment.getSelectionModel().getSelectedItem();
             if (selectedAppointment == null) {
                 new AlertNotification(
                         "Error Message",
@@ -193,7 +194,14 @@ public class AppointmentFormController implements Initializable {
         }
         LocalDate date = datePicker.getValue();
 
-        if (appointment.saveAppointment(new AppointmentTM(txtAge.getText(), comboStatus.getValue(), txtDescription.getText(), String.valueOf(date), comboDoctor.getValue(), lblName.getText()))) {
+        if (appointment.saveAppointment(new AppointmentFormDto(
+                txtAge.getText(),
+                comboStatus.getValue(),
+                txtDescription.getText(),
+                String.valueOf(date),
+                comboDoctor.getValue(),
+                1
+        ))) {
             getAppointments();
             new AlertNotification(
                     "Success Message",
@@ -223,13 +231,13 @@ public class AppointmentFormController implements Initializable {
         String status = comboStatus.getValue();
         String doctorId = comboDoctor.getValue();
 
-        AppointmentTM appointmentFormDto = new AppointmentTM(
+        AppointmentFormDto appointmentFormDto = new AppointmentFormDto(
                 age,
                 status,
                 description,
                 String.valueOf(datePicker.getValue()),
                 doctorId,
-                lblName.getText()
+                1
         );
         boolean isUpdate = appointment.updateAppointment(appointmentFormDto);
 
@@ -265,7 +273,7 @@ public class AppointmentFormController implements Initializable {
 
     @FXML
     void onClickTable(MouseEvent event) {
-        AppointmentTM selectPatient = tblAppointment.getSelectionModel().getSelectedItem();
+        AppointmentFormDto selectPatient = tblAppointment.getSelectionModel().getSelectedItem();
         if (selectPatient != null) {
             txtAge.setText(String.valueOf(selectPatient.getAge()));
             comboStatus.setValue(selectPatient.getStatus());
@@ -282,8 +290,8 @@ public class AppointmentFormController implements Initializable {
     @FXML
     void refreshTable() throws SQLException {
         tblAppointment.getItems().clear();
-        ArrayList<AppointmentTM> allAppointments = appointment.getAllAppointment();
-        ObservableList<AppointmentTM> appointmentList = FXCollections.observableArrayList(allAppointments);
+        ArrayList<AppointmentFormDto> allAppointments = appointment.getAllAppointment();
+        ObservableList<AppointmentFormDto> appointmentList = FXCollections.observableArrayList(allAppointments);
         tblAppointment.setItems(appointmentList);
     }
 
@@ -314,7 +322,7 @@ public class AppointmentFormController implements Initializable {
     }
 
     public void getAppointments() throws SQLException {
-        ArrayList<AppointmentTM> appointments = appointment.getAllAppointment();
+        ArrayList<AppointmentFormDto> appointments = appointment.getAllAppointment();
         tblAppointment.getItems().clear();
         tblAppointment.getItems().addAll(appointments);
     }
@@ -328,9 +336,9 @@ public class AppointmentFormController implements Initializable {
     }
 
     public void searchAppointment() throws SQLException {
-        ArrayList<AppointmentTM> appointments = appointment.searchAppointment(lblName.getText());
-        ObservableList<AppointmentTM> appointmentList = FXCollections.observableArrayList();
-        for (AppointmentTM appointment : appointments) {
+        ArrayList<AppointmentFormDto> appointments = appointment.searchAppointment(lblName.getText());
+        ObservableList<AppointmentFormDto> appointmentList = FXCollections.observableArrayList();
+        for (AppointmentFormDto appointment : appointments) {
             appointmentList.add(appointment);
         }
         tblAppointment.setItems(appointmentList);
@@ -367,9 +375,9 @@ public class AppointmentFormController implements Initializable {
     }
 
     public void searchAppointment(KeyEvent keyEvent) throws SQLException {
-        ArrayList<AppointmentTM> patients = appointment.searchAppointment(lblSearch.getText());
-        ObservableList<AppointmentTM> patientTMS = FXCollections.observableArrayList();
-        for (AppointmentTM patientsDto : patients) {
+        ArrayList<AppointmentFormDto> patients = appointment.searchAppointment(lblSearch.getText());
+        ObservableList<AppointmentFormDto> patientTMS = FXCollections.observableArrayList();
+        for (AppointmentFormDto patientsDto : patients) {
             patientTMS.add(patientsDto);
         }
         tblAppointment.setItems(patientTMS);

@@ -9,8 +9,6 @@ import lombok.*;
 @ToString
 
 public class AppointmentFormDto {
-    private int id;
-//    private String name;
     private String age;
     private String status;
     private String description;

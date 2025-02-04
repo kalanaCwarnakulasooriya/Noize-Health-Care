@@ -9,5 +9,5 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface AppointmentDAO extends CrudDAO<AppointmentTM> {
+public interface AppointmentDAO extends CrudDAO<AppointmentFormDto> {
 }

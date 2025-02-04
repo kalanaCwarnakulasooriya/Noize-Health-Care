@@ -11,11 +11,11 @@ import java.util.Date;
 @ToString
 
 public class AppointmentTM {
-//    private String name;
+    private int id;
     private String age;
     private String status;
     private String description;
     private String date;
     private String doctorId;
-    private String userId;
+    private int userId;
 }
