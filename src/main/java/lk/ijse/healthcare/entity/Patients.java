@@ -9,7 +9,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PatientsFormDto {
+public class Patients {
     private String patientsName;
     private String patientsAddress;
     private String patientsContactNumber;

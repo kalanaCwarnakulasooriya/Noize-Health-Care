@@ -6,6 +6,7 @@ import lk.ijse.healthcare.dto.PatientsFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
 import lk.ijse.healthcare.dao.SQLUtil;
+import lk.ijse.healthcare.entity.Patients;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,12 +15,12 @@ import java.util.HashMap;
 
 public class PatientsDAOImpl implements PatientsDAO {
     @Override
-    public ArrayList<PatientsFormDto> getAll() throws SQLException {
+    public ArrayList<Patients> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM patient");
 
-        ArrayList<PatientsFormDto> patients = new ArrayList<>();
+        ArrayList<Patients> patients = new ArrayList<>();
         while (rst.next()) {
-            PatientsFormDto dto = new PatientsFormDto(
+            Patients dto = new Patients(
                     rst.getString("Name"),
                     rst.getString("Address"),
                     rst.getString("ContactNumber"),
@@ -34,11 +35,11 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public ArrayList<PatientsFormDto> search(String search) throws SQLException {
+    public ArrayList<Patients> search(String search) throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from patient where Name like ?", search+"%");
-        ArrayList<PatientsFormDto> patient = new ArrayList<>();
+        ArrayList<Patients> patient = new ArrayList<>();
         while (rst.next()) {
-            PatientsFormDto dto = new PatientsFormDto(
+            Patients dto = new Patients(
                     rst.getString("Name"),
                     rst.getString("Address"),
                     rst.getString("ContactNumber"),
@@ -53,11 +54,11 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public PatientsFormDto findById(String id) throws SQLException {
+    public Patients findById(String id) throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM patient WHERE PatientId = ?", id);
 
         if (rst.next()) {
-            return new PatientsFormDto(
+            return new Patients(
                     rst.getString("Name"),
                     rst.getString("Address"),
                     rst.getString("ContactNumber"),
@@ -86,7 +87,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean update(PatientsFormDto update) throws SQLException {
+    public boolean update(Patients update) throws SQLException {
         return SQLUtil.execute(
                 "UPDATE patient SET Address = ?, ContactNumber = ?, Email = ?, DOB = ?, Gender = ?, RegistrationDate = ? WHERE Name = ?",
                 update.getPatientsAddress(),
@@ -105,7 +106,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean save(PatientsFormDto save) throws SQLException {
+    public boolean save(Patients save) throws SQLException {
         return false;
     }
 
@@ -115,7 +116,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean changePwd(PatientsFormDto user, String newPwd) throws SQLException {
+    public boolean changePwd(Patients user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -125,7 +126,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<PatientsFormDto> saveOrder) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<Patients> saveOrder) throws SQLException {
         return false;
     }
 
@@ -140,7 +141,7 @@ public class PatientsDAOImpl implements PatientsDAO {
     }
 
     @Override
-    public ResultSet btnLogin(PatientsFormDto login) throws Exception {
+    public ResultSet btnLogin(Patients login) throws Exception {
         return null;
     }
 }
