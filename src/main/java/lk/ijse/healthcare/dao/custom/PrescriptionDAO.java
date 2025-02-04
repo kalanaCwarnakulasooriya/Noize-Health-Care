@@ -7,5 +7,5 @@ import lk.ijse.healthcare.dto.tm.PrescriptionTM;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface PrescriptionDAO extends CrudDAO<PrescriptionTM> {
+public interface PrescriptionDAO extends CrudDAO<PrescriptionFormDto> {
 }

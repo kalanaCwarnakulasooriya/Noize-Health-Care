@@ -10,9 +10,9 @@ import lombok.*;
 
 public class PrescriptionFormDto {
     private int id;
-    private String date;
     private String mediDetails;
     private String dosage;
+    private String date;
     private int userId;
     private String doctorId;
 }

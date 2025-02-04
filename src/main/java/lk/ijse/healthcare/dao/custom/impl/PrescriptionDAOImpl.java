@@ -12,11 +12,11 @@ import java.util.HashMap;
 
 public class PrescriptionDAOImpl implements PrescriptionDAO {
     @Override
-    public ArrayList<PrescriptionTM> getAll() throws SQLException {
+    public ArrayList<PrescriptionFormDto> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM prescription");
-        ArrayList<PrescriptionTM> prescription = new ArrayList<>();
+        ArrayList<PrescriptionFormDto> prescription = new ArrayList<>();
         while (rst.next()) {
-            PrescriptionTM prescriptionTM = new PrescriptionTM(
+            PrescriptionFormDto prescriptionTM = new PrescriptionFormDto(
                     rst.getInt("PrescriptionId"),
                     rst.getString("Dosage"),
                     rst.getString("PrescriptionDate"),
@@ -30,12 +30,12 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public ArrayList<PrescriptionTM> search(String name) throws SQLException {
+    public ArrayList<PrescriptionFormDto> search(String name) throws SQLException {
         return null;
     }
 
     @Override
-    public PrescriptionTM findById(String selectedContact) throws SQLException {
+    public PrescriptionFormDto findById(String selectedContact) throws SQLException {
         return null;
     }
 
@@ -45,7 +45,7 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public boolean save(PrescriptionTM prescription) throws SQLException {
+    public boolean save(PrescriptionFormDto prescription) throws SQLException {
         return SQLUtil.execute(
                 "INSERT INTO prescription(MedicineDetails,Dosage,PrescriptionDate,UserId,DoctorId) VALUES (?,?,?,?,?)",
                 prescription.getMediDetails(),
@@ -62,7 +62,7 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public boolean changePwd(PrescriptionTM user, String newPassword) throws SQLException {
+    public boolean changePwd(PrescriptionFormDto user, String newPassword) throws SQLException {
         return false;
     }
 
@@ -72,7 +72,7 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<PrescriptionTM> orderDetailsDto) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<PrescriptionFormDto> orderDetailsDto) throws SQLException {
         return false;
     }
 
@@ -87,12 +87,12 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
     }
 
     @Override
-    public ResultSet btnLogin(PrescriptionTM loginFormDto) throws Exception {
+    public ResultSet btnLogin(PrescriptionFormDto loginFormDto) throws Exception {
         return null;
     }
 
     @Override
-    public boolean update(PrescriptionTM prescriptionTM) throws SQLException {
+    public boolean update(PrescriptionFormDto prescriptionTM) throws SQLException {
         return SQLUtil.execute("UPDATE prescription SET MedicineDetails = ?, Dosage = ?, WHERE PrescriptionDate = ?",
                 prescriptionTM.getMediDetails(),
                 prescriptionTM.getDosage(),

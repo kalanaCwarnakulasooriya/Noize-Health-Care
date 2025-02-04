@@ -14,6 +14,7 @@ import lk.ijse.healthcare.bo.custom.impl.PrescriptionBOImpl;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.AppointmentFormDto;
 import lk.ijse.healthcare.dto.DoctorFormDto;
+import lk.ijse.healthcare.dto.PrescriptionFormDto;
 import lk.ijse.healthcare.dto.tm.AppointmentTM;
 import lk.ijse.healthcare.dto.tm.DoctorTM;
 import lk.ijse.healthcare.dto.tm.PatientsTM;
@@ -94,7 +95,7 @@ public class PrescriptionFormController implements Initializable {
     private JFXButton btnReport;
 
     @FXML
-    private TableView<PrescriptionTM> tblPrescription;
+    private TableView<PrescriptionFormDto> tblPrescription;
 
     @FXML
     private JFXTextField txtDosage;
@@ -105,7 +106,7 @@ public class PrescriptionFormController implements Initializable {
     @FXML
     void btnDeleteItemOnAction(ActionEvent event) throws SQLException {
         if (tblPrescription != null) {
-            PrescriptionTM selectedPrescription = tblPrescription.getSelectionModel().getSelectedItem();
+            PrescriptionFormDto selectedPrescription = tblPrescription.getSelectionModel().getSelectedItem();
             if (selectedPrescription == null) {
                 new AlertNotification(
                         "Error Message",
@@ -190,7 +191,7 @@ public class PrescriptionFormController implements Initializable {
         }
         LocalDate date = datePicker.getValue();
 
-        if (prescriptionBO.savePrescription(new PrescriptionTM(tblPrescription.getItems().size() + 1,   txtDosage.getText(),txtMediDetails.getText(),String.valueOf(date), 1, comboDocName.getValue()))) {
+        if (prescriptionBO.savePrescription(new PrescriptionFormDto(tblPrescription.getItems().size() + 1,   txtDosage.getText(),txtMediDetails.getText(),String.valueOf(date), 1, comboDocName.getValue()))) {
             getPrescription();
             new AlertNotification(
                     "Success Message",
@@ -219,7 +220,7 @@ public class PrescriptionFormController implements Initializable {
         String dosage = txtDosage.getText();
         String doctorId = comboDocName.getValue();
 
-        PrescriptionTM prescriptionTM = new PrescriptionTM(
+        PrescriptionFormDto prescriptionTM = new PrescriptionFormDto(
                 tblPrescription.getSelectionModel().getSelectedItem().getId(),
                 String.valueOf(datePicker.getValue()),
                 mediDetails,
@@ -283,7 +284,7 @@ public class PrescriptionFormController implements Initializable {
 
     @FXML
     void onClickTable(MouseEvent event) {
-        PrescriptionTM selectPrescription = (PrescriptionTM) tblPrescription.getSelectionModel().getSelectedItem();
+        PrescriptionFormDto selectPrescription = (PrescriptionFormDto) tblPrescription.getSelectionModel().getSelectedItem();
         if (selectPrescription != null) {
             txtDosage.setText(selectPrescription.getDosage());
             txtMediDetails.setText(selectPrescription.getMediDetails());
@@ -301,8 +302,8 @@ public class PrescriptionFormController implements Initializable {
     @FXML
     void refreshTable() throws SQLException {
         tblPrescription.getItems().clear();
-        ArrayList<PrescriptionTM> allPrescription = prescriptionBO.getAllPrescription();
-        ObservableList<PrescriptionTM> appointmentList = FXCollections.observableArrayList(allPrescription);
+        ArrayList<PrescriptionFormDto> allPrescription = prescriptionBO.getAllPrescription();
+        ObservableList<PrescriptionFormDto> appointmentList = FXCollections.observableArrayList(allPrescription);
         tblPrescription.setItems(appointmentList);
     }
 
@@ -319,7 +320,7 @@ public class PrescriptionFormController implements Initializable {
     }
 
     public void getPrescription() throws SQLException {
-        ArrayList<PrescriptionTM> prescriptionTMS = prescriptionBO.getAllPrescription();
+        ArrayList<PrescriptionFormDto> prescriptionTMS = prescriptionBO.getAllPrescription();
         tblPrescription.getItems().clear();
         tblPrescription.getItems().addAll(prescriptionTMS);
     }

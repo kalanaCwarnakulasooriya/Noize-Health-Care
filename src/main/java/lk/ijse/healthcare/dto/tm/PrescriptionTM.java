@@ -15,6 +15,4 @@ public class PrescriptionTM {
     private String date;
     private int userId;
     private String doctorId;
-//    private String appoId;
-//    private String patientId;
 }
