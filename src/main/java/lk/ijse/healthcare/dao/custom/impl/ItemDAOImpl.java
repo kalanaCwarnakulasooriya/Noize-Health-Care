@@ -6,6 +6,7 @@ import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
 import lk.ijse.healthcare.dao.SQLUtil;
 import lk.ijse.healthcare.entity.Item;
+import lk.ijse.healthcare.entity.OrderDetails;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,7 +42,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean reduceQty(OrderDetailsFormDto reduce) throws SQLException {
+    public boolean reduceQty(OrderDetails reduce) throws SQLException {
         return SQLUtil.execute("UPDATE item SET StockQuantity = StockQuantity - ? WHERE ItemId = ?", reduce.getQuantity(), reduce.getItemId());
     }
 

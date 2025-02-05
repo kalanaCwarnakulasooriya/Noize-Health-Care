@@ -1,8 +1,11 @@
 package lk.ijse.healthcare.dao.custom.impl;
 
+import lk.ijse.healthcare.dao.DAOFactory;
+import lk.ijse.healthcare.dao.custom.ItemDAO;
 import lk.ijse.healthcare.dao.custom.OrderDetailsDAO;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
+import lk.ijse.healthcare.entity.OrderDetails;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,11 +13,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OrderDetailsDAOImpl implements OrderDetailsDAO {
-    private final ItemDAOImpl itemDAOImpl = new ItemDAOImpl();
+    private final ItemDAO itemDAOImpl = (ItemDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ITEM);
 
     @Override
-    public boolean saveOrderDetails(ArrayList<OrderDetailsFormDto> saveOrder) throws SQLException {
-        for (OrderDetailsFormDto dto : saveOrder) {
+    public boolean saveOrderDetails(ArrayList<OrderDetails> saveOrder) throws SQLException {
+        for (OrderDetails dto : saveOrder) {
             boolean isOrderDetailsSaved = save(dto);
             if (!isOrderDetailsSaved) {
                 return false;
@@ -39,12 +42,12 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     }
 
     @Override
-    public ResultSet btnLogin(OrderDetailsFormDto login) throws Exception {
+    public ResultSet btnLogin(OrderDetails login) throws Exception {
         return null;
     }
 
     @Override
-    public boolean save(OrderDetailsFormDto save) throws SQLException {
+    public boolean save(OrderDetails save) throws SQLException {
         return SQLUtil.execute(
                 "insert into orderdetail(Quantity,Price,OrderId,ItemId) values (?,?,?,?)",
                 save.getQuantity(),
@@ -64,17 +67,17 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     }
 
     @Override
-    public ArrayList<OrderDetailsFormDto> getAll() throws SQLException {
+    public ArrayList<OrderDetails> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public ArrayList<OrderDetailsFormDto> search(String search) throws SQLException {
+    public ArrayList<OrderDetails> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public OrderDetailsFormDto findById(String id) throws SQLException {
+    public OrderDetails findById(String id) throws SQLException {
         return null;
     }
 
@@ -89,7 +92,7 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     }
 
     @Override
-    public boolean update(OrderDetailsFormDto update) throws SQLException {
+    public boolean update(OrderDetails update) throws SQLException {
         return false;
     }
 
@@ -104,7 +107,7 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     }
 
     @Override
-    public boolean changePwd(OrderDetailsFormDto user, String newPwd) throws SQLException {
+    public boolean changePwd(OrderDetails user, String newPwd) throws SQLException {
         return false;
     }
 }

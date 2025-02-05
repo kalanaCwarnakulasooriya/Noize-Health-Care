@@ -13,6 +13,7 @@ import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.ItemFormDto;
 import lk.ijse.healthcare.dto.PatientsFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
+import lk.ijse.healthcare.entity.OrderDetails;
 import lk.ijse.healthcare.util.alert.AlertSound;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.OrdersFormDto;
@@ -389,11 +390,11 @@ public class OrderFormController implements Initializable {
             Date dateOfOrder = Date.valueOf(lblOrderDate.getText());
             String patientId = comboMobile.getValue();
 
-            ArrayList<OrderDetailsFormDto> orderDetailsDTOS = new ArrayList<>();
+            ArrayList<OrderDetails> orderDetailsDTOS = new ArrayList<>();
 
             for (OrdersTM cartTM : obList) {
 
-                OrderDetailsFormDto orderDetailsDTO = new OrderDetailsFormDto(
+                OrderDetails orderDetailsDTO = new OrderDetails(
                         Integer.parseInt(orderId),
                         cartTM.getItemId(),
                         cartTM.getCartQty(),

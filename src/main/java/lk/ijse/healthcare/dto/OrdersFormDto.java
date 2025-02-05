@@ -1,5 +1,6 @@
 package lk.ijse.healthcare.dto;
 
+import lk.ijse.healthcare.entity.OrderDetails;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -16,5 +17,5 @@ public class OrdersFormDto {
     private Date orderDate;
     private int patientId;
 
-    private ArrayList<OrderDetailsFormDto> orderDetailsFormDtos;
+    private ArrayList<OrderDetails> orderDetailsFormDtos;
 }

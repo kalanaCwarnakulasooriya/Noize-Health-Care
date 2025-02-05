@@ -9,6 +9,7 @@ import lk.ijse.healthcare.dto.ItemFormDto;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.tm.ItemTM;
 import lk.ijse.healthcare.entity.Item;
+import lk.ijse.healthcare.entity.OrderDetails;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,7 +46,8 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public boolean reduceQty(OrderDetailsFormDto reduce) throws SQLException {
-        return itemDAO.reduceQty(reduce);
+        OrderDetails orderDetails = new OrderDetails(reduce.getOrderId(), reduce.getItemId(), reduce.getQuantity(), reduce.getPrice());
+        return itemDAO.reduceQty(orderDetails);
     }
     @Override
     public ArrayList<ItemFormDto> getAllItem() throws SQLException {
