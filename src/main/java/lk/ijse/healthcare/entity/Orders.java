@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class OrdersFormDto {
+public class Orders {
     private int orderId;
     private Date orderDate;
     private int patientId;

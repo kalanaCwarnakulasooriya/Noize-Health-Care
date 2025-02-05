@@ -1,10 +1,12 @@
 package lk.ijse.healthcare.dao.custom.impl;
 
+import lk.ijse.healthcare.dao.custom.OrderDetailsDAO;
 import lk.ijse.healthcare.dao.custom.OrdersDAO;
 import lk.ijse.healthcare.db.DBConnection;
 import lk.ijse.healthcare.dto.OrderDetailsFormDto;
 import lk.ijse.healthcare.dto.OrdersFormDto;
 import lk.ijse.healthcare.dao.SQLUtil;
+import lk.ijse.healthcare.entity.Orders;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,20 +15,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OrdersDAOImpl implements OrdersDAO {
-    private final OrderDetailsDAOImpl orderDetailsDAOImpl = new OrderDetailsDAOImpl();
+    private final OrderDetailsDAO orderDetailsDAOImpl = new OrderDetailsDAOImpl();
 
     @Override
-    public ArrayList<OrdersFormDto> getAll() throws SQLException {
+    public ArrayList<Orders> getAll() throws SQLException {
         return null;
     }
 
     @Override
-    public ArrayList<OrdersFormDto> search(String search) throws SQLException {
+    public ArrayList<Orders> search(String search) throws SQLException {
         return null;
     }
 
     @Override
-    public OrdersFormDto findById(String id) throws SQLException {
+    public Orders findById(String id) throws SQLException {
         return null;
     }
 
@@ -41,7 +43,7 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public boolean update(OrdersFormDto update) throws SQLException {
+    public boolean update(Orders update) throws SQLException {
         return false;
     }
 
@@ -56,7 +58,7 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public boolean changePwd(OrdersFormDto user, String newPwd) throws SQLException {
+    public boolean changePwd(Orders user, String newPwd) throws SQLException {
         return false;
     }
 
@@ -66,7 +68,7 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public boolean saveOrderDetails(ArrayList<OrdersFormDto> saveOrder) throws SQLException {
+    public boolean saveOrderDetails(ArrayList<Orders> saveOrder) throws SQLException {
         return false;
     }
 
@@ -88,12 +90,12 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public ResultSet btnLogin(OrdersFormDto login) throws Exception {
+    public ResultSet btnLogin(Orders login) throws Exception {
         return null;
     }
 
     @Override
-    public boolean save(OrdersFormDto save) throws SQLException {
+    public boolean save(Orders save) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         try {
             connection.setAutoCommit(false);
