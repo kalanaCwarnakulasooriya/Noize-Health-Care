@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="Logout update kara" />
+    <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="Logout update kara">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -293,7 +295,11 @@
       <workItem from="1738580919508" duration="22111000" />
       <workItem from="1738647423173" duration="24642000" />
       <workItem from="1738732120546" duration="58000" />
-      <workItem from="1738735359951" duration="1680000" />
+      <workItem from="1738735359951" duration="2201000" />
+      <workItem from="1738899396769" duration="225000" />
+      <workItem from="1738903044985" duration="616000" />
+      <workItem from="1738982101557" duration="186000" />
+      <workItem from="1739172172305" duration="1554000" />
     </task>
     <task id="LOCAL-00001" summary="login and signup page view">
       <option name="closed" value="true" />

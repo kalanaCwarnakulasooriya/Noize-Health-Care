@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OrdersDAOImpl implements OrdersDAO {
-    private final OrderDetailsDAO orderDetailsDAOImpl = new OrderDetailsDAOImpl();
 
     @Override
     public ArrayList<Orders> getAll() throws SQLException {
@@ -96,32 +95,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 
     @Override
     public boolean save(Orders save) throws SQLException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        try {
-            connection.setAutoCommit(false);
-
-            boolean isOrderSaved = SQLUtil.execute(
-                    "insert into orders values (?,?,?)",
-                    save.getOrderId(),
-                    save.getOrderDate(),
-                    save.getPatientId()
-            );
-
-            if (isOrderSaved) {
-                boolean isOrderDetailListSaved = orderDetailsDAOImpl.saveOrderDetails(save.getOrderDetailsFormDtos());
-                if (isOrderDetailListSaved) {
-                    connection.commit();
-                    return true;
-                }
-            }
-            connection.rollback();
-            return false;
-        } catch (Exception e) {
-            e.printStackTrace();
-            connection.rollback();
-            return false;
-        } finally {
-            connection.setAutoCommit(true);
-        }
+        ResultSet rst = SQLUtil.execute("INSERT INTO orders VALUES(?, ?, ?)", save.getOrderId(), save.getOrderId(), save.getOrderId());
+        return rst.next();
     }
 }

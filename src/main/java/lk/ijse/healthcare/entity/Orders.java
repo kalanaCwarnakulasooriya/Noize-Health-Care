@@ -15,6 +15,4 @@ public class Orders {
     private int orderId;
     private Date orderDate;
     private int patientId;
-
-    private ArrayList<OrderDetails> orderDetailsFormDtos;
 }
