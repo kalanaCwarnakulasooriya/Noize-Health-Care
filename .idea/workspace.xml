@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a59df24e-a8bc-4d9f-9f9e-901765c53044" name="Changes" comment="Logout update kara">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/ForgetPasswordBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/ForgetPasswordBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/OrdersBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/healthcare/bo/custom/impl/OrdersBOImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +301,8 @@
       <workItem from="1738899396769" duration="225000" />
       <workItem from="1738903044985" duration="616000" />
       <workItem from="1738982101557" duration="186000" />
-      <workItem from="1739172172305" duration="1554000" />
+      <workItem from="1739172172305" duration="3405000" />
+      <workItem from="1739176082212" duration="444000" />
     </task>
     <task id="LOCAL-00001" summary="login and signup page view">
       <option name="closed" value="true" />

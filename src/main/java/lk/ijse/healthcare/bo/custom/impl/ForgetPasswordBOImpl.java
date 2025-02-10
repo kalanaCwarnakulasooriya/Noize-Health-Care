@@ -29,12 +29,8 @@ public class ForgetPasswordBOImpl implements ForgetPasswordBO {
 
     @Override
     public ForgetPasswordFormDto getUserData(String username) throws SQLException {
-        ArrayList<ForgetPassword> dtos = forgetPwd.getAll();
-        for (ForgetPassword dto : dtos) {
-            if (dto.getUsername().equals(username)) {
-                return new ForgetPasswordFormDto(dto.getId(), dto.getUsername(), dto.getPassword(), dto.getEmail(), dto.getPhone(), dto.getOtp());
-            }
-        }
-        return null;
+        ArrayList<ForgetPasswordFormDto> forget = new ArrayList<>();
+        ForgetPassword dto = forgetPwd.findById(username);
+        return new ForgetPasswordFormDto(dto.getId(), dto.getUsername(), dto.getPassword(), dto.getEmail(), dto.getPhone(), dto.getOtp());
     }
 }

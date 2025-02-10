@@ -45,12 +45,7 @@ public class OrdersBOImpl implements OrdersBO {
         try {
             connection.setAutoCommit(false);
 
-            boolean isOrderSaved = SQLUtil.execute(
-                    "insert into orders values (?,?,?)",
-                    save.getOrderId(),
-                    save.getOrderDate(),
-                    save.getPatientId()
-            );
+            boolean isOrderSaved = SQLUtil.execute("insert into orders values (?,?,?)", save.getOrderId(), save.getOrderDate(), save.getPatientId());
 
             if (isOrderSaved) {
                 boolean isOrderDetailListSaved = orderDetailsDAOImpl.saveOrderDetails(save.getOrderDetailsFormDtos());
